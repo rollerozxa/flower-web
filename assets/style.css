@@ -81,7 +81,7 @@ li {
 }
 
 .inline {
-	display: inline-block !important;
+	display: inline-grid !important;
 	margin-bottom: 0em;
 }
 .Spadding {
