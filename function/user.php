@@ -29,4 +29,22 @@ function powerlevelcolor() {
 	}
 }
 
+/**
+ * Create a new unique friend code for new users.
+ *
+ * @return int 
+ */
+function make_friendcode() {
+	$friendcode_unique = false;
+	while (!$friendcode_unique) {
+		$friendcode = rand(100000000,999999999);
+		if (SqlQueryResult("SELECT COUNT(*)  FROM `user` WHERE `friendcode` = '$friendcode'") == 1) {
+			// Nothing, continue.
+		} else {
+			$friendcode_unique = true;
+		}
+	}
+	return $friendcode;
+}
+
 ?>
