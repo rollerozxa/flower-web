@@ -1,0 +1,22 @@
+<p class="title">Stars Exchange</p>
+<b>Seeds: <span class="seedc">$<?php echo number_format($userdata['seeds'],2) ?></span></b><br>
+<b>Stars: <span class="starc">*<?php echo number_format($userdata['stars'],2) ?></span></b><br>
+
+<div class="box inline Spadding" style="background-color:#ffcccc;width:280px;">
+	<h3>Place BUY <span class="starc">Stars</span> order to get <span class="seedc">Seeds</span>.</h3>
+	<form target="_top" action="">
+		<?php formcore(4,'buystars') ?>
+		Buy quantity: <input name="quantity" type="text" value="10">
+		<br> @ 50 seeds each<br><br><br>
+		<input type="submit" value="Place Buy Order">
+	</form>
+</div>
+<div class="box inline Spadding" style="background-color:#ccffcc;width:280px;">
+	<h3>Place SELL <span class="starc">Stars</span> order to get <span class="seedc">Seeds</span>.</h3>
+	<form target="_top" action="">
+		<?php formcore(4,'sellstars') ?>
+		Sell quantity: <input name="quantity" type="text" value="10">
+		<br> @ 50 seeds each<br><br><br>
+		<input type="submit" value="Place Sell Order"><br />
+	</form>
+</div>

@@ -1,0 +1,84 @@
+body {
+	margin-bottom: 2em;
+	text-align: center;
+}
+.box {
+	border: 2px solid black;
+	display: table;
+	border-spacing: 2px;
+	margin-bottom: 0.5em;
+	margin: auto;
+}
+.outer {
+	width: 100%;
+	max-width:1000px;
+}
+.center {
+	margin: auto;
+}
+.top > img, .flower {
+	border: 1px solid black;
+	margin: 2px;
+	width: 86px;
+}
+.top {
+	text-align: center;
+	display: block;
+}
+.title {
+	border-bottom: 1px solid black;
+	display: block;
+	font-size: 24pt;
+	font-weight: bold;
+	margin-bottom: 5px;
+	text-align:center;
+}
+.downloadtitle {
+	display: block;
+	font-size: 20pt;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.downloadicon {
+	width: 86px;
+}
+.gametitle {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	text-decoration: underline;
+}
+
+table, tr, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+td {
+	padding:5px;
+}
+
+.funfact {
+	display: inline-block;
+	margin: 1em;
+	border: 2px inset black;
+	padding:5px;
+}
+
+/* color */
+.c_mainbox {
+	background-color: #ccffcc;
+}
+.c_statsbox {
+	background-color: #ccccff;
+}
+
+/* Scores */
+.fullwidth {
+	width: 100%;
+}
+.tbl0 {
+	background-color: #eeeeee;
+}
+.tbl1 {
+	background-color: #ffffff;
+}

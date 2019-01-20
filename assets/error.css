@@ -1,0 +1,17 @@
+body {
+	background-color: #555555;
+	color: #eeeeee;
+	font-size: 12pt;
+	text-align: center;
+}
+.error {
+	background-color: #dddddd;
+	border-radius: 10px;
+	display: inline-block;
+	color: black;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0em;
+	font-family:monospace;
+}

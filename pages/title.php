@@ -1,0 +1,26 @@
+<?php
+
+function get_page_title($show = 0) {
+	switch ($show) {
+		// This value is hardcoded into the app.
+		case 1:		return 'Items';
+		case 2:		return 'Chatterbox';
+		case 3:		return 'Friends';
+		case 4:		return 'Star Exchange';
+		case 5:		return 'Seeds draw';
+		case 6:		return 'Stars draw';
+		case 7:		return 'PGM Packages';
+		case 8:		return 'Inbox';
+		case 9:		return 'Scores';
+		case 10:	return 'Global Compost Heap';
+		// This value is hardcoded into the app.
+		case 14:	return 'Change name';
+		// This value is hardcoded into the app.
+		// Actually, there isn't even a buy stars page. Why is this still here?
+		case 18:	return 'Buy Stars';
+		
+		default:	return '';
+	}
+}
+
+?>

@@ -1,0 +1,117 @@
+body {
+	margin-bottom: 5em;
+	/*max-width: 400px;*/
+	/*background-color:#F8ECC2;*/
+	background-color: #FFFFFF;
+}
+
+.fsbox td {
+	padding: 0.2em;
+}
+
+.box {
+	border: 2px solid black;
+	display: table;
+	border-spacing: 2px;
+	margin-bottom: 0.5em;
+	/*width: 100%;*/
+}
+.outer {
+	width: 100%;
+}
+.inbox {
+	background-color: #ddaaff;
+	width: 300px;
+	height: 200px;
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+}
+.inboxcell1 {
+	vertical-align: top;
+}
+.inboxcell2 {
+	vertical-align: bottom;
+	text-align: center;
+}
+
+.fullwidth {
+	width: 100%;
+}
+
+.itemnestbox {
+	display:block;
+	width: 100%;
+	border: 26px none #000000;
+}
+
+li {
+	padding-bottom: 1em;
+}
+.nobreak > li {
+	padding-bottom: 0.1em;
+}
+
+.title {
+	font-weight:bold;
+	text-decoration:underline;
+}
+.seedc {
+	color: green;
+}
+.starc {
+	color: blue;
+}
+
+.blue {
+	color: blue;
+}
+.ffaaff {
+	background-color:#ffaaff;
+}
+
+.tbl0 {
+	background-color: #eeeeee;
+}
+.tbl1 {
+	background-color: #ffffff;
+}
+.tbh {
+	background-color: #ffff00;
+}
+
+.inline {
+	display: inline-block !important;
+	margin-bottom: 0em;
+}
+.Spadding {
+	padding: 5px;
+}
+
+/* change nickname page stuff */
+
+.flagbox {
+	border: 1px solid gray;
+	background-color: gray;
+	margin: 2px;
+	padding:5px;
+	display: block;
+}
+.f {
+	display: inline-block;
+}
+.flaglink {
+	text-decoration: none;
+	color: white;
+}
+
+/* friends page stuff */
+.friends td {
+	padding:3px;
+}
+
+
+
+
+
+

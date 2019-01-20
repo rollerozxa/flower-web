@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Update user data in case something has been modified.
+ * 
+ * @param bool $chooseflower Is the function run from the choose flower page? (Don't initialize $userflowerdata?)
+ */
+function update_userdata($chooseflower = false) {
+	if ($chooseflower) {
+		global $uid, $userdata;
+		$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
+	} else {
+		global $uid, $gid, $userdata, $userflowerdata;
+		$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
+		$userflowerdata = SqlQueryFetchRow("SELECT * FROM user_$gid WHERE uid = '$uid'");
+	}
+}
+
+/**
+ * Check if user is from within the network.
+ * 
+ * @return boolean Whether user is within the network.
+ */
+function islocal() {
+	if ((substr($_SERVER['REMOTE_ADDR'],0,8) == "192.168.") || ($_SERVER['REMOTE_ADDR'] == "127.0.0.1")) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// https://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
+/**
+ * Check if $needle starts with $haystack.
+ * 
+ * @param mixed $haystack
+ * @param mixed $needle
+ * @return boolean 
+ */
+function startsWith($haystack, $needle) {
+	$length = strlen($needle);
+	return (substr($haystack, 0, $length) === $needle);
+}
+
+?>

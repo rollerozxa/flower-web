@@ -1,0 +1,19 @@
+RewriteEngine On
+
+RewriteRule ^chat.jsp$ chat.php
+RewriteRule ^choseflower.jsp$ choseflower.php
+RewriteRule ^flowerschool.jsp$ flowerschool.php
+RewriteRule ^iphoneflower.jsp$ iphoneflower.php
+RewriteRule ^retrieveflower.jsp$ retrieveflower.php
+
+RewriteRule ^daisyicon.png$ img/daisyicon.png [NC]
+RewriteRule ^irisicon.png$ img/irisicon.png [NC]
+RewriteRule ^daisyicon.png$ img/orchidicon.png [NC]
+RewriteRule ^socicon.png$ img/socicon.png [NC]
+RewriteRule ^sunflowericon.png$ img/sunflowericon.png [NC]
+
+# Forbid accessing internal PHP files.
+#RewriteRule ^(pages) - [F,L,NC]
+#RewriteRule ^(function) - [F,L,NC]
+
+ErrorDocument 404 /error/?error=404

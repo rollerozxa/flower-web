@@ -1,0 +1,169 @@
+<?php
+
+//error_reporting(E_ALL & ~E_WARNING);
+
+include('function/function.php');
+include('config.php');
+include('mysql.php');
+include('pages/title.php');
+
+if (!isset($_GET['uid'])) fs_error('Invalid UID.');
+if (!isset($_GET['gid'])) fs_error("Invalid GID.");
+
+$uid = (isset($_GET['uid']) ? $_GET['uid'] : 0);
+$gid = (isset($_GET['gid']) ? $_GET['gid'] : 'Daisy');
+$show = (isset($_GET['show']) ? $_GET['show'] : 1);
+$ver = (isset($_GET['ver']) ? $_GET['ver'] : 999);
+$menupage = (isset($_GET['justshortcuts']) ? true : null);
+
+if ($show == 999) header('Location: flowerschool.php');
+
+if (!in_array($gid, $flowers)) fs_error('Unknown flower.');
+if ($show == 18) fs_error("Buying stars aren't supported.<br>Sorry, but I don't want your money!");
+
+update_userdata();
+
+if (!isset($userdata['username'])) {
+	// User doesn't exist.
+	fs_error("User doesn't exist.");
+}
+
+if (false) {
+	include('pages/other/banned.php');
+	die;
+}
+
+// Give seed income.
+$seedearnamount = (time() - $userdata['lastview']) * ($userdata['seedincome'] / 3600);
+SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] + $seedearnamount) . "' WHERE `user`.`uid` = '$uid';");
+$heightgrowthamount = (time() - $userdata['lastview']) * ($userdata['seedincome'] / 3600);
+SqlQuery("UPDATE `user` SET `lastview` = '" . time() . "' WHERE `user`.`uid` = '$uid';");
+update_userdata();
+
+?>
+<!doctype html>
+<html>
+	<head>
+		<title>Flower menu</title>
+		<script>function open_win(show) { window.open('?uid=<?php echo $uid ?>&gid=<?php echo $gid ?>&show=' + show, '_top'); }</script>
+		<script src="assets/core.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<!-- ****** faviconit.com favicons ****** -->
+		<link rel="shortcut icon" href="/assets/icons/favicon.ico?v=2">
+		<link rel="icon" sizes="16x16 32x32 64x64" href="/assets/icons/favicon.ico?v=2">
+		<link rel="icon" type="image/png" sizes="196x196" href="/assets/icons/favicon-192.png?v=2">
+		<link rel="icon" type="image/png" sizes="160x160" href="/assets/icons/favicon-160.png?v=2">
+		<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96.png?v=2">
+		<link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64.png?v=2">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png?v=2">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png?v=2">
+		<link rel="apple-touch-icon" href="/assets/icons/favicon-57.png?v=2">
+		<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/favicon-114.png?v=2">
+		<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/favicon-72.png?v=2">
+		<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/favicon-144.png?v=2">
+		<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/favicon-60.png?v=2">
+		<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/favicon-120.png?v=2">
+		<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/favicon-76.png?v=2">
+		<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/favicon-152.png?v=2">
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/favicon-180.png?v=2">
+		<meta name="msapplication-TileColor" content="#FFFFFF">
+		<meta name="msapplication-TileImage" content="/assets/icons/favicon-144.png?v=2">
+		<meta name="msapplication-config" content="/browserconfig.txt?v=2">
+		<!-- ****** faviconit.com favicons ****** -->
+		<!--<meta name="viewport" content="width=320" />-->
+	</head>
+	<body>
+		<script src="assets/loaded.js"></script>
+		(390 min until next save)
+		<?php if (isset($_REQUEST['a'])) include('pages/a.php'); ?>
+		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
+		<span class="title"><font size="16"><?php echo get_page_title($show); ?></font></span>
+		<div class="box outer">
+			<table class="fsbox" style="width:100%">
+				<tr>
+					<td colspan=2>
+						<img src="flags/<?=$userdata['country']?>.png">
+						<a onclick='document.getElementById("flowerimg").src="img/socicon.png";'>
+							<img id="flowerimg" src="img/<?php echo $gid; ?>Icon.png" width=24>
+						</a>
+						<strong style="color:#<?= powerlevelcolor() ?>"><?php echo $userdata['username'] ?></strong>
+						<span style="display:inline-block;margin-top:0.21em;">
+						<?=formatheight($userflowerdata['height']) ?> (cm)
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor=#ccffcc>Seeds: <?php echo ($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
+					<td bgcolor=#ccccff>Stars: <?php echo ($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
+				</tr>
+				<tr>
+					<td bgcolor=#ff5555 colspan=2>PGM: <?php echo $userdata['PGM'] ?></td>
+				</tr>
+				<tr>
+					<td bgcolor=#8888ff>Water: <?php echo number_format($userflowerdata['water'],2) ?> hours</td>
+					<td bgcolor=#ffff88>Sun: <?php echo number_format($userflowerdata['sun'],2) ?> hours</td>
+				</tr>
+				<tr>
+					<td bgcolor=pink>Giga: <?php echo number_format($userflowerdata['giga'],2) ?> hours</td>
+					<td bgcolor=grey>Warp: <?php echo number_format($userflowerdata['warp'],2) ?> hours</td>
+				</tr>
+				<tr>
+					<td colspan=2>Growth rate: <?php echo getflowergrowthrate(); ?> cm/hour </td>
+				</tr>
+			</table>
+		</div>
+		<?php if ($ver < 600) { ?>
+		<div class="box outer" style="background-color:#eee033">
+			Still using a legacy flower app? <a href="/?downloadnew">Check out the new version of the app.</a>
+			It is much smaller, works on more devices and it has many improvements and bug fixes.
+		</div>
+		<?php } ?>
+		<?php
+		if (!$menupage) {
+			echo '<div class="box outer">';
+				include('pages/' . $show . '.php');
+			echo '</div>';
+		} else {
+			
+		}
+		?>
+		<div class="box outer" style="text-align:center;">
+			<button onclick="open_win(1)">Items</button>
+			<button onclick="open_win(2)">Chatterbox</button>
+			<button onclick="open_win(3)">Friends (0 / 10)</button>
+			<button onclick="open_win(4)">Stars Exchange ($50)</button>
+			<button onclick="open_win(5)">Seeds draw ($100.00)</button>
+			<button onclick="open_win(6)">Stars draw (*10.00)</button>
+			<button onclick="open_win(7)">PGM Packages</button>
+			<button onclick="open_win(8)">Inbox</button>
+			<button onclick="open_win(9)">Scores</button>
+			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
+			<button onclick="open_win(10)">Global Compost Heap</button>
+			<button onclick="open_win(11)">Change name</button>
+			<button onclick="open_win(999)">Flower School</button>
+			<?php if (islocal()) { ?>
+			<?php } ?>
+		</div>
+		<div class="box" style="margin:auto;background-color:black;color:white;">
+			Zoom:
+			<button onclick="zoom(1.0)">100%</button>
+			<button onclick="zoom(1.5)">150%</button>
+			<button onclick="zoom(2.0)">200%</button>
+		</div>
+		<?php
+		if (islocal()) {
+		if (isset($_GET['debug'])) { 
+			echo '<div class="box outer" style="background-color:gold;"><pre>GET requests:' . PHP_EOL;
+			print_r($_GET);
+			echo '$userdata:' . PHP_EOL;
+			print_r($userdata);
+			echo '$userflowerdata:' . PHP_EOL;
+			print_r($userflowerdata);
+			echo '</pre></div>';
+		} else {
+			echo '<a href="' . $_SERVER['REQUEST_URI'] . '&debug">Show debug info</a>';
+		}
+		}
+		?>
+	</body>
+</html>
