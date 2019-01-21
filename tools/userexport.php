@@ -44,6 +44,8 @@ $tbl_userinfo = array(
     'userID',
     'uid',
     'username',
+	'friendcode',
+	'country',
 	'seeds',
 	'stars',
 	'PGM',
@@ -59,6 +61,7 @@ $tbl_userinfo = array(
 $tbl_flowerinfo = array(
     'flowerID',
     'uid',
+	'height',
     'water',
 	'sun',
 	'giga',
