@@ -20,4 +20,4 @@
 
 <p><b>Stars</b> is the second currency. Stars are considered more valuable, and is harder to obtain.</p>
 
-<p><b>Stars</b> can be obtained by adding friends, as each friend gives you 1 star per hour, at 
+<p><b>Stars</b> can be obtained by adding friends, as each friend gives you 1 star per hour.</p>

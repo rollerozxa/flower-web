@@ -9,5 +9,4 @@ Welcome.
 		2. <a href="flowerschool.php?page=2">Items and Resources</a>
 		<p>This part will talk about taking care of your flower.</p>
 	</td></tr>
-	
 </table>
