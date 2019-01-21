@@ -1,18 +1,9 @@
-# Legacy project files
-.settings/
-.buildpath
-.project
-
 # Personal stuff
 reqs.zip
 sql/
-tools/tests/
 
 # Downloads
 download/
-
-# Unfinished error page directory
-error/
 
 # Debug junk
 postdebug.log

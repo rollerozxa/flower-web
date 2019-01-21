@@ -16,4 +16,4 @@ RewriteRule ^sunflowericon.png$ img/sunflowericon.png [NC]
 #RewriteRule ^(pages) - [F,L,NC]
 #RewriteRule ^(function) - [F,L,NC]
 
-ErrorDocument 404 /error/?error=404
+ErrorDocument 404 /error/404.php
