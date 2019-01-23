@@ -1,6 +1,6 @@
 <?php
 // Hacky code to make MySQL work on both of my machines.
-if (__DIR__ == "/home/administrator/Dropbox/www_flowers") {
+if (__DIR__ == "/home/administrator/www_flowers") {
 	$mysqli = new mysqli('127.0.0.1', 'admin', 'cuddles', 'origami');
 } else { 
 	$mysqli = new mysqli('127.0.0.1', 'root', 'cuddles', 'origami');
