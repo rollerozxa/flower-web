@@ -21,7 +21,7 @@ while ($record = mysqli_fetch_array($db_query)) {
 	?>
 	<tr>
 		<td class="tbl<?php echo $bg ?>">
-			<img src="flags/se.png"> <img src="img/DaisyIcon.png" width=24>
+			<img src="flags/<?=$msguserdata["country"] ?>.png"> <img src="img/DaisyIcon.png" width=24>
 			<strong><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
 			<font color="maroon"><em>(<?php echo time() - $record['time']; ?> seconds ago)</em></font>
 		</td>
