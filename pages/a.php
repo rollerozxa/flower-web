@@ -146,7 +146,7 @@ switch ($_REQUEST['a']) {
 	case 'chat':
 		if (isset($_POST['text'])) {
 			$_POST['text'] = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['text']));
-			SqlQuery("INSERT INTO `chat` (`userID`, `message`, `time`) VALUES ({$userdata['userID']}, '{$_POST['text']}', ".time().");");
+			SqlQuery("INSERT INTO `chat` (`userID`, `message`, `gid`, `time`) VALUES ('{$userdata['userID']}', '{$_POST['text']}', '$gid', ".time().");");
 		}
 	break;
 	
