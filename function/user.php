@@ -22,10 +22,9 @@ function powerlevelcolor() {
 	switch ($userdata['powerlevel']) {
 		case '0': return 'dedede';
 		case '1': return '000000';
-		case '2': return '8b008b';
+		case '2': return 'ab20ab';
 		case '3': return 'cc0000';
-		case '4': return '008800';
-		
+		case '4': return '8c7c00';
 	}
 }
 
