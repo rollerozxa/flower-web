@@ -19,12 +19,35 @@ while ($record = mysqli_fetch_array($db_query)) {
 	}
 	
 	$flower = $record['gid'] . 'Icon.png';
+	
+	$time = (time() - $record['time']);
+	if ($time < 60) {
+		$time = round($time,2) . ' seconds';
+	} else if ($time < (3600)) {
+		$time = $time / 60;
+		if (round($time,2) == 1)
+			$time = round($time,2) . ' minute';
+		else
+			$time = round($time,2) . ' minutes';
+	} else if ($time < (86400)) {
+		$time = $time / 3600;
+		if (round($time,2) == 1)
+			$time = round($time,2) . ' hour';
+		else
+			$time = round($time,2) . ' hours';
+	} else {
+		$time = $time / 86400;
+		if (round($time,2) == 1)
+			$time = round($time,2) . ' day';
+		else
+			$time = round($time,2) . ' days';
+	}
 	?>
 	<tr>
 		<td class="tbl<?php echo $bg ?>">
 			<img src="flags/<?=$msguserdata['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
 			<strong><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
-			<font color="maroon"><em>(<?php echo time() - $record['time']; ?> seconds ago)</em></font>
+			<font color="maroon"><em>(<?=$time ?> ago)</em></font>
 		</td>
 	</tr>
 	<?php
