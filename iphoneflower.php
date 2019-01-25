@@ -96,9 +96,9 @@ update_userdata();
 					<td bgcolor=#ccffcc>Seeds: <?php echo ($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
 					<td bgcolor=#ccccff>Stars: <?php echo ($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
 				</tr>
-				<tr>
-					<td bgcolor=#ff5555 colspan=2>PGM: <?php echo $userdata['PGM'] ?></td>
-				</tr>
+				<?php if ($userdata['PGM']) { ?>
+				<tr><td bgcolor=#ff5555 colspan=2>PGM: <?php echo $userdata['PGM'] ?></td></tr>
+				<?php } ?>
 				<tr>
 					<td bgcolor=#8888ff>Water: <?php echo number_format($userflowerdata['water'],2) ?> hours</td>
 					<td bgcolor=#ffff88>Sun: <?php echo number_format($userflowerdata['sun'],2) ?> hours</td>
