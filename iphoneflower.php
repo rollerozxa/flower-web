@@ -74,7 +74,7 @@ update_userdata();
 	</head>
 	<body>
 		<script src="assets/loaded.js"></script>
-		(390 min until next save)
+		<!--(390 min until next save)-->
 		<?php if (isset($_REQUEST['a'])) include('pages/a.php'); ?>
 		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
 		<span class="title"><font size="16"><?php echo get_page_title($show); ?></font></span>
