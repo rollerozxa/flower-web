@@ -7,7 +7,7 @@
 	<form target="_top" action="">
 		<?php formcore(4,'buystars') ?>
 		Buy quantity: <input name="quantity" type="text" value="10">
-		<br> @ 50 seeds each<br><br><br>
+		<br> @ 50 seeds each<br><br>
 		<input type="submit" value="Place Buy Order">
 	</form>
 </div>
@@ -17,7 +17,7 @@
 	<form target="_top" action="">
 		<?php formcore(4,'sellstars') ?>
 		Sell quantity: <input name="quantity" type="text" value="10">
-		<br> @ 50 seeds each<br><br><br>
-		<input type="submit" value="Place Sell Order"><br />
+		<br> @ 50 seeds each<br><br>
+		<input type="submit" value="Place Sell Order">
 	</form>
 </div>
