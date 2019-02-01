@@ -119,12 +119,18 @@ update_userdata();
 		</div>
 		<?php } ?>
 		<?php
-		if (!$menupage) {
-			echo '<div class="box outer">';
-				include('pages/' . $show . '.php');
-			echo '</div>';
+		if (file_exists('pages/' . $show . '.php')) {
+			if ($show != 1337 || $userdata['powerlevel'] == 4) {
+				if (!$menupage) {
+					echo '<div class="box outer">';
+						include('pages/' . $show . '.php');
+					echo '</div>';
+				}
+			} else {
+				echo '<div class="box outer"><center><h1>403</h1>You aren\'t allowed to access this page.</center></div>';
+			}
 		} else {
-			
+			echo '<div class="box outer"><center><h1>404</h1>This page doesn\'t exist.</center></div>';
 		}
 		?>
 		<div class="box outer" style="text-align:center;">
