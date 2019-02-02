@@ -1,5 +1,7 @@
 <?php
 
+$start = microtime(true);
+
 //error_reporting(E_ALL & ~E_WARNING);
 
 include('function/function.php');
@@ -156,20 +158,21 @@ update_userdata();
 			<button onclick="zoom(1.5)">150%</button>
 			<button onclick="zoom(2.0)">200%</button>
 		</div>
+		<div class="box outer" style="text-align:center">
 		<?php
 		if (islocal()) {
-		if (isset($_GET['debug'])) { 
-			echo '<div class="box outer" style="background-color:gold;"><pre>GET requests:' . PHP_EOL;
-			print_r($_GET);
-			echo '$userdata:' . PHP_EOL;
-			print_r($userdata);
-			echo '$userflowerdata:' . PHP_EOL;
-			print_r($userflowerdata);
-			echo '</pre></div>';
-		} else {
-			echo '<a href="' . $_SERVER['REQUEST_URI'] . '&debug">Show debug info</a>';
+			if (isset($_GET['debug'])) { 
+				echo '<table class="debugtable"><tr><td>GET requests:<pre>'; print_r($_GET); 
+				echo '</pre></td><td>$userdata:<pre>'; print_r($userdata);
+				echo '</pre></td><td>$userflowerdata:<pre>'; print_r($userflowerdata);
+				echo '</pre></td></tr></table>';
+			} else {
+				echo '<a href="' . $_SERVER['REQUEST_URI'] . '&debug">Show debug info</a>';
+			}
 		}
-		}
+		$rendertime = microtime(true) - $start;
+		echo sprintf("<br>Page rendered in %1.3f seconds (%dKB of memory used)", $rendertime, memory_get_usage(false) / 1024);
 		?>
+		</div>
 	</body>
 </html>

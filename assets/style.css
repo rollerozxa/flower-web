@@ -110,8 +110,15 @@ li {
 	padding:3px;
 }
 
-
-
-
-
+/* debug table */
+table.debugtable td {
+	background-color: gold;
+	border: 1px solid black;
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+}
+table.debugtable {
+	margin: auto;
+}
 
