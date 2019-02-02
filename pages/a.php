@@ -156,16 +156,20 @@ switch ($_REQUEST['a']) {
 	case 'addfriend':
 		if (isset($_POST['friendcode']) && is_numeric($_POST['friendcode'])) {
 			if (($_POST['friendcode'] >= 100000000) && ($_POST['friendcode'] <= 999999999)) {
-				if (SqlQueryResult("SELECT COUNT(*) FROM `user` WHERE `friendcode` = '{$_POST['friendcode']}'") == 1) {
-					$friendeddata = SqlQueryFetchRow("SELECT * FROM user WHERE friendcode = {$_POST['friendcode']}");
-					if (SqlQueryResult("SELECT COUNT(*) FROM `friend_connections` WHERE (`friender_userid` = {$userdata['userID']} OR `friended_userid` = {$userdata['userID']}) AND `friended_userid` = {$friendeddata['userID']} ") == 0) {
-						SqlQuery("INSERT INTO `friend_connections` (`friender_userid`, `friended_userid`) VALUES ('{$userdata['userID']}', '{$friendeddata['userID']}')");
-						shop_msg("You've added {$friendeddata['username']} as your friend!");
+				if ($_POST['friendcode'] != $userdata['friendcode']) {
+					if (SqlQueryResult("SELECT COUNT(*) FROM `user` WHERE `friendcode` = '{$_POST['friendcode']}'") == 1) {
+						$friendeddata = SqlQueryFetchRow("SELECT * FROM user WHERE friendcode = {$_POST['friendcode']}");
+						if (SqlQueryResult("SELECT COUNT(*) FROM `friend_connections` WHERE (`friender_userid` = {$userdata['userID']} OR `friended_userid` = {$userdata['userID']}) AND `friended_userid` = {$friendeddata['userID']} ") == 0) {
+							SqlQuery("INSERT INTO `friend_connections` (`friender_userid`, `friended_userid`) VALUES ('{$userdata['userID']}', '{$friendeddata['userID']}')");
+							shop_msg("You've added {$friendeddata['username']} as your friend!");
+						} else {
+							shop_msg("You're already friends with {$friendeddata['username']}!", "ff7777");
+						}
 					} else {
-						shop_msg("You're already friends with {$friendeddata['username']}!", "ff7777");
+						shop_msg("A user with the friend code doesn't exist.", "ff7777");
 					}
 				} else {
-					shop_msg("A user with the friend code doesn't exist.", "ff7777");
+					shop_msg("You can't friend yourself.", "ff7777");
 				}
 			} else {
 				shop_msg("Friend code value is out of reach.", "ff7777");
