@@ -1,30 +1,45 @@
+<?php
+$friends = array();
+
+$db_query = SqlQuery("SELECT * FROM friend_connections WHERE friender_userid = " . $userdata['userID']);
+while ($record = mysqli_fetch_array($db_query)) {
+	$friendeduserdata = SqlQueryFetchRow('SELECT * FROM user WHERE userID="' . $record['friended_userid'] . '"');
+	array_push($friends,array('connection_id' => $record['connection_id'], 'friended_userid' => $record['friended_userid'], 'friended_name' => $friendeduserdata['username']));
+}
+$db_query = SqlQuery("SELECT * FROM friend_connections WHERE friended_userid = " . $userdata['userID']);
+while ($record = mysqli_fetch_array($db_query)) {
+	$friendeduserdata = SqlQueryFetchRow('SELECT * FROM user WHERE userID="' . $record['friender_userid'] . '"');
+	array_push($friends,array('connection_id' => $record['connection_id'], 'friended_userid' => $record['friender_userid'], 'friended_name' => $friendeduserdata['username']));
+}
+
+usort($friends, function($a, $b) { return strcmp(strtolower($a["friended_name"]), strtolower($b["friended_name"])); });
+?>
 <p class="title">Friends</p>
 
-You have <font color="green">78</font> friends.<br/>
-
-<div class="box" style="background-color:#ccccff;width:calc(100% - 100px)">
-	<p>Page: <b>(1)</b></p>
-	<table style="width:100%" class="friends">
-		<tr class="tbl0">
-			<td style="width:1px">#0</td>
-			<td>Example User 1</td>
-			<td width=12><a href="<?php alink(3,'removefriend',0) ?>">Remove</a></td>
-		</tr>
-		<tr class="tbl1">
-			<td>#1</td>
-			<td>Example User 2</td>
-			<td><a href="<?php alink(3,'removefriend',1) ?>">Remove</a></td>
-		</tr>
-	</table>
-</div>
-
+You have <span style="color:green"><?=count($friends) ?></span> friends.<br/>
+<table style="width:90%;border:2px solid black" class="friends">
+<?php
+$bg = 0;
+$count = 1;
+foreach ($friends as $friend_row) {
+	?><tr class="tbl<?=$bg ?>">
+		<td style="width:1px">#<?=$count ?></td>
+		<td><?=$friend_row['friended_name'] ?></td>
+		<td width=12><a href="<?=alink(3,'removefriend',$friend_row['connection_id']) ?>">Remove</a></td>
+	</tr><?php
+	$bg = ($bg == 0 ? 1 : 0);
+	$count++;
+}
+?>
+</table>
+<br>
 <div class="box" style="background-color:#88ff88">
-	Your FRIEND CODE: <font color="purple">(TBA)</font><br><br>
+	Your Friend Code: <span style="color:purple"><?=$userdata['friendcode'] ?></span><br>
 	Add a friend by entering their friend code.<br>
-	<form>
+	<form method="post">
 		<?php formcore(3,'addfriend') ?>
 		<input type="number" name="friendcode" width=320/><input type="submit" value="Add my friend!" />
 	</form>
 </div>
 
-<br/><br/>You will get bonus seeds from your friends if you are <font color="red">BOTH IN EACH OTHER's LISTS</font>. So even if you have 10 friends, you will only receive bonus seeds and stars from the friends who also added you to their lists. Send messages to your friends that have not added you yet.<br/>
+For each 10 friends, you get 10 bonus stars per hour.
