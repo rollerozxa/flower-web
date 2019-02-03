@@ -19,21 +19,6 @@ body {
 .outer {
 	width: 100%;
 }
-.inbox {
-	background-color: #ddaaff;
-	width: 300px;
-	height: 200px;
-	display: inline-block;
-	padding: 5px;
-	margin: 5px;
-}
-.inboxcell1 {
-	vertical-align: top;
-}
-.inboxcell2 {
-	vertical-align: bottom;
-	text-align: center;
-}
 
 .fullwidth {
 	width: 100%;
@@ -70,15 +55,9 @@ li {
 	background-color:#ffaaff;
 }
 
-.tbl0 {
-	background-color: #eeeeee;
-}
-.tbl1 {
-	background-color: #ffffff;
-}
-.tbh {
-	background-color: #ffff00;
-}
+.tbl0 { background-color: #eeeeee; }
+.tbl1 { background-color: #ffffff; }
+.tbh  { background-color: #ffff00; }
 
 .inline {
 	display: inline-grid !important;
@@ -88,8 +67,29 @@ li {
 	padding: 5px;
 }
 
-/* change nickname page stuff */
+/* Friends */
+.friends td {
+	padding:3px;
+}
 
+/* Inbox */
+.inbox {
+	background-color: #ddaaff;
+	width: 300px;
+	height: 200px;
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+}
+.inboxcell1 {
+	vertical-align: top;
+}
+.inboxcell2 {
+	vertical-align: bottom;
+	text-align: center;
+}
+
+/* Change Nickname */
 .flagbox {
 	border: 1px solid gray;
 	background-color: gray;
@@ -105,13 +105,8 @@ li {
 	color: white;
 }
 
-/* friends page stuff */
-.friends td {
-	padding:3px;
-}
-
-/* debug table */
-table.debugtable td {
+/* Debug Table */
+table.debugtable tr td {
 	background-color: gold;
 	border: 1px solid black;
 	padding: 5px;
