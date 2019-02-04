@@ -1,6 +1,7 @@
 Change nickname to:<br>
-<form>
-	<input name="changeto" type="text" maxlength=35 style="width:calc(100% - 71px)" value="Anonymous">
+<form action="" method="POST">
+	<?php formcore(11,'changename') ?>
+	<input name="name" type="text" maxlength=35 style="width:calc(100% - 71px)" value="<?=$userdata['username'] ?>">
 	<input type="submit" value="Change">
 </form>
 <hr>
