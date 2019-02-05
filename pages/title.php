@@ -15,11 +15,9 @@ function get_page_title($show = 0) {
 		case 8:		return 'Inbox';
 		case 9:		return 'Scores';
 		case 10:	return 'Global Compost Heap';
+		case 11:	return 'Change name';
 		// This value is hardcoded into the app.
 		case 14:	return 'Change name';
-		// This value is hardcoded into the app.
-		// Actually, there isn't even a buy stars page. Why is this still here?
-		case 18:	return 'Buy Stars';
 		
 		default:	return '';
 	}
