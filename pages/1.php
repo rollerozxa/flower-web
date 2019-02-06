@@ -87,7 +87,7 @@
 <div class="box" style="background-color:#ccffcc">
 	<b>Bulk items (Tops up ALL of your flowers!)</b>
 	<ul>
-		<?=itemlist(12,'bulk',array(240,2400,50000,500000,5000000,50000000),1,'%q hours: *%c stars') ?>
+		<?=itemlist(12,'bulk',array(500,5000,50000,500000,5000000,50000000),50,'%q hours: *%c stars') ?>
 		<li>(Bulk items give you X hours of water, sun, warp and giga for all of your flowers!)</li>
 	</ul>
 </div>

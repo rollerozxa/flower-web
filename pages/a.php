@@ -126,6 +126,25 @@ switch ($_REQUEST['a']) {
 			shop_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
+	case 'bulk':
+		// We need a quantity parameter!
+		if ($noquantity) break;
+		// Check whether you have enough stars.
+		if ($quantity * 50 <= $userdata['stars']) {
+			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * 50) . "' WHERE `uid` = '$uid';");
+			foreach ($flowers as $flower) {
+				$flower = strtolower($flower);
+				if ($userdata['has_' . $flower]) {
+					SqlQuery("UPDATE `user_$flower` SET `water` = water + '$quantity',
+							`sun` = sun + '$quantity', `warp` = warp + '$quantity',
+							`giga` = giga + '$quantity' WHERE `uid` = '$uid';");
+				}
+			}
+			shop_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
+		} else {
+			shop_msg("You don't have enough stars!", "ff7777");
+		}
+	break;
 	case 'nevershrink':
 		// Check if you haven't already bought it!
 		if ($userflowerdata['nevershrink'] == 0) {
