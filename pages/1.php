@@ -47,17 +47,17 @@
 </ul>
 <span class="title">Auto Water</span> (<?php echo $userflowerdata['autowater']; ?>)
 <ul>
-	<?=itemlist(1,'buyautowater',array(1,5,15),$autowater_cost,'Buy %q $%c seeds',false) ?>
+	<?=itemlist(1,'buyautowater',array(1,5,15),$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Auto water will keep your plant moist until the sun goes down.)</li>
 </ul>
 <span class="title">Fertilizer</span> (<?php echo $userflowerdata['fertilizer']; ?>)
 <ul>
-	<?=itemlist(1,'buyfertilizer',array(1,5,15),$fertilizer_cost,'Buy %q $%c seeds',false) ?>
+	<?=itemlist(1,'buyfertilizer',array(1,5,15),$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Fertilizer makes your flower grow 3x as fast until the sun goes down.)</li>
 </ul>
 <span class="title">Super Fertilizer</span> (<?php echo $userflowerdata['superfertilizer']; ?>)
 <ul>
-	<?=itemlist(1,'buysuperfertilizer',array(1,5,15),$superfertilizer_cost,'Buy %q *%c stars',false) ?>
+	<?=itemlist(1,'buysuperfertilizer',array(1,5,15),$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
 	<li>(Super fertilizer makes your flower grow 5x as fast until the sun goes down.)</li>
 </ul>
 <span class="title">Time Warp</span>

@@ -44,6 +44,8 @@ function formatheight($height) {
 	return number_format($height,8,'.',' ');
 }
 
+define('ITEMLIST_NOFORMAT', 0);
+define('ITEMLIST_NORMALFORMAT', 1);
 
 /**
  * Makes a list of items or things to purchase.
@@ -53,19 +55,22 @@ function formatheight($height) {
  * @param array $quantities List of amounts to be in the list.
  * @param int $costperone Cost of one item in the list.
  * @param string $text Text to be for every list item.<br>
- * 					   %q - Quantity for the current list item.<br>
+ *					   %q - Quantity for the current list item.<br>
  * 					   %c - Cost for the current list item.
- * @param bool $format Format all values.
+ * @param custom $format Number formatting mode of list.
  */
-function itemlist($show,$a,$quantities,$costperone,$text,$format = true) {
+function itemlist($show,$a,$quantities,$costperone,$text,$format = ITEMLIST_NORMALFORMAT) {
 	$out = '';
 	foreach ($quantities as $quantity) {
-		if ($format) {
-			$output = str_replace('%q', number_format($quantity), $text);
-			$output = str_replace('%c', number_format($costperone * $quantity), $output);
-		} else {
-			$output = str_replace('%q', $quantity, $text);
-			$output = str_replace('%c', ($costperone * $quantity), $output);
+		switch ($format) {
+			case ITEMLIST_NOFORMAT:
+				$output = str_replace('%q', $quantity, $text);
+				$output = str_replace('%c', ($costperone * $quantity), $output);
+			break;
+			case ITEMLIST_NORMALFORMAT:
+				$output = str_replace('%q', number_format($quantity), $text);
+				$output = str_replace('%c', number_format($costperone * $quantity), $output);
+			break;
 		}
 		$out .= '<li><a href="' . alink($show,$a,$quantity) . '">' . $output . '</a></li>';
 	}

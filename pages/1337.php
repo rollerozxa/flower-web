@@ -2,7 +2,7 @@
 <div class="box" style="background-color:#ddaaff">
 	<h3>Item list test</h3>
 	<ul>
-		<?=itemlist(1337,'heap',array('100 boop',1000,50000,500000,5000000,15000000,50000000),1,'Throw $%q seeds on the heap',true) ?>
+		<?=itemlist(1337,'heap',array('100 boop',1000,50000,500000,5000000,15000000,50000000),1,'Throw $%q seeds on the heap') ?>
 	</ul>
 </div>
 
