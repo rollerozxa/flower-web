@@ -88,7 +88,7 @@ update_userdata();
 						<a onclick='document.getElementById("flowerimg").src="img/socicon.png";'>
 							<img id="flowerimg" src="img/<?php echo $gid; ?>Icon.png" width=24>
 						</a>
-						<strong style="color:#<?= powerlevelcolor() ?>"><?php echo $userdata['username'] ?></strong>
+						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?php echo $userdata['username'] ?></strong>
 						<span style="display:inline-block;margin-top:0.21em;">
 						<?=formatheight($userflowerdata['height']) ?> (cm)
 						</span>

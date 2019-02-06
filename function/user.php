@@ -13,13 +13,13 @@ function IDtoUsername($ID) {
 }
 
 /**
- * Get color of the current users powerlevel.
+ * Convert powerlevel integer into the color of the powerlevel.
  * 
+ * @param int $powerlevel
  * @return string Color in hex
  */
-function powerlevelcolor() {
-	global $userdata;
-	switch ($userdata['powerlevel']) {
+function powerlevelcolor($powerlevel) {
+	switch ($powerlevel) {
 		case '0': return 'dedede';
 		case '1': return '000000';
 		case '2': return 'ab20ab';
