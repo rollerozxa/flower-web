@@ -1,12 +1,13 @@
 <?php
 
-$funfacts = array(
-	"The warp music was made by Evershine.",
-	"The original server was written in Java.",
-	"Origami Rose existed for J2ME.",
-	"There was a flower called Origami Buttercup that was only avalible on iOS.",
-	"This server was written in PHP."
-);
-$funfact = $funfacts[array_rand($funfacts)];
+/**
+ * Return a random fun fact from $funfacts.
+ *
+ * @return string Random fun fact from $funfacts.
+ */
+function random_funfact() {
+	global $funfacts;
+	return $funfacts[array_rand($funfacts)];
+}
 
 ?>

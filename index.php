@@ -65,7 +65,7 @@ include('function/misc.php');
 					</tr>
 				</table>
 			</div>
-			<span class="funfact"><strong>Fun fact!</strong> - <?php echo $funfact; ?></span>
+			<span class="funfact"><strong>Fun fact!</strong> - <?=random_funfact() ?></span>
 		</div><br>
 		<div class="box outer c_mainbox" style="text-align:left">
 			<span class="title">High Scores</span>
