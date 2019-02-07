@@ -8,3 +8,6 @@
 # Denote all files that are truly binary and should not be modified.
 *.png binary
 *.jpg binary
+
+# Language override to prevent .php files being labelled as "Hack".
+*.php linguist-language=PHP
