@@ -28,9 +28,9 @@ h1,h2 {
 }
 .infobox {
 	border: 1px&solid&black;
-	display: inline-grid;
+	display: inline-block;
 	padding: 5px;
-	width: 250px;
+	width: 350px;
 }
 </style>
 HTML;
