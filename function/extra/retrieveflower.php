@@ -45,7 +45,7 @@ function retrieve_seeds() {
 function retrieve_stars() {
 	global $userdata;
 	
-	echo hex2bin(str_pad(dechex(round($userdata['stars'],0)),16,"0",STR_PAD_LEFT));
+	echo hex2bin(str_pad(dechex(round($userdata['stars'],0)),14,"0",STR_PAD_LEFT));
 }
 
 ?>
