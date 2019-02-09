@@ -13,5 +13,5 @@
 *.php linguist-language=PHP
 
 # Make chat.php and retrieveflower.php be treated as text files.
-chat.php diff merge text
-retrieveflower.php diff merge text
+chat.php diff
+retrieveflower.php diff
