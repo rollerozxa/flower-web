@@ -149,6 +149,7 @@ update_userdata();
 			<button onclick="open_win(10)">Global Compost Heap</button>
 			<button onclick="open_win(11)">Change name</button>
 			<button onclick="open_win(999)">Flower School</button>
+			<button onclick="open_win(13)">Settings</button>
 			<?php if (islocal()) { ?>
 			<?php } ?>
 		</div>
@@ -174,5 +175,8 @@ update_userdata();
 		echo sprintf("<br>Page rendered in %1.3f seconds (%dKB of memory used)", $rendertime, memory_get_usage(false) / 1024);
 		?>
 		</div>
+		<?php if ($userdata['yellow_background']) { ?>
+		<style>body{background-color:#F8ECC2}</style>
+		<?php } ?>
 	</body>
 </html>

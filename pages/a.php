@@ -263,6 +263,17 @@ switch ($_REQUEST['a']) {
 			shop_msg("Invalid flag. Wait, how?", "ff7777");
 		}
 	break;
+
+	///
+	/// 13 - Settings
+	///
+	case 'yelbak':
+		if ($_POST['yelbak'] == 1 || $_POST['yelbak'] == 0) {
+			SqlQuery("UPDATE `user` SET `yellow_background` = {$_POST['yelbak']} WHERE `uid` = '$uid'");
+		} else {
+			shop_msg("Invalid value for option 'Yellowish Background'.", "ff7777");
+		}
+	break;
 }
 
 update_userdata();

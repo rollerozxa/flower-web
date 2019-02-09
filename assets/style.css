@@ -1,5 +1,5 @@
 body {
-	margin-bottom: 5em;
+	margin-bottom: 2em;
 	/*max-width: 400px;*/
 	/*background-color:#F8ECC2;*/
 	background-color: #FFFFFF;
@@ -103,6 +103,12 @@ li {
 .flaglink {
 	text-decoration: none;
 	color: white;
+}
+
+/* Options */
+.optbox {
+	width: 250px;
+	text-align: center;
 }
 
 /* Debug Table */

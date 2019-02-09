@@ -16,6 +16,7 @@ function get_page_title($show = 0) {
 		case 9:		return 'Scores';
 		case 10:	return 'Global Compost Heap';
 		case 11:	return 'Change name';
+		case 13:	return 'Settings';
 		// This value is hardcoded into the app.
 		case 14:	return 'Change name';
 		
