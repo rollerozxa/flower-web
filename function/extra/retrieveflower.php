@@ -48,4 +48,9 @@ function retrieve_stars() {
 	echo hex2bin(str_pad(dechex(round($userdata['stars'],0)),14,"0",STR_PAD_LEFT));
 }
 
+
+function writevalue($value,$lengthsize = 2) {
+	return hex2bin(str_pad(dechex(strlen($value)),$lengthsize,"0",STR_PAD_LEFT)) . $value;
+}
+
 ?>
