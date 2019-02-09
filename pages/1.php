@@ -4,7 +4,7 @@
 	<table class="fullwidth">
 		<?php /* Due to galaxy bonus, it costs half as much (original: 100* per 1/hr) */ ?>
 		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?php echo $userdata['seedincome'] * 5 ?> stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?php echo $userdata['seedincome'] * 500 ?> stars</td></tr>
+		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?php echo $userdata['seedincome'] * 50 ?> stars</td></tr>
 	</table>
 	<b id="blink" style="display:block;font-size:24pt;text-align:center;letter-spacing:3px;color:red">50% OFF!</b>
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
