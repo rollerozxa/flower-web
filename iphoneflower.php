@@ -42,6 +42,8 @@ $heightgrowthamount = (time() - $userdata['lastview']) * ($userdata['seedincome'
 SqlQuery("UPDATE `user` SET `lastview` = '" . time() . "' WHERE `user`.`uid` = '$uid';");
 update_userdata();
 
+if (isset($_REQUEST['a'])) include('pages/a.php');
+
 ?>
 <!doctype html>
 <html>
@@ -50,6 +52,9 @@ update_userdata();
 		<script>function open_win(show) { window.open('?uid=<?php echo $uid ?>&gid=<?php echo $gid ?>&show=' + show, '_top'); }</script>
 		<script src="assets/core.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<?php if ($userdata['yellow_background']) { ?>
+		<style>body{background-color:#F8ECC2}</style>
+		<?php } ?>
 		<!-- ****** faviconit.com favicons ****** -->
 		<link rel="shortcut icon" href="/assets/icons/favicon.ico?v=2">
 		<link rel="icon" sizes="16x16 32x32 64x64" href="/assets/icons/favicon.ico?v=2">
@@ -77,7 +82,7 @@ update_userdata();
 	<body>
 		<script src="assets/loaded.js"></script>
 		<!--(390 min until next save)-->
-		<?php if (isset($_REQUEST['a'])) include('pages/a.php'); ?>
+		<?=(isset($headermsg) ? $headermsg : '') ?>
 		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
 		<span class="title"><font size="16"><?php echo get_page_title($show); ?></font></span>
 		<div class="box outer">
@@ -175,8 +180,5 @@ update_userdata();
 		echo sprintf("<br>Page rendered in %1.3f seconds (%dKB of memory used)", $rendertime, memory_get_usage(false) / 1024);
 		?>
 		</div>
-		<?php if ($userdata['yellow_background']) { ?>
-		<style>body{background-color:#F8ECC2}</style>
-		<?php } ?>
 	</body>
 </html>

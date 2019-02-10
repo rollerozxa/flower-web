@@ -25,9 +25,9 @@ switch ($_REQUEST['a']) {
 		if ($cost <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $cost) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user` SET `seedincome` = '" . ($userdata['seedincome'] + $quantity / 10) . "' WHERE `user`.`uid` = '$uid';");
-			shop_msg("Bought $quantity for $cost stars!");
+			header_msg("Bought $quantity for $cost stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'upgradebgr':
@@ -37,9 +37,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * 720 <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * 720) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `basicgrowthrate` = '" . ($userflowerdata['basicgrowthrate'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought " . ($quantity * 0.36) . "cm/hr for " . ($quantity * 720) . " stars!");
+			header_msg("Bought " . ($quantity * 0.36) . "cm/hr for " . ($quantity * 720) . " stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'buywater':
@@ -49,9 +49,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * 20 <= $userdata['seeds']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - $quantity * 20) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `water` = '" . ($userflowerdata['water'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought $quantity hours of water for " . ($quantity * 20) . " seeds!");
+			header_msg("Bought $quantity hours of water for " . ($quantity * 20) . " seeds!");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	case 'buysun':
@@ -61,9 +61,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * 2 <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * 2) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `sun` = '" . ($userflowerdata['sun'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought $quantity hours of sun for " . ($quantity * 2) . " stars!");
+			header_msg("Bought $quantity hours of sun for " . ($quantity * 2) . " stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'buyautowater':
@@ -73,9 +73,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * $autowater_cost <= $userdata['seeds']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - $quantity * $autowater_cost) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `autowater` = '" . ($userflowerdata['autowater'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought Auto Water (x" . $quantity . ") for " . ($quantity * $autowater_cost) . " seeds!");
+			header_msg("Bought Auto Water (x" . $quantity . ") for " . ($quantity * $autowater_cost) . " seeds!");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	case 'buyfertilizer':
@@ -85,9 +85,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * $fertilizer_cost <= $userdata['seeds']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - $quantity * $fertilizer_cost) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `fertilizer` = '" . ($userflowerdata['fertilizer'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought Fertilizer (x" . $quantity . ") for " . ($quantity * $fertilizer_cost) . " seeds!");
+			header_msg("Bought Fertilizer (x" . $quantity . ") for " . ($quantity * $fertilizer_cost) . " seeds!");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	case 'buysuperfertilizer':
@@ -97,9 +97,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * $superfertilizer_cost <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * $superfertilizer_cost) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `superfertilizer` = '" . ($userflowerdata['superfertilizer'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought Super Fertilizer (x" . $quantity . ") for " . ($quantity * $superfertilizer_cost) . " stars!");
+			header_msg("Bought Super Fertilizer (x" . $quantity . ") for " . ($quantity * $superfertilizer_cost) . " stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'buywarp':
@@ -109,9 +109,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * 50 <= $userdata['seeds']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - $quantity * 50) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `warp` = '" . ($userflowerdata['warp'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought $quantity hours of warp for " . ($quantity * 50) . " seeds!");
+			header_msg("Bought $quantity hours of warp for " . ($quantity * 50) . " seeds!");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	case 'buygiga':
@@ -121,9 +121,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity * 4 <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * 4) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user_$gid` SET `giga` = '" . ($userflowerdata['giga'] + $quantity) . "' WHERE `user_$gid`.`uid` = '$uid';");
-			shop_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
+			header_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'bulk':
@@ -140,9 +140,9 @@ switch ($_REQUEST['a']) {
 							`giga` = giga + '$quantity' WHERE `uid` = '$uid';");
 				}
 			}
-			shop_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
+			header_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	case 'nevershrink':
@@ -152,9 +152,9 @@ switch ($_REQUEST['a']) {
 			if (4000 <= $userdata['stars']) {
 				SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - 4000) . "' WHERE `user`.`uid` = '$uid';");
 				SqlQuery("UPDATE `user_$gid` SET `nevershrink` = '1' WHERE `user_$gid`.`uid` = '$uid';");
-				shop_msg("Your flower won't shrink anymore! ^.^");
+				header_msg("Your flower won't shrink anymore! ^.^");
 			} else {
-				shop_msg("You don't have enough stars!", "ff7777");
+				header_msg("You don't have enough stars!", "ff7777");
 			}
 		}
 	break;
@@ -180,33 +180,33 @@ switch ($_REQUEST['a']) {
 						$friendeddata = SqlQueryFetchRow("SELECT * FROM user WHERE friendcode = {$_POST['friendcode']}");
 						if (SqlQueryResult("SELECT COUNT(*) FROM `friend_connections` WHERE (`friender_userid` = {$userdata['userID']} OR `friended_userid` = {$userdata['userID']}) AND `friended_userid` = {$friendeddata['userID']} ") == 0) {
 							SqlQuery("INSERT INTO `friend_connections` (`friender_userid`, `friended_userid`) VALUES ('{$userdata['userID']}', '{$friendeddata['userID']}')");
-							shop_msg("You've added {$friendeddata['username']} as your friend!");
+							header_msg("You've added {$friendeddata['username']} as your friend!");
 						} else {
-							shop_msg("You're already friends with {$friendeddata['username']}!", "ff7777");
+							header_msg("You're already friends with {$friendeddata['username']}!", "ff7777");
 						}
 					} else {
-						shop_msg("A user with the friend code doesn't exist.", "ff7777");
+						header_msg("A user with the friend code doesn't exist.", "ff7777");
 					}
 				} else {
-					shop_msg("You can't friend yourself.", "ff7777");
+					header_msg("You can't friend yourself.", "ff7777");
 				}
 			} else {
-				shop_msg("Friend code value is out of reach.", "ff7777");
+				header_msg("Friend code value is out of reach.", "ff7777");
 			}
 		} else {
-			shop_msg("Friend codes can only contain numbers!", "ff7777");
+			header_msg("Friend codes can only contain numbers!", "ff7777");
 		}
 	break;
 	case 'removefriend':
 		if (is_numeric($quantity)) {
 			if (SqlQueryResult("SELECT COUNT(*) FROM `friend_connections` WHERE `connection_id` = $quantity AND (`friender_userid` = {$userdata['userID']} OR `friended_userid` = {$userdata['userID']})") == 1) {
 				SqlQuery("DELETE FROM `friend_connections` WHERE `connection_id` = '$quantity'");
-				shop_msg("You've removed a friend.");
+				header_msg("You've removed a friend.");
 			} else {
-				shop_msg("...Huh?", "ff7777");
+				header_msg("...Huh?", "ff7777");
 			}
 		} else {
-			shop_msg("...Huh?", "ff7777");
+			header_msg("...Huh?", "ff7777");
 		}
 	break;
 	
@@ -217,18 +217,18 @@ switch ($_REQUEST['a']) {
 		if ($quantity < ($userdata['seeds'] / $buyvalue)) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - ($quantity * $buyvalue)) . "' WHERE `user`.`uid` = '" . $userdata['uid'] . "';");
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] + $quantity) . "' WHERE `user`.`uid` = '" . $userdata['uid'] . "';");
-			shop_msg("Bought $quantity stars at a rate of $buyvalue Seeds / Star");
+			header_msg("Bought $quantity stars at a rate of $buyvalue Seeds / Star");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	case 'sellstars':
 		if ($quantity < $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] + ($quantity * $sellvalue)) . "' WHERE `user`.`uid` = '" . $userdata['uid'] . "';");
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity) . "' WHERE `user`.`uid` = '" . $userdata['uid'] . "';");
-			shop_msg("Sold $quantity stars at a rate of $sellvalue Seeds / Star");
+			header_msg("Sold $quantity stars at a rate of $sellvalue Seeds / Star");
 		} else {
-			shop_msg("You don't have enough stars!", "ff7777");
+			header_msg("You don't have enough stars!", "ff7777");
 		}
 	break;
 	
@@ -239,9 +239,9 @@ switch ($_REQUEST['a']) {
 		if ($quantity < $userdata['seeds']) {
 			SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] - $quantity) . "' WHERE `user`.`uid` = " . $userdata['uid'] . ";");
 			SqlQuery("UPDATE `globalcompost` SET `compostsize` = `compostsize` + '$quantity' ORDER BY compostID DESC LIMIT 1");
-			shop_msg("Threw " . $quantity . " seeds onto the heap!");
+			header_msg("Threw " . $quantity . " seeds onto the heap!");
 		} else {
-			shop_msg("You don't have enough seeds!", "ff7777");
+			header_msg("You don't have enough seeds!", "ff7777");
 		}
 	break;
 	
@@ -253,14 +253,14 @@ switch ($_REQUEST['a']) {
 			$_POST['name'] = mysqli_real_escape_string($mysqli, $_POST['name']);
 			SqlQuery("UPDATE `user` SET `username` = '{$_POST['name']}' WHERE `user`.`uid` = '$uid'");
 		} else {
-			shop_msg("Nickname is too long", "ff7777");
+			header_msg("Nickname is too long", "ff7777");
 		}
 	break;
 	case 'changeflag':
 		if (file_exists('flags/' . $quantity . '.png')) {
 			SqlQuery("UPDATE `user` SET `country` = '" . $quantity . "' WHERE `user`.`uid` = " . $userdata['uid'] . ";");
 		} else {
-			shop_msg("Invalid flag. Wait, how?", "ff7777");
+			header_msg("Invalid flag. Wait, how?", "ff7777");
 		}
 	break;
 
@@ -271,7 +271,7 @@ switch ($_REQUEST['a']) {
 		if ($_POST['yelbak'] == 1 || $_POST['yelbak'] == 0) {
 			SqlQuery("UPDATE `user` SET `yellow_background` = {$_POST['yelbak']} WHERE `uid` = '$uid'");
 		} else {
-			shop_msg("Invalid value for option 'Yellowish Background'.", "ff7777");
+			header_msg("Invalid value for option 'Yellowish Background'.", "ff7777");
 		}
 	break;
 }

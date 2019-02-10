@@ -99,4 +99,16 @@ function fs_error($msg) {
 	die();
 }
 
+/**
+ * Set a box with a message at the top of the page.
+ * 
+ * @param string $msg Message.
+ * @param string $bg Background color (hex)
+ */
+function header_msg($msg,$bg = "00ff00") {
+	global $headermsg;
+	
+	$headermsg = '<div class="box" style="background-color:#' . $bg . '">' . $msg . '</div>';
+}
+
 ?>
