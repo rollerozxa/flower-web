@@ -20,12 +20,12 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Seed income cost is more advanced, let's just calculate it once.
-		$cost = $userdata['seedincome'] * 5;
+		$cost = $userdata['seedincome'] * ($quantity * 5);
 		// Check whether you have enough stars.
 		if ($cost <= $userdata['stars']) {
 			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $cost) . "' WHERE `user`.`uid` = '$uid';");
 			SqlQuery("UPDATE `user` SET `seedincome` = '" . ($userdata['seedincome'] + $quantity / 10) . "' WHERE `user`.`uid` = '$uid';");
-			shop_msg("Bought $quantity  for $cost stars!");
+			shop_msg("Bought $quantity for $cost stars!");
 		} else {
 			shop_msg("You don't have enough stars!", "ff7777");
 		}
