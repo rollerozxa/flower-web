@@ -3,6 +3,8 @@
 $galaxyspecial = "Seed income is 50% OFF!";
 $statustext = "(placeholder)";
 
+$urgentmessage = "";
+
 $contactemail = '(email)';
 
 $daisy_latestversionint = 600;

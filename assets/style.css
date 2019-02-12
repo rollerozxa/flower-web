@@ -123,3 +123,10 @@ table.debugtable {
 	margin: auto;
 }
 
+/* Urgent message style */
+.urgent {
+	color: red;
+	font-weight: bold;
+	font-size: 14pt;
+}
+

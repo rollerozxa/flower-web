@@ -49,7 +49,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 <html>
 	<head>
 		<title>Flower menu</title>
-		<script>function open_win(show) { window.open('?uid=<?php echo $uid ?>&gid=<?php echo $gid ?>&show=' + show, '_top'); }</script>
+		<script>function open_win(show) { window.open('?uid=<?=$uid ?>&gid=<?=$gid ?>&show=' + show, '_top'); }</script>
 		<script src="assets/core.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
 		<?php if ($userdata['yellow_background']) { ?>
@@ -82,6 +82,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 	<body>
 		<script src="assets/loaded.js"></script>
 		<!--(390 min until next save)-->
+		<?=($urgentmessage != "" ? '<span class="urgent">Urgent message - ' . $urgentmessage . '</span><br><br>' : '') ?>
 		<?=(isset($headermsg) ? $headermsg : '') ?>
 		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
 		<span class="title"><font size="16"><?php echo get_page_title($show); ?></font></span>
