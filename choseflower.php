@@ -21,6 +21,7 @@ if (!isset($userdata['username'])) {
 		<style>
 			body { background-color:#ccddff; text-align:center; }
 			form { display:inline-block; border:4px outset white; }
+			.box { border:2px solid black; display:table; margin:auto; padding:2px; margin-bottom:0.5em; }
 		</style>
 	</head>
 	<body>
@@ -40,5 +41,6 @@ if (!isset($userdata['username'])) {
 			echo "<p><em>Gray flowers are flowers you haven't started yet. Select one to grow a new flower!</em></p>";
 		}
 		?>
+		<hr><div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
 	</body>
 </html>
