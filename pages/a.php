@@ -130,8 +130,8 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 50 <= $userdata['stars']) {
-			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * 50) . "' WHERE `uid` = '$uid';");
+		if ($quantity * getbulkprice() <= $userdata['stars']) {
+			SqlQuery("UPDATE `user` SET `stars` = '" . ($userdata['stars'] - $quantity * getbulkprice()) . "' WHERE `uid` = '$uid';");
 			foreach ($flowers as $flower) {
 				$flower = strtolower($flower);
 				if ($userdata['has_' . $flower]) {
@@ -140,7 +140,7 @@ switch ($_REQUEST['a']) {
 							`giga` = giga + '$quantity' WHERE `uid` = '$uid';");
 				}
 			}
-			header_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
+			header_msg("Bought $quantity hours of bulk items for " . ($quantity * getbulkprice()) . " stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
 		}

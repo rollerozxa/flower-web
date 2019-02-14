@@ -85,9 +85,9 @@
 	<li>(Giga fertilizer multiplies your multiplier by 4x until it runs out. So if you buy 6 hours of Giga fertilizer, your flower will grow 4x faster until it passes 6 hours)</li>
 </ul>
 <div class="box" style="background-color:#ccffcc">
-	<b>Bulk items (Tops up ALL of your flowers!)</b>
+	<b>Bulk items (Tops up ALL of your flowers!) <?=(bulksale() ? '<span style="color:red">(20% off!)</span>' : '') ?></b>
 	<ul>
-		<?=itemlist(12,'bulk',array(500,5000,50000,500000,5000000,50000000),50,'%q hours: *%c stars') ?>
+		<?=itemlist(12,'bulk',array(500,5000,50000,500000,5000000,50000000),getbulkprice(),'%q hours: *%c stars') ?>
 		<li>(Bulk items give you X hours of water, sun, warp and giga for all of your flowers!)</li>
 	</ul>
 </div>
