@@ -129,3 +129,10 @@ table.debugtable {
 	font-size: 14pt;
 }
 
+/* Flower school specific layout stuff */
+.flowbox {
+	border-top: 2px solid black;
+	display: inline-block;
+	padding: 2px;
+	width: 100%;
+}
