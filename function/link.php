@@ -19,6 +19,14 @@ function alink($show,$a = null,$quantity = null) {
 	return $out;
 }
 
-
+/**
+ * Return a link to a menu page.
+ *
+ * @param $show int Page
+ */
+function pagelink($show) {
+	global $uid, $gid;
+	return "?uid=$uid&gid=$gid&show=$show";
+}
 
 ?>

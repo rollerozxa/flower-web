@@ -142,22 +142,8 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		}
 		?>
 		<div class="box outer" style="text-align:center;">
-			<button onclick="open_win(1)">Items</button>
-			<button onclick="open_win(2)">Chatterbox</button>
-			<button onclick="open_win(3)">Friends (0 / 10)</button>
-			<button onclick="open_win(4)">Stars Exchange ($50)</button>
-			<button onclick="open_win(5)">Seeds draw ($100.00)</button>
-			<button onclick="open_win(6)">Stars draw (*10.00)</button>
-			<button onclick="open_win(7)">PGM Packages</button>
-			<button onclick="open_win(8)">Inbox</button>
-			<button onclick="open_win(9)">Scores</button>
+			<?php menubar(); ?>
 			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
-			<button onclick="open_win(10)">Global Compost Heap</button>
-			<button onclick="open_win(11)">Change name</button>
-			<button onclick="open_win(999)">Flower School</button>
-			<button onclick="open_win(13)">Settings</button>
-			<?php if (islocal()) { ?>
-			<?php } ?>
 		</div>
 		<div class="box" style="margin:auto;background-color:black;color:white;">
 			Zoom:
