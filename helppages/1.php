@@ -1,3 +1,5 @@
+<span class="title">1. Seeds and Stars</span>
+
 <p>Welcome to the Origami Flower games! This is a revived, rewritten version of the Origami Flower server.</p>
 
 <div class="box">

@@ -9,6 +9,8 @@ table,tr,td,th {
 	font-family: Consolas, monospace;
 }
 </style>
+<span class="title">2. Items and Resources</span>
+
 <p>To make your flower grow, it needs water and sun. If it has no water, your flower will shrink. If it has no sun, it'll "sleep" and it won't shrink no matter what. If you don’t want your flower to shrink when the sun is up, you can buy the "Do not shrink" item at the bottom of the Items page.</p>
 
 <p>Basically, it can be summarized into this table:</p>
