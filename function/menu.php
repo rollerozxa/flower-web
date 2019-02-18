@@ -16,13 +16,21 @@ $menuitems = array(
 	array('name' => 'Settings', 'page' => 13)
 );
 
-function menubar($menustyle = 'buttons') {
+define('MENUBAR_BUTTONS', 0);
+define('MENUBAR_LINKS', 1);
+
+/**
+ * Print a menu bar from $menuitems.
+ *
+ * @param $menustyle Style of the printed menu bar.
+ */
+function menubar($menustyle = MENUBAR_BUTTONS) {
 	global $menuitems;
 	$counter = 1;
 	foreach ($menuitems as $menuitem) {
-		if ($menustyle == 'buttons') {
+		if ($menustyle == MENUBAR_BUTTONS) {
 			echo '<button onclick="open_win(' . $menuitem['page'] . ')">' . $menuitem['name'] . '</button>';
-		} else if ($menustyle == 'links') {
+		} else if ($menustyle == MENUBAR_LINKS) {
 			if ($counter != 1) echo ' | ';
 			echo '<a href="' . pagelink($menuitem['page']) . '">' . $menuitem['name'] . '</a>';
 			$counter++;

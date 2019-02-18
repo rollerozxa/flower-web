@@ -10,3 +10,14 @@
 	</form>
 	<i>This gives the background a more yellowish color, which might feel better on the eyes.</i>
 </div>
+
+<div class="box optbox" style="background-color:#ffcccc">
+	<span class="title">Menu bar style</span>
+	<form method="POST">
+		<input type="hidden" name="a" value="menustyle">
+		<input type="radio" name="menustyle" id="menustyle_buttons" value="0"<?=($userdata['menustyle'] == 0 ? ' checked' : '')?>> <label for="menustyle_buttons">Buttons</label>
+		<input type="radio" name="menustyle" id="menustyle_links" value="1"<?=($userdata['menustyle'] == 1 ? ' checked' : '')?>> <label for="menustyle_links">Links</label>
+		<br><input type="submit" value="Submit">
+	</form>
+	<i>Change the style of the buttons in the menu bar.</i>
+</div>

@@ -141,8 +141,8 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			echo '<div class="box outer"><center><h1>404</h1>This page doesn\'t exist.</center></div>';
 		}
 		?>
-		<div class="box outer" style="text-align:center;">
-			<?php menubar(); ?>
+		<div class="box outer menubar" style="text-align:center;">
+			<?php menubar($userdata['menustyle']); ?>
 			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
 		</div>
 		<div class="box" style="margin:auto;background-color:black;color:white;">

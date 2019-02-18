@@ -122,6 +122,12 @@ table.debugtable {
 	margin: auto;
 }
 
+/* Menu bar - links */
+.menubar a {
+	display: inline-block;
+	padding: 5px;
+}
+
 /* Urgent message style */
 .urgent {
 	color: red;

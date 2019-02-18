@@ -274,6 +274,13 @@ switch ($_REQUEST['a']) {
 			header_msg("Invalid value for option 'Yellowish Background'.", "ff7777");
 		}
 	break;
+	case 'menustyle':
+		if ($_POST['menustyle'] == 1 || $_POST['menustyle'] == 0) {
+			SqlQuery("UPDATE `user` SET `menustyle` = {$_POST['menustyle']} WHERE `uid` = '$uid'");
+		} else {
+			header_msg("Invalid value for option 'Menu bar style'.", "ff7777");
+		}
+	break;
 }
 
 update_userdata();
