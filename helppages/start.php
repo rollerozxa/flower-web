@@ -9,5 +9,9 @@
 		2. <a href="flowerschool.php?page=2">Items and Resources</a>
 		<p>This part will talk about taking care of your flower.</p>
 	</td></tr>
+	<tr><td class="flowbox">
+		3. <a href="flowerschool.php?page=3">Warp & more!</a>
+		<p>This part contains more help about making your flower grow.</p>
+	</td></tr>
 	<tr><td class="flowbox"></td></tr>
 </table>
