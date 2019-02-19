@@ -18,7 +18,10 @@ while ($record = mysqli_fetch_array($db_query)) {
 		$record['message'] = str_replace('[/url]','</a>',$record['message']);
 	}
 	
-	$flower = $record['gid'] . 'Icon.png';
+	if ($msguserdata['powerlevel'] == 4)
+		$flower = 'Admin.png';
+	else
+		$flower = $record['gid'] . 'Icon.png';
 	
 	$time = (time() - $record['time']);
 	if ($time < 60) {
