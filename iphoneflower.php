@@ -91,7 +91,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 				<tr>
 					<td colspan=2>
 						<img src="flags/<?=$userdata['country']?>.png">
-						<a onclick='document.getElementById("flowerimg").src="img/socicon.png";'>
+						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
 							<img id="flowerimg" src="img/<?php echo $gid; ?>Icon.png" width=24>
 						</a>
 						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?php echo $userdata['username'] ?></strong>
