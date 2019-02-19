@@ -3,16 +3,15 @@
 /**
  * Update user data in case something has been modified.
  * 
- * @param bool $chooseflower Is the function run from the choose flower page? (Don't initialize $userflowerdata?)
+ * @param bool $chooseflower Is the function run from the choose flower page? (Don't add flower data)
  */
 function update_userdata($chooseflower = false) {
 	if ($chooseflower) {
 		global $uid, $userdata;
 		$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
 	} else {
-		global $uid, $gid, $userdata, $userflowerdata;
-		$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
-		$userflowerdata = SqlQueryFetchRow("SELECT * FROM user_$gid WHERE uid = '$uid'");
+		global $uid, $gid, $userdata;
+		$userdata = SqlQueryFetchRow("SELECT * FROM user JOIN user_$gid ON user.uid = user_$gid.uid WHERE user.uid = '$uid'");
 	}
 }
 

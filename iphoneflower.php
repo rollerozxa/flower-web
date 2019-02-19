@@ -96,7 +96,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 						</a>
 						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?php echo $userdata['username'] ?></strong>
 						<span style="display:inline-block;margin-top:0.21em;">
-						<?=formatheight($userflowerdata['height']) ?> (cm)
+						<?=formatheight($userdata['height']) ?> (cm)
 						</span>
 					</td>
 				</tr>
@@ -108,12 +108,12 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 				<tr><td bgcolor=#ff5555 colspan=2>PGM: <?php echo $userdata['PGM'] ?></td></tr>
 				<?php } ?>
 				<tr>
-					<td bgcolor=#8888ff>Water: <?php echo number_format($userflowerdata['water'],2) ?> hours</td>
-					<td bgcolor=#ffff88>Sun: <?php echo number_format($userflowerdata['sun'],2) ?> hours</td>
+					<td bgcolor=#8888ff>Water: <?php echo number_format($userdata['water'],2) ?> hours</td>
+					<td bgcolor=#ffff88>Sun: <?php echo number_format($userdata['sun'],2) ?> hours</td>
 				</tr>
 				<tr>
-					<td bgcolor=pink>Giga: <?php echo number_format($userflowerdata['giga'],2) ?> hours</td>
-					<td bgcolor=grey>Warp: <?php echo number_format($userflowerdata['warp'],2) ?> hours</td>
+					<td bgcolor=pink>Giga: <?php echo number_format($userdata['giga'],2) ?> hours</td>
+					<td bgcolor=grey>Warp: <?php echo number_format($userdata['warp'],2) ?> hours</td>
 				</tr>
 				<tr>
 					<td colspan=2>Growth rate: <?php echo getflowergrowthrate(); ?> cm/hour </td>
@@ -157,7 +157,6 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			if (isset($_GET['debug'])) { 
 				echo '<table class="debugtable"><tr><td>GET requests:<pre>'; print_r($_GET); 
 				echo '</pre></td><td>$userdata:<pre>'; print_r($userdata);
-				echo '</pre></td><td>$userflowerdata:<pre>'; print_r($userflowerdata);
 				echo '</pre></td></tr></table>';
 			} else {
 				echo '<a href="' . $_SERVER['REQUEST_URI'] . '&debug">Show debug info</a>';

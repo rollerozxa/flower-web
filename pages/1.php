@@ -10,7 +10,7 @@
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
 </div><br>
 <div style="background-color:#ffffcc" class="box">
-	<b>Basic Growth Rate: <font color=purple><?php echo number_format($userflowerdata['basicgrowthrate'] * 0.36,2) ?>cm</font> per hour</b>
+	<b>Basic Growth Rate: <font color=purple><?php echo number_format($userdata['basicgrowthrate'] * 0.36,2) ?>cm</font> per hour</b>
 	<table class="fullwidth">
 		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',1) ?>">Upgrade by 0.36cm/hr</a> *720 stars</td></tr>
 		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',10) ?>">Upgrade by 3.60cm/hr</a> *7,200 stars</td></tr>
@@ -45,17 +45,17 @@
 	<li><a href="<?=alink(1,'buysun',1000000) ?>">Buy 1,000,000 hours more sun *2000000 stars</a></li>
 	<li>(Sun overdose stretches the current day longer, so that your items don't get used up until the sun goes down.)</li>
 </ul>
-<span class="title">Auto Water</span> (<?php echo $userflowerdata['autowater']; ?>)
+<span class="title">Auto Water</span> (<?php echo $userdata['autowater']; ?>)
 <ul>
 	<?=itemlist(1,'buyautowater',array(1,5,15),$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Auto water will keep your plant moist until the sun goes down.)</li>
 </ul>
-<span class="title">Fertilizer</span> (<?php echo $userflowerdata['fertilizer']; ?>)
+<span class="title">Fertilizer</span> (<?php echo $userdata['fertilizer']; ?>)
 <ul>
 	<?=itemlist(1,'buyfertilizer',array(1,5,15),$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Fertilizer makes your flower grow 3x as fast until the sun goes down.)</li>
 </ul>
-<span class="title">Super Fertilizer</span> (<?php echo $userflowerdata['superfertilizer']; ?>)
+<span class="title">Super Fertilizer</span> (<?php echo $userdata['superfertilizer']; ?>)
 <ul>
 	<?=itemlist(1,'buysuperfertilizer',array(1,5,15),$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
 	<li>(Super fertilizer makes your flower grow 5x as fast until the sun goes down.)</li>
@@ -91,7 +91,7 @@
 		<li>(Bulk items give you X hours of water, sun, warp and giga for all of your flowers!)</li>
 	</ul>
 </div>
-<?php if ($userflowerdata['nevershrink'] == 1) { ?>
+<?php if ($userdata['nevershrink'] == 1) { ?>
 	Never shrink from drying out: <span style="color:green">Active!</span><br>
 <?php } else { ?>
 	Never shrink from drying out: Inactive<br>

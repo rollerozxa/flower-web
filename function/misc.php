@@ -16,23 +16,23 @@ function resourceformat($rawamount) {
  * @return string Basic growth rate.
  */
 function getflowergrowthrate() {
-	global $userdata, $userflowerdata;
+	global $userdata;
 	
 	$multiplier = 1;
-	if ($userflowerdata['fertilizer'] > 0) {
+	if ($userdata['fertilizer'] > 0) {
 		$multiplier = $multiplier * 3;
 	}
-	if ($userflowerdata['superfertilizer'] > 0) {
+	if ($userdata['superfertilizer'] > 0) {
 		$multiplier = $multiplier + 1 * 5;
 	}
-	if ($userflowerdata['giga'] > 0) {
+	if ($userdata['giga'] > 0) {
 		$multiplier = $multiplier * 4;
 	}
-	if ($userflowerdata['water'] > 2) {
+	if ($userdata['water'] > 2) {
 		$multiplier = $multiplier * 2;
 	}
 	
-	return resourceformat($userflowerdata['basicgrowthrate'] * 0.36 * $multiplier);
+	return resourceformat($userdata['basicgrowthrate'] * 0.36 * $multiplier);
 }
 
 /**
