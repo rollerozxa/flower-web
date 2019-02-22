@@ -145,12 +145,14 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			<?php menubar($userdata['menustyle']); ?>
 			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
 		</div>
+		<?php if ($userdata['zoom']) { ?>
 		<div class="box" style="margin:auto;background-color:black;color:white;">
 			Zoom:
 			<button onclick="zoom(1.0)">100%</button>
 			<button onclick="zoom(1.5)">150%</button>
 			<button onclick="zoom(2.0)">200%</button>
 		</div>
+		<?php } ?>
 		<div class="box outer" style="text-align:center">
 		<?php
 		if (islocal()) {

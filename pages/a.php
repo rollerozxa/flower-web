@@ -281,6 +281,13 @@ switch ($_REQUEST['a']) {
 			header_msg("Invalid value for option 'Menu bar style'.", "ff7777");
 		}
 	break;
+	case 'zoom':
+		if ($_POST['zoom'] == 1 || $_POST['zoom'] == 0) {
+			SqlQuery("UPDATE `user` SET `zoom` = {$_POST['zoom']} WHERE `uid` = '$uid'");
+		} else {
+			header_msg("Invalid value for option 'Zoom'.", "ff7777");
+		}
+	break;
 }
 
 update_userdata();

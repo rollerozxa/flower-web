@@ -21,3 +21,14 @@
 	</form>
 	<i>Change the style of the buttons in the menu bar.</i>
 </div>
+
+<div class="box optbox" style="background-color:#ffcccc">
+	<span class="title">Zoom menu</span>
+	<form method="POST">
+		<input type="hidden" name="a" value="zoom">
+		<input type="radio" name="zoom" id="zoom_no" value="0"<?=($userdata['zoom'] == 0 ? ' checked' : '')?>> <label for="zoom_no">Disabled</label>
+		<input type="radio" name="zoom" id="zoom_yes" value="1"<?=($userdata['zoom'] == 1 ? ' checked' : '')?>> <label for="zoom_yes">Enabled</label>
+		<br><input type="submit" value="Submit">
+	</form>
+	<i>This toggles the zoom menu which allows you to set a zoom level for the page.</i>
+</div>
