@@ -168,6 +168,22 @@ switch ($_REQUEST['a']) {
 			SqlQuery("INSERT INTO `chat` (`userID`, `message`, `gid`, `time`) VALUES ('{$userdata['userID']}', '{$_POST['text']}', '$gid', ".time().");");
 		}
 	break;
+	case 'chatdelet':
+		if ($userdata['powerlevel'] > 1) {
+			if (is_numeric($quantity)) {
+				if (SqlQueryResult("SELECT COUNT(*) FROM `chat` WHERE `ID` = '$quantity'") == 1) {
+					SqlQuery("DELETE FROM `chat` WHERE `ID` = '$quantity';");
+					header_msg("Message deleted!");
+				} else {
+					header_msg("Message doesn't exist.", "ff7777");
+				}
+			} else {
+				header_msg("Oops! What were you trying to do? ;)", "ff7777");
+			}
+		} else {
+			header_msg("I don't know how you got here, but you shouldn't be here!", "ff7777");
+		}
+	break;
 	
 	///
 	/// 3 - Friends
