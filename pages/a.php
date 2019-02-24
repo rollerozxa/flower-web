@@ -184,6 +184,18 @@ switch ($_REQUEST['a']) {
 			header_msg("I don't know how you got here, but you shouldn't be here!", "ff7777");
 		}
 	break;
+	case 'chatnuke':
+		if ($userdata['powerlevel'] == 4) {
+			if (isset($_POST['shouldnuke'])) {
+				SqlQuery("TRUNCATE TABLE `chat`;");
+				header_msg("*Explosion sound*");
+			} else {
+				header_msg("Checkbox not clicked. Disaster averted.", "ff7777");
+			}
+		} else {
+			header_msg("I don't know how you got here, but you shouldn't be here!", "ff7777");
+		}
+	break;
 	
 	///
 	/// 3 - Friends
