@@ -13,9 +13,7 @@ while ($record = mysqli_fetch_array($db_query)) {
 	}
 	
 	if ($msguserdata['powerlevel'] > 1) {
-		$record['message'] = str_replace('[url={','<a href="',$record['message']);
-		$record['message'] = str_replace('}]','">',$record['message']);
-		$record['message'] = str_replace('[/url]','</a>',$record['message']);
+		$record['message'] = preg_replace("'\[url=(.*?)\](.*?)\[/url\]'si", '<a href="\\1">\\2</a>', $record['message']);
 	}
 	
 	if ($msguserdata['powerlevel'] == 4)
