@@ -62,13 +62,8 @@ function SqlNumRows($res) {
 }
 
 function SqlEscape($val) {
-	global $dblink;
-	return $dblink->real_escape_string($val);
-}
-
-function SqlInsertId() {
-	global $dblink;
-	return $dblink->insert_id;
+	global $mysqli;
+	return $mysqli->real_escape_string($val);
 }
 
 ?>
