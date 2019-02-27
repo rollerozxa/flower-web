@@ -196,6 +196,16 @@ switch ($_REQUEST['a']) {
 			header_msg("I don't know how you got here, but you shouldn't be here!", "ff7777");
 		}
 	break;
+	// It's actually from page ID -1 (Edit message), but it redirects you to page ID 2 (Chat). Eh.
+	case 'editmessage':
+		if ($userdata['powerlevel'] > 1) {
+			if (isset($_POST['edited_message']) && isset($_POST['message_id']) && is_numeric($_POST['message_id'])) {
+				$edited_message = SqlEscape($_POST['edited_message']);
+				$message_id = $_POST['message_id'];
+				SqlQuery("UPDATE `chat` SET `message` = '$edited_message' WHERE `ID` = $message_id;");
+			}
+		}
+	break;
 	
 	///
 	/// 3 - Friends

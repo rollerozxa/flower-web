@@ -19,7 +19,10 @@ function get_page_title($show = 0) {
 		case 13:	return 'Settings';
 		// This value is hardcoded into the app.
 		case 14:	return 'Change name';
-		
+
+		// Special pages (Administration, easter eggs)
+		case -1:	return 'Edit message';
+
 		default:	return '';
 	}
 }

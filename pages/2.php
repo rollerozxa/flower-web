@@ -50,7 +50,10 @@ while ($record = mysqli_fetch_array($db_query)) {
 			<strong style="color:#<?= powerlevelcolor($msguserdata['powerlevel']) ?>"><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
 			<font color="maroon"><em>(<?=$time ?> ago)</em></font>
 			<?php if ($userdata['powerlevel'] > 1) { ?>
-			<span style="float:right"><a href="<?=alink(2,'chatdelet',$record['ID']) ?>" style="color:red;text-decoration:none">X</a></span>
+			<span style="float:right">
+				<a href="<?=pagelink(-1) ?>&messageid=<?=$record['ID'] ?>" style="text-decoration:none;transform: rotateZ(90deg);">&#9998;</a>
+				<a href="<?=alink(2,'chatdelet',$record['ID']) ?>" style="color:red;text-decoration:none">X</a>
+			</span>
 			<?php } ?>
 		</td>
 	</tr>
