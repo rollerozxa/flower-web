@@ -73,12 +73,12 @@ td {
 }
 
 /* Scores */
+.flowertitle {
+	color: green;
+	font-weight: bold;
+}
 .fullwidth {
 	width: 100%;
 }
-.tbl0 {
-	background-color: #eeeeee;
-}
-.tbl1 {
-	background-color: #ffffff;
-}
+.tbl0 { background-color: #eeeeee; }
+.tbl1 { background-color: #ffffff; }

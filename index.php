@@ -67,27 +67,48 @@ include('function/misc.php');
 			</div>
 			<span class="funfact"><strong>Fun fact!</strong> - <?=random_funfact() ?></span>
 		</div><br>
-		<div class="box outer c_mainbox" style="text-align:left">
-			<span class="title">High Scores</span>
-<?php foreach ($flowers as $gid) {
-	echo '<span style="color:green;font-weight:bold;">Tallest ' . $flowers_plural[$flowers_id[$gid]] . ' in the world!</span><br>
-	'.SqlQueryResult("SELECT COUNT(*) FROM user_$gid").' people growing a ' . $gid . '.
-	<table class="fullwidth"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>';
-	$db_query = SqlQuery("SELECT * FROM `user_$gid` ORDER BY `height` DESC");
+<?php
+// TODO: Remove flower list hardcoding.
+$flowers_count = SqlQueryFetchRow("SELECT
+(SELECT COUNT(*) FROM user_Rose) Rose,
+(SELECT COUNT(*) FROM user_Daisy) Daisy,
+(SELECT COUNT(*) FROM user_Iris) Iris,
+(SELECT COUNT(*) FROM user_Orchid) Orchid,
+(SELECT COUNT(*) FROM user_Sunflower) Sunflower");
+
+foreach ($flowers as $gid) {
+	$db_query = SqlQuery("SELECT * FROM `user_$gid` JOIN `user` ON `user_$gid`.`uid` = `user`.`uid` ORDER BY `height` DESC");
 	$bg = 0;
 	$count = 1;
 	while ($record = mysqli_fetch_array($db_query)) {
-		$rowuserdata = SqlQueryFetchRow('SELECT * FROM user WHERE uid="' . $record['uid'] . '"');
-		?><tr class="tbl<?=$bg ?>">
-			<td><img src="flags/<?=$rowuserdata['country'] ?>.png"> <?=$count ?></td>
-			<td><?=formatheight($record['height']) ?> (cm)</td>
-			<td><?=$rowuserdata['username'] ?></td>
-		</tr><?php
+		$leaderboard[$gid][] = array(
+			'count' => $count,
+			'bg' => $bg,
+			'country' => $record['country'],
+			'height' => formatheight($record['height']),
+			'username' => $record['username']
+		);
 		$bg = ($bg == 0 ? 1 : 0);
 		$count++;
 	}
-	?></table><br>
-<?php } ?>
+}
+?>
+		<div class="box outer c_mainbox" style="text-align:left">
+			<span class="title">High Scores</span>
+			<h4>Total Users: <span style="color:green"><?=SqlQueryResult("SELECT COUNT(*) FROM user") ?></span></h4>
+			<?php foreach ($flowers as $gid) { ?>
+				<span class="flowertitle">Tallest <?=$flowers_plural[$flowers_id[$gid]] ?> in the world!</span><br>
+				<?=$flowers_count[$gid] ?> people growing a <?=$gid ?>.
+				<table class="fullwidth"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
+				<?php foreach ($leaderboard[$gid] as $boardrow) { ?>
+					<tr class="tbl<?=$boardrow['bg'] ?>">
+						<td><img src="flags/<?=$boardrow['country'] ?>.png"> <?=$boardrow['count'] ?></td>
+						<td><?=$boardrow['height'] ?> (cm)</td>
+						<td><?=$boardrow['username'] ?></td>
+					</tr>
+				<?php } ?>
+				</table><br>
+			<?php } ?>
 		</div>
 	</body>
 </html>
