@@ -63,7 +63,7 @@ while ($record = mysqli_fetch_array($db_query)) {
 ?>
 </table>
 <form method="post">
-<?php formcore(2,'chat') ?>
+<input type="hidden" name="a" value="chat">
 <input type="text" name="text" maxlength="2000" style="width:calc(100% - 52px)"></input>
 <input type="submit" value="Post"></input>
 </form><br/>

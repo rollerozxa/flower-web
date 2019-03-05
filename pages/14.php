@@ -1,6 +1,6 @@
 Change nickname to:<br>
 <form action="" method="POST">
-	<?php formcore(11,'changename') ?>
+	<input type="hidden" name="a" value="changename">
 	<input name="name" type="text" maxlength=35 style="width:calc(100% - 71px)" value="<?=$userdata['username'] ?>">
 	<input type="submit" value="Change">
 </form>

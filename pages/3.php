@@ -37,7 +37,7 @@ foreach ($friends as $friend_row) {
 	Your Friend Code: <span style="color:purple"><?=$userdata['friendcode'] ?></span><br>
 	Add a friend by entering their friend code.<br>
 	<form method="post">
-		<?php formcore(3,'addfriend') ?>
+		<input type="hidden" name="a" value="addfriend">
 		<input type="number" name="friendcode" width=320/><input type="submit" value="Add my friend!" />
 	</form>
 </div>

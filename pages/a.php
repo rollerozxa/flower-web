@@ -1,10 +1,10 @@
 <?php
 
-if (!isset($_GET['quantity'])) {
+if (!isset($_REQUEST['quantity'])) {
 	$noquantity = true;
 } else {
 	$noquantity = false;
-	$quantity = $_GET['quantity'];
+	$quantity = $_REQUEST['quantity'];
 }
 
 $buyvalue	= 50;
