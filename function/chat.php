@@ -1,9 +1,10 @@
 <?php
 
 /**
+ * Do the chat command system.
  * 
- * 
- * @return string Text of command.
+ * @return string Text of command.<br>
+ *				  If the original chat message isn't a command, it returns null.
  */
 function chat_command() {
 	global $msguserdata, $record, $userdata;
@@ -21,10 +22,6 @@ function chat_command() {
 			return null;
 		}
 	}
-}
-
-function chat_time() {
-	
 }
 
 ?>

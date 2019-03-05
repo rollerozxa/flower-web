@@ -31,7 +31,7 @@ function powerlevelcolor($powerlevel) {
 /**
  * Create a new unique friend code for new users.
  *
- * @return int 
+ * @return int Generated friend code.
  */
 function make_friendcode() {
 	$friendcode_unique = false;

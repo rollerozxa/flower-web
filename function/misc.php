@@ -1,98 +1,28 @@
 <?php
 
 /**
- * Format raw resource values.
- * 
- * @param int $rawamount Raw value.
- * @return string Formatted resource value.
- */
-function resourceformat($rawamount) {
-	return number_format($rawamount,2);
-}
-
-/**
- * Get full growth rate for the currently logged in user.
- * 
- * @return string Basic growth rate.
- */
-function getflowergrowthrate() {
-	global $userdata;
-	
-	$multiplier = 1;
-	if ($userdata['fertilizer'] > 0) {
-		$multiplier = $multiplier * 3;
-	}
-	if ($userdata['superfertilizer'] > 0) {
-		$multiplier = $multiplier + 1 * 5;
-	}
-	if ($userdata['giga'] > 0) {
-		$multiplier = $multiplier * 4;
-	}
-	if ($userdata['water'] > 2) {
-		$multiplier = $multiplier * 2;
-	}
-	
-	return resourceformat($userdata['basicgrowthrate'] * 0.36 * $multiplier);
-}
-
-/**
- * 
- * 
- * @return int
- */
-function formatheight($height) {
-	return number_format($height,8,'.',' ');
-}
-
-define('ITEMLIST_NOFORMAT', 0);
-define('ITEMLIST_NORMALFORMAT', 1);
-
-/**
- * Makes a list of items or things to purchase.
- * 
- * @param int $show Page to be on when the link has been clicked.
- * @param string $a Action of list.
- * @param array $quantities List of amounts to be in the list.
- * @param int $costperone Cost of one item in the list.
- * @param string $text Text to be for every list item.<br>
- *					   %q - Quantity for the current list item.<br>
- * 					   %c - Cost for the current list item.
- * @param custom $format Number formatting mode of list.
- */
-function itemlist($show,$a,$quantities,$costperone,$text,$format = ITEMLIST_NORMALFORMAT) {
-	$out = '';
-	foreach ($quantities as $quantity) {
-		switch ($format) {
-			case ITEMLIST_NOFORMAT:
-				$output = str_replace('%q', $quantity, $text);
-				$output = str_replace('%c', ($costperone * $quantity), $output);
-			break;
-			case ITEMLIST_NORMALFORMAT:
-				$output = str_replace('%q', number_format($quantity), $text);
-				$output = str_replace('%c', number_format($costperone * $quantity), $output);
-			break;
-		}
-		$out .= '<li><a href="' . alink($show,$a,$quantity) . '">' . $output . '</a></li>';
-	}
-	return $out;
-}
-
-/**
+ * Send a mail to a user with a specified user ID.
  *
+ * @param int $recipient_id User ID of the recipient.
+ * @param int $inbox_message Message to be sent.
+ * @param int $sender_name Name of the sender. (This will be shown!)
+ * @param int $recipient_id Optional: User ID of the sender.
  */
 function send_mail($recipient_id,$inbox_message,$sender_name,$sender_id = 'dead410734') {
 	global $mysqli;
-	
+
 	$recipient_id = mysqli_real_escape_string($mysqli,$recipient_id);
 	$inbox_message = mysqli_real_escape_string($mysqli,$inbox_message);
 	$sender_name = mysqli_real_escape_string($mysqli,$sender_name);
 	$sender_id = mysqli_real_escape_string($mysqli,$sender_id);
-	
+
 	SqlQuery("INSERT INTO `inbox` (`recipient_id`, `sender_id`, `sender_name`, `message`) VALUES ('$recipient_id', '$sender_id', '$sender_name', '$inbox_message');");
 }
 
 /**
  * Throw a fatal error.
+ *
+ * @param string $msg Error message.
  */
 function fs_error($msg) {
 	include('pages/other/error.php');
@@ -101,13 +31,13 @@ function fs_error($msg) {
 
 /**
  * Set a box with a message at the top of the page.
- * 
+ *
  * @param string $msg Message.
- * @param string $bg Background color (hex)
+ * @param string $bg Background color. (hex)
  */
 function header_msg($msg,$bg = "00ff00") {
 	global $headermsg;
-	
+
 	$headermsg = '<div class="box" style="background-color:#' . $bg . '">' . $msg . '</div>';
 }
 
