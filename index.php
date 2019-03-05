@@ -45,25 +45,18 @@ include('function/misc.php');
 			<p>To connect, you need to download the new flower app. Don't worry - there are no viruses and as a bonus, it's a lot smaller as Tapjoy and billing code has been removed.</p>
 			<div class="box center">
 				<span class="downloadtitle">Downloads!</span>
-				<table>
+				<table><?php foreach ($apps as $app) { ?>
 					<tr>
-						<td><img src="img/DaisyIcon.png" class="downloadicon"></td>
+						<td><img src="<?=$app['image'] ?>" class="downloadicon"></td>
 						<td>
-							<span class="gametitle">Origami Daisy</span>
-							<a href="download/daisy/daisy.apk">Download Latest (v<?php echo $daisy_latestversionstring ?>) (Android 2.2+)</a> (size: <?php echo round(filesize('download/daisy/daisy.apk') / 1000000,2);?> MB)
-							<a href="download/daisy/changelog.txt">Changelog</a><br>
-							<br>(Game calls itself "Origami Daisy", but you can choose whatever flower you'd like within the game)
+							<span class="gametitle"><?=$app['name'] ?></span>
+							<a href="download/<?=$app['folder'] ?>/<?=$app['download_file'] ?>">Download Latest (v<?=$app['version_nice'] ?>) (Android <?=$app['minver'] ?>)</a>
+							(size: <?=round($app['size'] / 1000000,2);?> MB)
+							<?php if ($app['haschangelog']) { ?><a href="download/<?=$app['folder'] ?>/changelog.txt">Changelog</a><?php } ?>
+							<br><br><?=$app['description'] ?>
 						</td>
 					</tr>
-					<tr>
-						<td><img src="img/ABPIcon.png" class="downloadicon"></td>
-						<td>
-							<span class="gametitle">Attack Breaker Pro</span>
-							<a href="download/abp/abp.apk">Download (Android 1.6+)</a> (size: <?php echo round(filesize('download/abp/abp.apk') / 1000,2);?> KB)
-							<br><br>This is a custom version that has various third-party junk ripped out.
-						</td>
-					</tr>
-				</table>
+				<?php } ?></table>
 			</div>
 			<span class="funfact"><strong>Fun fact!</strong> - <?=random_funfact() ?></span>
 		</div><br>

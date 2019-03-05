@@ -7,8 +7,32 @@ $urgentmessage = "";
 
 $contactemail = '(email)';
 
-$daisy_latestversionint = 600;
-$daisy_latestversionstring = '6.00';
+$apps = array(
+	'Daisy' => array(
+		'name' => 'Origami Daisy',
+		'description' => "(Game calls itself \"Origami Daisy\", but you can choose whatever flower you'd like within the game)",
+		'image' => 'img/app/icon_daisy.png',
+		'folder' => 'daisy',
+		'version_code' => 600,
+		'version_nice' => '6.00',
+		'download_file' => 'daisy.apk',
+		'minver' => '2.2+',
+		'size' => 1760222,
+		'haschangelog' => true
+	),
+	'ABP' => array(
+		'name' => 'Attack Breaker Pro',
+		'description' => "This is a custom version that has various third-party junk ripped out.",
+		'image' => 'img/ABPIcon.png',
+		'folder' => 'abp',
+		'version_code' => 600,
+		'version_nice' => '6.00',
+		'download_file' => 'abp.apk',
+		'minver' => '1.6+',
+		'size' => 173581,
+		'haschangelog' => false
+	)
+);
 
 //$flowers = array('Rose','Daisy','Iris','Orchid','Sunflower','Tulip');
 $flowers = array('Rose','Daisy','Iris','Orchid','Sunflower');
