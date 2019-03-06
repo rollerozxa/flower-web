@@ -2,6 +2,7 @@
 include('config.php');
 include('mysql.php');
 include('function/extra/funfacts.php');
+include('function/flower.php');
 include('function/misc.php');
 ?>
 <html>
@@ -61,13 +62,17 @@ include('function/misc.php');
 			<span class="funfact"><strong>Fun fact!</strong> - <?=random_funfact() ?></span>
 		</div><br>
 <?php
-// TODO: Remove flower list hardcoding.
-$flowers_count = SqlQueryFetchRow("SELECT
-(SELECT COUNT(*) FROM user_Rose) Rose,
-(SELECT COUNT(*) FROM user_Daisy) Daisy,
-(SELECT COUNT(*) FROM user_Iris) Iris,
-(SELECT COUNT(*) FROM user_Orchid) Orchid,
-(SELECT COUNT(*) FROM user_Sunflower) Sunflower");
+$flowers_count_query = "SELECT ";
+$count = 1;
+foreach ($flowers as $flower) {
+	$flowers_count_query .= "(SELECT COUNT(*) FROM user_$flower) $flower";
+	
+	if ($count != sizeof($flowers)) {
+		$flowers_count_query .= ",";
+	}
+	$count++;
+}
+$flowers_count = SqlQueryFetchRow($flowers_count_query);
 
 foreach ($flowers as $gid) {
 	$db_query = SqlQuery("SELECT * FROM `user_$gid` JOIN `user` ON `user_$gid`.`uid` = `user`.`uid` ORDER BY `height` DESC");
