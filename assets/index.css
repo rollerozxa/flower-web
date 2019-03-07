@@ -1,5 +1,4 @@
 body {
-	margin-bottom: 2em;
 	text-align: center;
 }
 .box {
@@ -11,7 +10,7 @@ body {
 }
 .outer {
 	width: 100%;
-	max-width:1000px;
+	max-width: 1000px;
 }
 .center {
 	margin: auto;
