@@ -1,5 +1,4 @@
 <?php
-
 include('../mysql.php');
 include('../config.php');
 
@@ -25,12 +24,6 @@ td,th {
 h1,h2 {
 	margin-bottom: 10px;
 	margin-top: 0px;
-}
-.infobox {
-	border: 1px&solid&black;
-	display: inline-block;
-	padding: 5px;
-	width: 350px;
 }
 </style>
 HTML;
@@ -85,22 +78,35 @@ foreach ($tbl_userinfo as $tableline) {
 }
 echo '</table>';
 
-echo '<hr><h1>Flower Info:</h1>';
 foreach ($flowers as $flower) {
 	if ($userdata['has_' . strtolower($flower)]) {
-		$userflowerdata = SqlQueryFetchRow("SELECT * FROM user_" . $flower . " WHERE uid = '$uid'");
-		echo '<div class="infobox"><h2>' . $flower . ' Info:</h2><table><tr><th>Key</th><th>Value</th></tr>';
-		foreach ($tbl_flowerinfo as $tableline) {
-			if ($tableline == 'uid')
-				echo '<tr><td>uid</td><td><em>REDACTED</em></td></tr>';
-			else
-				echo '<tr><td>' . $tableline . '</td><td>' . $userflowerdata[$tableline] . '</td></tr>';
-		}
-		echo '</table></div>';
+		$userflowerdata[$flower] = SqlQueryFetchRow("SELECT * FROM user_" . $flower . " WHERE uid = '$uid'");
 	} else {
-		echo '<div class="infobox"><h2>User has not started a ' . $flower . '.</h2></div>';
+		$userflowerdata[$flower] = null;
 	}
 }
+
+echo '<hr><h1>Flower Info:</h1><table><tr><th>Key</th>';
+foreach ($flowers as $flower) {
+	echo "<th>$flower</th>";
+}
+echo "</tr>";
+foreach ($tbl_flowerinfo as $tableline) {
+	echo "<tr><td>$tableline</td>";
+	if ($tableline == 'uid') {
+		echo '<td colspan=5 style="text-align:center"><em>REDACTED</em></td>';
+	} else {
+		foreach ($flowers as $flower) {
+			if ($userflowerdata[$flower]) {
+				echo "<td>" . $userflowerdata[$flower][$tableline] . "</td>";
+			} else {
+				echo "<td>-</td>";
+			}
+		}
+	}
+	echo "</tr>";
+}
+echo '</table>';
 
 echo '<hr><h1>Chatterbox posts:</h1><table><tr><th>Message</th><th>Time</th></tr>';
 $db_query = SqlQuery("SELECT * FROM chat WHERE userID = " . $userdata['userID']);
