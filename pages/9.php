@@ -8,16 +8,14 @@
 		<th>Player</th>
 	</tr>
 <?php
-$db_query = SqlQuery("SELECT * FROM `user_" . $gid . "` ORDER BY `height` DESC");
+$db_query = SqlQuery("SELECT * FROM `user_$gid` JOIN user ON user_$gid.uid = user.uid ORDER BY `height` DESC");
 $bg = 0;
 $count = 1;
 while ($record = mysqli_fetch_array($db_query)) {
-	$rowuserdata = SqlQueryFetchRow('SELECT * FROM user WHERE uid="' . $record['uid'] . '"');
-	
-	?><tr class="tb<?php echo ($record['uid'] == $uid ? 'h' : 'l' . $bg) ?>">
-		<td><img src="flags/<?=$rowuserdata['country'] ?>.png"> <?=$count ?></td>
+	?><tr class="tb<?=($record['uid'] == $uid ? 'h' : 'l' . $bg) ?>">
+		<td><img src="flags/<?=$record['country'] ?>.png"> <?=$count ?></td>
 		<td><?=formatheight($record['height']) ?> (cm)</td>
-		<td><?=$rowuserdata['username'] ?></td>
+		<td><?=$record['username'] ?></td>
 	</tr><?php
 	$bg = ($bg == 0 ? 1 : 0);
 	$count++;
