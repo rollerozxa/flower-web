@@ -35,11 +35,21 @@ if (false) {
 	die;
 }
 
+$timedifference = microtime(true) - $userdata['lastview'];
+
 // Give seed income.
-$seedearnamount = (time() - $userdata['lastview']) * ($userdata['seedincome'] / 3600);
+$seedearnamount = $timedifference * ($userdata['seedincome'] / 216000);
 SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] + $seedearnamount) . "' WHERE `user`.`uid` = '$uid';");
-$heightgrowthamount = (time() - $userdata['lastview']) * ($userdata['seedincome'] / 3600);
-SqlQuery("UPDATE `user` SET `lastview` = '" . time() . "' WHERE `user`.`uid` = '$uid';");
+
+// Grow the flower!
+$heightgrowthamount = $timedifference * (getflowergrowthrate(false) / 216000);
+SqlQuery("UPDATE `user_$gid` SET `height` = height + $heightgrowthamount WHERE `user_$gid`.`uid` = '$uid'");
+
+// Deplete resources.
+SqlQuery("UPDATE `user_$gid` SET `water` = water - ($timedifference / 216000),
+		`sun` = sun - ($timedifference / 216000) WHERE `user_$gid`.`uid` = '$uid'");
+
+SqlQuery("UPDATE `user` SET `lastview` = '" . microtime(true) . "' WHERE `user`.`uid` = '$uid';");
 update_userdata();
 
 if (isset($_REQUEST['a'])) include('pages/a.php');
@@ -78,6 +88,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<meta name="msapplication-config" content="/browserconfig.txt?v=2">
 		<!-- ****** faviconit.com favicons ****** -->
 		<!--<meta name="viewport" content="width=320" />-->
+		<link rel="manifest" href="/pwa/manifest.json">
 	</head>
 	<body>
 		<script src="assets/loaded.js"></script>
