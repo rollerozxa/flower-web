@@ -18,6 +18,7 @@ $menuitems = array(
 
 define('MENUBAR_BUTTONS', 0);
 define('MENUBAR_LINKS', 1);
+define('MENUBAR_SELECT', 2);
 
 /**
  * Print a menu bar from $menuitems.
@@ -25,16 +26,29 @@ define('MENUBAR_LINKS', 1);
  * @param $menustyle Style of the printed menu bar.
  */
 function menubar($menustyle = MENUBAR_BUTTONS) {
-	global $menuitems;
+	global $menuitems,$uid,$gid,$show;
 	$counter = 1;
-	foreach ($menuitems as $menuitem) {
-		if ($menustyle == MENUBAR_BUTTONS) {
-			echo '<button onclick="open_win(' . $menuitem['page'] . ')">' . $menuitem['name'] . '</button>';
-		} else if ($menustyle == MENUBAR_LINKS) {
-			if ($counter != 1) echo ' | ';
-			echo '<a href="' . pagelink($menuitem['page']) . '">' . $menuitem['name'] . '</a>';
-			$counter++;
-		}
+	switch ($menustyle) {
+		case MENUBAR_BUTTONS:
+			foreach ($menuitems as $menuitem) {
+				echo '<button onclick="open_win(' . $menuitem['page'] . ')">' . $menuitem['name'] . '</button>';
+			}
+		break;
+		case MENUBAR_LINKS:
+			foreach ($menuitems as $menuitem) {
+				if ($counter != 1) echo ' | ';
+				echo '<a href="' . pagelink($menuitem['page']) . '">' . $menuitem['name'] . '</a>';
+				$counter++;
+			}
+		break;
+		case MENUBAR_SELECT:
+			echo '<form><input type="hidden" name="uid" value="'.$uid.'"><input type="hidden" name="gid" value="'.$gid.'">
+			<select name="show" onchange="this.form.submit()">';
+			foreach ($menuitems as $menuitem) {
+				echo '<option value="'.$menuitem['page'].'"'.($menuitem['page'] == $show ? ' selected' : '').'>'.$menuitem['name'].'</option>';
+			}
+			echo '</select></form>';
+		break;
 	}
 }
 

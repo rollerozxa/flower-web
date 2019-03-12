@@ -17,6 +17,7 @@
 		<input type="hidden" name="a" value="menustyle">
 		<input type="radio" name="menustyle" id="menustyle_buttons" value="0"<?=($userdata['menustyle'] == 0 ? ' checked' : '')?>> <label for="menustyle_buttons">Buttons</label>
 		<input type="radio" name="menustyle" id="menustyle_links" value="1"<?=($userdata['menustyle'] == 1 ? ' checked' : '')?>> <label for="menustyle_links">Links</label>
+		<input type="radio" name="menustyle" id="menustyle_dropdown" value="2"<?=($userdata['menustyle'] == 2 ? ' checked' : '')?>> <label for="menustyle_dropdown">Dropdown</label>
 		<br><input type="submit" value="Submit">
 	</form>
 	<i>Change the style of the buttons in the menu bar.</i>

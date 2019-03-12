@@ -65,4 +65,14 @@ function pagelink($show) {
 	return "?uid=$uid&gid=$gid&show=$show";
 }
 
+/**
+ * Return the base page requests.
+ *
+ * @return string The link.
+ */
+function pagebase() {
+	global $uid, $gid;
+	return "?uid=$uid&gid=$gid";
+}
+
 ?>
