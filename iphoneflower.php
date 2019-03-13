@@ -88,7 +88,6 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<meta name="msapplication-config" content="/browserconfig.txt?v=2">
 		<!-- ****** faviconit.com favicons ****** -->
 		<!--<meta name="viewport" content="width=320" />-->
-		<link rel="manifest" href="/pwa/manifest.json">
 	</head>
 	<body>
 		<script src="assets/loaded.js"></script>
