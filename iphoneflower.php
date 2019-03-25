@@ -111,19 +111,19 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor=#ccffcc>Seeds: <?php echo ($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
-					<td bgcolor=#ccccff>Stars: <?php echo ($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
+					<td class="fs_seeds">Seeds: <?php echo ($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
+					<td class="fs_stars">Stars: <?php echo ($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
 				</tr>
 				<?php if ($userdata['PGM']) { ?>
-				<tr><td bgcolor=#ff5555 colspan=2>PGM: <?php echo $userdata['PGM'] ?></td></tr>
+				<tr><td class="fs_pgm" colspan=2>PGM: <?php echo $userdata['PGM'] ?></td></tr>
 				<?php } ?>
 				<tr>
-					<td bgcolor=#8888ff>Water: <?php echo number_format($userdata['water'],2) ?> hours</td>
-					<td bgcolor=#ffff88>Sun: <?php echo number_format($userdata['sun'],2) ?> hours</td>
+					<td class="fs_water">Water: <?php echo number_format($userdata['water'],2) ?> hours</td>
+					<td class="fs_sun">Sun: <?php echo number_format($userdata['sun'],2) ?> hours</td>
 				</tr>
 				<tr>
-					<td bgcolor=pink>Giga: <?php echo number_format($userdata['giga'],2) ?> hours</td>
-					<td bgcolor=grey>Warp: <?php echo number_format($userdata['warp'],2) ?> hours</td>
+					<td class="fs_giga">Giga: <?php echo number_format($userdata['giga'],2) ?> hours</td>
+					<td class="fs_warp">Warp: <?php echo number_format($userdata['warp'],2) ?> hours</td>
 				</tr>
 				<tr>
 					<td colspan=2>Growth rate: <?php echo getflowergrowthrate(); ?> cm/hour </td>

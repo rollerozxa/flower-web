@@ -10,8 +10,8 @@
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor=#ccffcc>Seeds: $313,367.00</td>
-			<td bgcolor=#ccccff>Stars: *3,100.00</td>
+			<td class="fs_seeds">Seeds: $313,367.00</td>
+			<td class="fs_stars">Stars: *3,100.00</td>
 		</tr>
 	</table>
 </div>

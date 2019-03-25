@@ -7,6 +7,14 @@ body {
 .fsbox td {
 	padding: 0.2em;
 }
+.fs_seeds	{ background-color: #ccffcc; }
+.fs_stars	{ background-color: #ccccff; }
+.fs_pgm		{ background-color: #ff5555; }
+.fs_water	{ background-color: #8888ff; }
+.fs_sun		{ background-color: #ffff88; }
+.fs_giga	{ background-color: #ffc0cb; }
+.fs_warp	{ background-color: #808080; }
+
 
 .box {
 	border: 2px solid black;
