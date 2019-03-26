@@ -4,8 +4,28 @@
 <p>You have <b>0</b> tickets for the next draw that takes place in 5hr 19min</p>
 Max tickets per day: 10,000. If you try to buy more, it will simply stop at the max.
 <ul>
-	<?=itemlist(5, 'buyseedtickets', array(10,1000,10000,250000,4000000,20000000,250000000), 15, 'Buy %q tickets for $%c seeds') ?>
+	<?=itemlist(5, 'buyseedtickets', array(100,1000,10000,250000,4000000,20000000,250000000), 15, 'Buy %q tickets for $%c seeds') ?>
 </ul>
-<p class="title">Odds for instant-win ticket prizes!</p>
-<font color=blue>10 / 4,000,000.00 : <b>+60 offer bonus</b></font><br/>
-<font color=red>1 / 4,000,000.00 : <b>(1 Checklist COMPLETED if current not finished) (+3 PGM) (+25 BONUS checklists). You must apply the reward if this is won.</b></font>
+<table class="oddstable">
+	<tr>
+		<th colspan=2>Odds for instant-win ticket prizes!</th>
+	</tr><tr style="color:blue">
+		<td>1 / 1,000</td>
+		<td>+6 hours of water!</td>
+	</tr><tr style="color:orange">
+		<td>1 / 2,000</td>
+		<td>+6 hours of sun!</td>
+	</tr><tr style="color:gray">
+		<td>1 / 6,000</td>
+		<td>+6 hours of warp!</td>
+	</tr><tr style="color:#FF69B4">
+		<td>1 / 50,000</td>
+		<td>+6 hours of giga!</td>
+	</tr><tr style="color:#6A5ACD">
+		<td>1 / 120,000</td>
+		<td>3 hours of time warp!</td>
+	</tr><tr>
+		<td>1 / 100,000,000</td>
+		<td><?=rainbow_text('Magic seed!') ?></td>
+	</tr>
+</table>

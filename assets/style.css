@@ -15,7 +15,6 @@ body {
 .fs_giga	{ background-color: #ffc0cb; }
 .fs_warp	{ background-color: #808080; }
 
-
 .box {
 	border: 2px solid black;
 	display: table;
@@ -77,6 +76,19 @@ li {
 /* Friends */
 .friends td {
 	padding:3px;
+}
+
+/* Seeds & Stars Draw */
+.oddstable {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 2px solid black;
+}
+.oddstable td, th {
+	border-bottom: 2px solid black;	
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
 }
 
 /* Inbox */
