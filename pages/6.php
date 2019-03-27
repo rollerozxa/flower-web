@@ -1,6 +1,6 @@
 <p class="title">Stars Draw</p>
 <p>Buy tickets for the stars draw, currently worth <span class="starc">*201,010,010.00</span> stars!</p>
-<p><b>You have *<font color="blue"><?php echo resourceformat($userdata['stars']); ?></font> stars available</b></p>
+<p><b>You have <span class="starc"><?php echo resourceformat($userdata['stars']); ?></span> stars available</b></p>
 <p>You have <b>0</b> tickets for the next draw that takes place in 5hr 18min</p>
 Max tickets per day: 10,000. If you try to buy more, it will simply stop at the max.
 <ul>

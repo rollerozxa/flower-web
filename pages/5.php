@@ -1,6 +1,6 @@
 <p class="title">Seeds Draw</p>
 <p>Buy tickets for the seeds draw, currently worth *<span class="seedc">$201,010,010.00</span> seeds!</p>
-<p><b>You have $<font color="green"><?php echo resourceformat($userdata['seeds']); ?></font> seeds available</b></p>
+<p><b>You have $<span class="seedc"><?php echo resourceformat($userdata['seeds']); ?></span> seeds available</b></p>
 <p>You have <b>0</b> tickets for the next draw that takes place in 5hr 19min</p>
 Max tickets per day: 10,000. If you try to buy more, it will simply stop at the max.
 <ul>

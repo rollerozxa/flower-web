@@ -10,7 +10,7 @@
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
 </div><br>
 <div style="background-color:#ffffcc" class="box">
-	<b>Basic Growth Rate: <font color=purple><?php echo number_format($userdata['basicgrowthrate'] * 0.36,2) ?>cm</font> per hour</b>
+	<b>Basic Growth Rate: <span style="color:purple"><?=number_format($userdata['basicgrowthrate'] * 0.36,2) ?>cm</span> per hour</b>
 	<table class="fullwidth">
 		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',1) ?>">Upgrade by 0.36cm/hr</a> *720 stars</td></tr>
 		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',10) ?>">Upgrade by 3.60cm/hr</a> *7,200 stars</td></tr>
