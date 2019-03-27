@@ -132,7 +132,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		</div>
 		<?php if ($ver < 600) { ?>
 		<div class="box outer" style="background-color:#eee033">
-			Still using a legacy flower app? <a href="/?downloadnew">Check out the new version of the app.</a>
+			Still using a legacy flower app? <a href="/">Check out the new version of the app.</a>
 			It is much smaller, works on more devices and it has many improvements and bug fixes.
 		</div>
 		<?php } ?>
