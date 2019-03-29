@@ -13,5 +13,9 @@
 		3. <a href="flowerschool.php?page=3">Warp & more!</a>
 		<p>This part contains more help about making your flower grow.</p>
 	</td></tr>
+	<tr><td class="flowbox">
+		4. <a href="flowerschool.php?page=4">Stars Exchange</a>
+		<p>This part explains the stars exchange.</p>
+	</td></tr>
 	<tr><td class="flowbox"></td></tr>
 </table>
