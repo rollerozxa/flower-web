@@ -3,6 +3,7 @@
 ///
 /// 11 - Change name
 ///
+
 switch ($_REQUEST['a']) {
 	case 'changename':
 		if (strlen($_POST['name']) <= 35) {

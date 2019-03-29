@@ -1,8 +1,9 @@
 <?php
 
-	///
-	/// 3 - Friends
-	///
+///
+/// 3 - Friends
+///
+
 switch ($_REQUEST['a']) {
 	case 'addfriend':
 		if (isset($_POST['friendcode']) && is_numeric($_POST['friendcode'])) {
