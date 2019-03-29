@@ -125,9 +125,26 @@ li {
 }
 
 /* Options */
-.optbox {
-	width: 250px;
+.opt_tbl {
+	border-collapse: collapse;
+	border-spacing: 0px;
+	width: 100%;
+}
+.opt_tbl tr {
+	border: 2px solid black;
+}
+.opt_tbl td {
+	padding: 5px;
+}
+.opt_tbl .a {
+	font-weight: bold;
 	text-align: center;
+}
+.opt_tbl .b {
+	text-align: center;
+}
+.opt_tbl .c {
+	font-style: italic;
 }
 
 /* Debug Table */
