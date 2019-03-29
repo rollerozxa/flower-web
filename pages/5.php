@@ -23,7 +23,7 @@ Max tickets per day: 10,000. If you try to buy more, it will simply stop at the 
 		<td>+6 hours of giga!</td>
 	</tr><tr style="color:#6A5ACD">
 		<td>1 / 120,000</td>
-		<td>3 hours of time warp!</td>
+		<td>3 hours of time jump!</td>
 	</tr><tr>
 		<td>1 / 100,000,000</td>
 		<td><?=rainbow_text('Magic seed!') ?></td>
