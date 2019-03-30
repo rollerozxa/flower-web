@@ -1,10 +1,10 @@
 <p class="title">Items</p>
 <div style="background-color:#ccffcc" class="box">
-	<b>Seed income: $<span class=seedc><?php echo number_format($userdata['seedincome'],2) ?></span> per hour</b>
+	<b>Seed income: $<span class=seedc><?=number_format($userdata['seedincome'],2) ?></span> per hour</b>
 	<table class="fullwidth">
 		<?php /* Due to galaxy bonus, it costs half as much (original: 100* per 1/hr) */ ?>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?php echo $userdata['seedincome'] * 5 ?> stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?php echo $userdata['seedincome'] * 50 ?> stars</td></tr>
+		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?=$userdata['seedincome'] * 5 ?> stars</td></tr>
+		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?=$userdata['seedincome'] * 50 ?> stars</td></tr>
 	</table>
 	<b id="blink" style="display:block;font-size:24pt;text-align:center;letter-spacing:3px;color:red">50% OFF!</b>
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
@@ -45,17 +45,17 @@
 	<li><a href="<?=alink(1,'buysun',1000000) ?>">Buy 1,000,000 hours more sun *2000000 stars</a></li>
 	<li>(Sun overdose stretches the current day longer, so that your items don't get used up until the sun goes down.)</li>
 </ul>
-<span class="title">Auto Water</span> (<?php echo $userdata['autowater']; ?>)
+<span class="title">Auto Water</span> (<?=$userdata['autowater'] ?>)
 <ul>
 	<?=itemlist(1,'buyautowater',[1,5,15],$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Auto water will keep your plant moist until the sun goes down.)</li>
 </ul>
-<span class="title">Fertilizer</span> (<?php echo $userdata['fertilizer']; ?>)
+<span class="title">Fertilizer</span> (<?=$userdata['fertilizer'] ?>)
 <ul>
 	<?=itemlist(1,'buyfertilizer',[1,5,15],$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Fertilizer makes your flower grow 3x as fast until the sun goes down.)</li>
 </ul>
-<span class="title">Super Fertilizer</span> (<?php echo $userdata['superfertilizer']; ?>)
+<span class="title">Super Fertilizer</span> (<?=$userdata['superfertilizer'] ?>)
 <ul>
 	<?=itemlist(1,'buysuperfertilizer',[1,5,15],$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
 	<li>(Super fertilizer makes your flower grow 5x as fast until the sun goes down.)</li>

@@ -43,9 +43,9 @@ while ($record = $query->fetch()) {
 	}
 	?>
 	<tr>
-		<td class="tbl<?php echo $bg ?>">
+		<td class="tbl<?=$bg ?>">
 			<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
-			<strong style="color:#<?= powerlevelcolor($record['powerlevel']) ?>"><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
+			<strong style="color:#<?= powerlevelcolor($record['powerlevel']) ?>"><?=IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?=$record['message'] ?> <br> 
 			<font color="maroon"><em>(<?=$time ?> ago)</em></font>
 			<?php if ($userdata['powerlevel'] > 1) { ?>
 			<span style="float:right">

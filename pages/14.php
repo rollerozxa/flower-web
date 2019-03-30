@@ -5,7 +5,7 @@ Change nickname to:<br>
 	<input type="submit" value="Change">
 </form>
 <hr>
-(Current flag: <img src="flags/<?php echo $userdata['country'] ?>.png">) 
+(Current flag: <img src="flags/<?=$userdata['country'] ?>.png">) 
 Change flag:<br>
 <?php
 // Order countries in alphabetical order (a la the in-game change flag system)

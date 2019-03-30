@@ -1,6 +1,6 @@
 <p class="title">Stars Exchange</p>
-<b>Seeds: <span class="seedc">$<?php echo number_format($userdata['seeds'],2) ?></span></b><br>
-<b>Stars: <span class="starc">*<?php echo number_format($userdata['stars'],2) ?></span></b><br>
+<b>Seeds: <span class="seedc">$<?=number_format($userdata['seeds'],2) ?></span></b><br>
+<b>Stars: <span class="starc">*<?=number_format($userdata['stars'],2) ?></span></b><br>
 
 <div class="box inline Spadding" style="background-color:#ffcccc;width:270px;height:200px;">
 	<h3>Place BUY <span class="starc">Stars</span> order with <span class="seedc">Seeds</span>.</h3>

@@ -92,39 +92,39 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<!--(390 min until next save)-->
 		<?=($urgentmessage != "" ? '<span class="urgent">Urgent message - ' . $urgentmessage . '</span><br><br>' : '') ?>
 		<?=(isset($headermsg) ? $headermsg : '') ?>
-		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?php echo $galaxyspecial ?> **<br><?php echo $statustext ?></div>
-		<span class="title"><font size="16"><?php echo get_page_title($show); ?></font></span>
+		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?=$galaxyspecial ?> **<br><?=$statustext ?></div>
+		<span class="title"><font size="16"><?=get_page_title($show) ?></font></span>
 		<div class="box outer">
 			<table class="fsbox" style="width:100%">
 				<tr>
 					<td colspan=2>
-						<img src="flags/<?=$userdata['country']?>.png">
+						<img src="flags/<?=$userdata['country'] ?>.png">
 						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
-							<img id="flowerimg" src="img/<?php echo $gid; ?>Icon.png" width=24>
+							<img id="flowerimg" src="img/<?=$gid ?>Icon.png" width=24>
 						</a>
-						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?php echo $userdata['username'] ?></strong>
+						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?=$userdata['username'] ?></strong>
 						<span style="display:inline-block;margin-top:0.21em;">
 						<?=formatheight($userdata['height']) ?> (cm)
 						</span>
 					</td>
 				</tr>
 				<tr>
-					<td class="fs_seeds">Seeds: <?php echo ($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
-					<td class="fs_stars">Stars: <?php echo ($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
+					<td class="fs_seeds">Seeds: <?=($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
+					<td class="fs_stars">Stars: <?=($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
 				</tr>
 				<?php if ($userdata['PGM']) { ?>
-				<tr><td class="fs_pgm" colspan=2>PGM: <?php echo $userdata['PGM'] ?></td></tr>
+				<tr><td class="fs_pgm" colspan=2>PGM: <?=$userdata['PGM'] ?></td></tr>
 				<?php } ?>
 				<tr>
-					<td class="fs_water">Water: <?php echo number_format($userdata['water'],2) ?> hours</td>
-					<td class="fs_sun">Sun: <?php echo number_format($userdata['sun'],2) ?> hours</td>
+					<td class="fs_water">Water: <?=number_format($userdata['water'],2) ?> hours</td>
+					<td class="fs_sun">Sun: <?=number_format($userdata['sun'],2) ?> hours</td>
 				</tr>
 				<tr>
-					<td class="fs_giga">Giga: <?php echo number_format($userdata['giga'],2) ?> hours</td>
-					<td class="fs_warp">Warp: <?php echo number_format($userdata['warp'],2) ?> hours</td>
+					<td class="fs_giga">Giga: <?=number_format($userdata['giga'],2) ?> hours</td>
+					<td class="fs_warp">Warp: <?=number_format($userdata['warp'],2) ?> hours</td>
 				</tr>
 				<tr>
-					<td colspan=2>Growth rate: <?php echo getflowergrowthrate(); ?> cm/hour </td>
+					<td colspan=2>Growth rate: <?=getflowergrowthrate() ?> cm/hour </td>
 				</tr>
 			</table>
 		</div>

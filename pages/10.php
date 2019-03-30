@@ -9,8 +9,8 @@ $compost = fetch("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1");
 <p>When the heap passes its goal it is reset to 0, and a new goal and prize are set for the new heap.</p>
 <p>The top <b>10</b> contributors to the heap will also win the prize.</p>
 
-<strong style="color:brown">Current heap status: <span class="seedc">$<?php echo number_format($compost['compostsize']) ?></span> / <span class="seedc">$<?php echo number_format($compost['compostmaxsize']) ?></span></strong><br>
-<span class="seedc">Next prize: <?php echo heapprize($compost['compostprize']); ?></span><br>
+<strong style="color:brown">Current heap status: <span class="seedc">$<?=number_format($compost['compostsize']) ?></span> / <span class="seedc">$<?=number_format($compost['compostmaxsize']) ?></span></strong><br>
+<span class="seedc">Next prize: <?=heapprize($compost['compostprize']) ?></span><br>
 <ul>
 	<?=itemlist(10,'heap',[100,1000,50000,500000,5000000,15000000,50000000],1,'Throw $%q seeds on the heap') ?>
 </ul>

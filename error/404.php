@@ -4,7 +4,7 @@ include('config.php');
 <html>
 	<head>
 		<title>Error</title>
-		<style><?php echo $conf_style; ?></style>
+		<style><?=$conf_style ?></style>
 	</head>
 	<body>
 		<?php if ($conf_header != '') echo $conf_header; ?>
