@@ -1,6 +1,6 @@
 <?php
-$db_query = SqlQuery("SELECT * FROM inbox WHERE recipient_id = '" . $userdata['userID'] . "' ORDER BY mailID DESC;");
-while ($record = mysqli_fetch_array($db_query)) {
+$query = query("SELECT * FROM inbox WHERE recipient_id = ? ORDER BY mailID DESC" , [$userdata['userID']]);
+while ($record = $query->fetch()) {
 	?><div class="box inbox">
 	<table style="width:100%;height:100%;">
 		<tr><td class="inboxcell1"><strong>From: <?=$record['sender_name']; ?></strong><p><?=$record['message'] ?></p></td></tr>

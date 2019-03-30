@@ -1,6 +1,6 @@
 <p class="title">Scores</p>
 <span style="color:green;font-weight:bold;">Tallest Daisies in the world!</span><br>
-<?=SqlQueryResult("SELECT COUNT(*) FROM user_$gid") ?> people growing a <?=$gid ?><br><br>
+<?=result("SELECT COUNT(*) FROM user_$gid") ?> people growing a <?=$gid ?><br><br>
 <table class="fullwidth">
 	<tr>
 		<th width=60px>Rank</th>
@@ -8,10 +8,10 @@
 		<th>Player</th>
 	</tr>
 <?php
-$db_query = SqlQuery("SELECT * FROM `user_$gid` JOIN user ON user_$gid.uid = user.uid ORDER BY `height` DESC");
+$query = query("SELECT * FROM user_$gid JOIN user ON user_$gid.uid = user.uid ORDER BY height DESC");
 $bg = 0;
 $count = 1;
-while ($record = mysqli_fetch_array($db_query)) {
+while ($record = $query->fetch()) {
 	?><tr class="tb<?=($record['uid'] == $uid ? 'h' : 'l' . $bg) ?>">
 		<td><img src="flags/<?=$record['country'] ?>.png"> <?=$count ?></td>
 		<td><?=formatheight($record['height']) ?> (cm)</td>

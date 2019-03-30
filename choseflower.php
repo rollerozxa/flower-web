@@ -1,7 +1,6 @@
 <?php
 include('function/function.php');
 include('config.php');
-include('mysql.php');
 
 if (isset($_GET['a'])) fs_error("App didn't register chosen flower.");
 

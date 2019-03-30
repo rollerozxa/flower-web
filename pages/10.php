@@ -1,5 +1,5 @@
 <?php
-$compost = SqlQueryFetchRow("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1;");
+$compost = fetch("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1");
 ?>
 <p class="title">Global Compost Heap</p>
 

@@ -7,9 +7,9 @@
 switch ($_REQUEST['a']) {
 	case 'deletemail':
 		if (is_numeric($quantity)) {
-			$maildata = SqlQueryFetchRow("SELECT * FROM inbox WHERE mailID = $quantity;");
+			$maildata = fetch("SELECT * FROM inbox WHERE mailID = ? LIMIT 1", [$quantity]);
 			if ($maildata['recipient_id'] == $userdata['userID']) {
-				SqlQuery("DELETE FROM inbox WHERE mailID = $quantity");
+				query("DELETE FROM inbox WHERE mailID = ?", [$quantity]);
 			} else {
 				header_msg("This isn't your mail!", "ff7777");
 			}

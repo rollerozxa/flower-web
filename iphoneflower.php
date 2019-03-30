@@ -6,7 +6,6 @@ $start = microtime(true);
 
 include('function/function.php');
 include('config.php');
-include('mysql.php');
 include('pages/title.php');
 
 if (!isset($_GET['uid'])) fs_error('Invalid UID.');
@@ -39,17 +38,16 @@ $timedifference = microtime(true) - $userdata['lastview'];
 
 // Give seed income.
 $seedearnamount = $timedifference * ($userdata['seedincome'] / 216000);
-SqlQuery("UPDATE `user` SET `seeds` = '" . ($userdata['seeds'] + $seedearnamount) . "' WHERE `user`.`uid` = '$uid';");
+query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] + $seedearnamount), $uid]);
 
 // Grow the flower!
 $heightgrowthamount = $timedifference * (getflowergrowthrate(false) / 216000);
-SqlQuery("UPDATE `user_$gid` SET `height` = height + $heightgrowthamount WHERE `user_$gid`.`uid` = '$uid'");
+query("UPDATE user_$gid SET height = ? WHERE uid = ?", [$userdata['height'] + $heightgrowthamount, $uid]);
 
 // Deplete resources.
-SqlQuery("UPDATE `user_$gid` SET `water` = water - ($timedifference / 216000),
-		`sun` = sun - ($timedifference / 216000) WHERE `user_$gid`.`uid` = '$uid'");
+query("UPDATE user_$gid SET water = water - ?, sun = sun - ? WHERE uid = ?", [($timedifference / 216000), ($timedifference / 216000), $uid]);
 
-SqlQuery("UPDATE `user` SET `lastview` = '" . microtime(true) . "' WHERE `user`.`uid` = '$uid';");
+query("UPDATE user SET lastview = ? WHERE uid = ?", [microtime(true), $uid]);
 update_userdata();
 
 if (isset($_REQUEST['a'])) include('pages/a.php');

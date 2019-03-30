@@ -9,14 +9,7 @@
  * @param int $recipient_id Optional: User ID of the sender.
  */
 function send_mail($recipient_id,$inbox_message,$sender_name,$sender_id = 'dead410734') {
-	global $mysqli;
-
-	$recipient_id = mysqli_real_escape_string($mysqli,$recipient_id);
-	$inbox_message = mysqli_real_escape_string($mysqli,$inbox_message);
-	$sender_name = mysqli_real_escape_string($mysqli,$sender_name);
-	$sender_id = mysqli_real_escape_string($mysqli,$sender_id);
-
-	SqlQuery("INSERT INTO `inbox` (`recipient_id`, `sender_id`, `sender_name`, `message`) VALUES ('$recipient_id', '$sender_id', '$sender_name', '$inbox_message');");
+	query("INSERT INTO inbox (recipient_id, sender_id, sender_name, message) VALUES (?,?,?,?)", [$recipient_id, $sender_id, $sender_name, $inbox_message]);
 }
 
 /**

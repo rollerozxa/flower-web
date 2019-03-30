@@ -8,10 +8,10 @@
 function update_userdata($chooseflower = false) {
 	if ($chooseflower) {
 		global $uid, $userdata;
-		$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
+		$userdata = fetch("SELECT * FROM user WHERE uid = ? LIMIT 1", [$uid]);
 	} else {
 		global $uid, $gid, $userdata;
-		$userdata = SqlQueryFetchRow("SELECT * FROM user JOIN user_$gid ON user.uid = user_$gid.uid WHERE user.uid = '$uid'");
+		$userdata = fetch("SELECT * FROM user JOIN user_$gid ON user.uid = user_$gid.uid WHERE user.uid = ? LIMIT 1", [$uid]);
 	}
 }
 

@@ -1,12 +1,13 @@
 <?php
-include('../mysql.php');
+include('../function/mysql.php');
 include('../config.php');
 
-$uid = mysqli_real_escape_string($mysqli, (isset($_GET['uid']) ? $_GET['uid'] : null));
-if ($uid == null) {
+$uid = (isset($_GET['uid']) ? $_GET['uid'] : null);
+
+if (!isset($uid)) {
 	echo '<form><select name="uid">';
-	$db_query = SqlQuery("SELECT * FROM user");
-	while ($record = mysqli_fetch_array($db_query)) {
+	$query = query("SELECT * FROM user");
+	while ($record = $query->fetch()) {
 		echo '<option value="' . $record['uid'] . '">' . $record['username'] . '</option>';
 	}
 	echo '</select><input type="submit" value="Submit"></form>';
@@ -66,7 +67,7 @@ $tbl_flowerinfo = array(
 	'nevershrink'
 );
 
-$userdata = SqlQueryFetchRow("SELECT * FROM user WHERE uid = '$uid'");
+$userdata = fetch("SELECT * FROM user WHERE uid = ?", [$uid]);
 if (!isset($userdata['userID'])) die('Invalid user.');
 
 echo '<hr><h1>Main User Info:</h1><table><tr><th>Key</th><th>Value</th></tr>';
@@ -80,7 +81,7 @@ echo '</table>';
 
 foreach ($flowers as $flower) {
 	if ($userdata['has_' . strtolower($flower)]) {
-		$userflowerdata[$flower] = SqlQueryFetchRow("SELECT * FROM user_" . $flower . " WHERE uid = '$uid'");
+		$userflowerdata[$flower] = fetch("SELECT * FROM user_$flower WHERE uid = ?", [$uid]);
 	} else {
 		$userflowerdata[$flower] = null;
 	}
@@ -109,8 +110,8 @@ foreach ($tbl_flowerinfo as $tableline) {
 echo '</table>';
 
 echo '<hr><h1>Chatterbox posts:</h1><table><tr><th>Message</th><th>Time</th></tr>';
-$db_query = SqlQuery("SELECT * FROM chat WHERE userID = " . $userdata['userID']);
-while ($record = mysqli_fetch_array($db_query)) {
+$query = query("SELECT * FROM chat WHERE userID = " . $userdata['userID']);
+while ($record = $query->fetch()) {
 	echo '<tr><td>'.$record['message'].'</td><td>'.date('Y-m-d H:i:s',$record['time']).'</td></tr>';
 }
 echo '</table>';

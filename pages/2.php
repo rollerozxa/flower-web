@@ -2,21 +2,19 @@
 <hr>
 <table class="fullwidth">
 <?php
-$db_query = SqlQuery("SELECT * FROM chat");
+$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID");
 $bg = 0;
-while ($record = mysqli_fetch_array($db_query)) {
-	$msguserdata = SqlQueryFetchRow('SELECT * FROM user WHERE userID="' . $record['userID'] . '"');
-	
+while ($record = $query->fetch()) {
 	$commandtext = chat_command();
 	if ($commandtext != null) {
 		$record['message'] = $commandtext;
 	}
-	
-	if ($msguserdata['powerlevel'] > 1) {
+
+	if ($record['powerlevel'] > 1) {
 		$record['message'] = preg_replace("'\[url=(.*?)\](.*?)\[/url\]'si", '<a href="\\1">\\2</a>', $record['message']);
 	}
 	
-	if ($msguserdata['powerlevel'] == 4)
+	if ($record['powerlevel'] == 4)
 		$flower = 'Admin.png';
 	else
 		$flower = $record['gid'] . 'Icon.png';
@@ -46,8 +44,8 @@ while ($record = mysqli_fetch_array($db_query)) {
 	?>
 	<tr>
 		<td class="tbl<?php echo $bg ?>">
-			<img src="flags/<?=$msguserdata['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
-			<strong style="color:#<?= powerlevelcolor($msguserdata['powerlevel']) ?>"><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
+			<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
+			<strong style="color:#<?= powerlevelcolor($record['powerlevel']) ?>"><?php echo IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?php echo $record['message']; ?> <br> 
 			<font color="maroon"><em>(<?=$time ?> ago)</em></font>
 			<?php if ($userdata['powerlevel'] > 1) { ?>
 			<span style="float:right">
