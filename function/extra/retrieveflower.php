@@ -1,11 +1,11 @@
 <?php
 
 function retrieve_advice() {
-	$advices = array(
+	$advices = [
 	"There's a button to disable this, you know?",
 	"You won't even get anything from this!",
 	"Please disable advices.",
-	"Turn off advices. Now.");
+	"Turn off advices. Now."];
 
 	$advice = $advices[array_rand($advices)];
 

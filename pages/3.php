@@ -1,15 +1,15 @@
 <?php
-$friends = array();
+$friends = [];
 
 $db_query = query("SELECT * FROM friend_connections WHERE friender_userid = ?", [$userdata['userID']]);
 while ($record = $db_query->fetch()) {
 	$friendeduserdata = fetch("SELECT * FROM user WHERE userID = ?", [$record['friended_userid']]);
-	$friends[] = array('connection_id' => $record['connection_id'],'friended_userid' => $record['friended_userid'],'friended_name' => $friendeduserdata['username']);
+	$friends[] = ['connection_id' => $record['connection_id'],'friended_userid' => $record['friended_userid'],'friended_name' => $friendeduserdata['username']];
 }
 $db_query = query("SELECT * FROM friend_connections WHERE friended_userid = ?", [$userdata['userID']]);
 while ($record = $db_query->fetch()) {
 	$friendeduserdata = fetch("SELECT * FROM user WHERE userID = ?", [$record['friender_userid']]);
-	$friends[] = array('connection_id' => $record['connection_id'],'friended_userid' => $record['friender_userid'],'friended_name' => $friendeduserdata['username']);
+	$friends[] = ['connection_id' => $record['connection_id'],'friended_userid' => $record['friender_userid'],'friended_name' => $friendeduserdata['username']];
 }
 
 usort($friends, function($a, $b) { return strcmp(strtolower($a["friended_name"]), strtolower($b["friended_name"])); });

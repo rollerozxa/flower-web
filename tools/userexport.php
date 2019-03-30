@@ -34,7 +34,7 @@ $style = str_replace(' ','',$style);
 $style = str_replace('&',' ',$style);
 echo $style;
 
-$tbl_userinfo = array(
+$tbl_userinfo = [
     'userID',
     'uid',
     'username',
@@ -51,8 +51,8 @@ $tbl_userinfo = array(
 	'has_iris',
 	'has_orchid',
 	'has_sunflower'
-);
-$tbl_flowerinfo = array(
+];
+$tbl_flowerinfo = [
     'flowerID',
     'uid',
 	'height',
@@ -65,7 +65,7 @@ $tbl_flowerinfo = array(
 	'fertilizer',
 	'superfertilizer',
 	'nevershrink'
-);
+];
 
 $userdata = fetch("SELECT * FROM user WHERE uid = ?", [$uid]);
 if (!isset($userdata['userID'])) die('Invalid user.');

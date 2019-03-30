@@ -11,9 +11,9 @@ $conf_pagetitle = 'Error';
 $conf_header = '<img src="/img/gray/RoseIcon.png"><img src="/img/gray/DaisyIcon.png"><img src="/img/gray/IrisIcon.png"><img src="/img/gray/OrchidIcon.png"><img src="/img/gray/SunflowerIcon.png">';
 
 // List of footer links. Separate the URL and the name with an @ symbol.
-$conf_footerlinks = array(
+$conf_footerlinks = [
 	"/@Index Page"
-);
+];
 
 $conf_style = <<<HTML
 body {

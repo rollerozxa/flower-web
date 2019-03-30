@@ -4,7 +4,7 @@
 <p>You have <b>0</b> tickets for the next draw that takes place in 5hr 19min</p>
 Max tickets per day: 10,000. If you try to buy more, it will simply stop at the max.
 <ul>
-	<?=itemlist(5, 'buyseedtickets', array(100,1000,10000,250000,4000000,20000000,250000000), 15, 'Buy %q tickets for $%c seeds') ?>
+	<?=itemlist(5, 'buyseedtickets', [100,1000,10000,250000,4000000,20000000,250000000], 15, 'Buy %q tickets for $%c seeds') ?>
 </ul>
 <table class="oddstable">
 	<tr>

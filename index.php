@@ -80,13 +80,13 @@ foreach ($flowers as $gid) {
 	$bg = 0;
 	$count = 1;
 	while ($record = $query->fetch()) {
-		$leaderboard[$gid][] = array(
+		$leaderboard[$gid][] = [
 			'count' => $count,
 			'bg' => $bg,
 			'country' => $record['country'],
 			'height' => formatheight($record['height']),
 			'username' => $record['username']
-		);
+		];
 		$bg = ($bg == 0 ? 1 : 0);
 		$count++;
 	}

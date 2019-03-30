@@ -12,7 +12,7 @@ $compost = fetch("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1");
 <strong style="color:brown">Current heap status: <span class="seedc">$<?php echo number_format($compost['compostsize']) ?></span> / <span class="seedc">$<?php echo number_format($compost['compostmaxsize']) ?></span></strong><br>
 <span class="seedc">Next prize: <?php echo heapprize($compost['compostprize']); ?></span><br>
 <ul>
-	<?=itemlist(10,'heap',array(100,1000,50000,500000,5000000,15000000,50000000),1,'Throw $%q seeds on the heap') ?>
+	<?=itemlist(10,'heap',[100,1000,50000,500000,5000000,15000000,50000000],1,'Throw $%q seeds on the heap') ?>
 </ul>
 <span class="title">Top 10 contributors</span>
 <ul class="nobreak">

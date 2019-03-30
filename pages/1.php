@@ -47,17 +47,17 @@
 </ul>
 <span class="title">Auto Water</span> (<?php echo $userdata['autowater']; ?>)
 <ul>
-	<?=itemlist(1,'buyautowater',array(1,5,15),$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
+	<?=itemlist(1,'buyautowater',[1,5,15],$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Auto water will keep your plant moist until the sun goes down.)</li>
 </ul>
 <span class="title">Fertilizer</span> (<?php echo $userdata['fertilizer']; ?>)
 <ul>
-	<?=itemlist(1,'buyfertilizer',array(1,5,15),$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
+	<?=itemlist(1,'buyfertilizer',[1,5,15],$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Fertilizer makes your flower grow 3x as fast until the sun goes down.)</li>
 </ul>
 <span class="title">Super Fertilizer</span> (<?php echo $userdata['superfertilizer']; ?>)
 <ul>
-	<?=itemlist(1,'buysuperfertilizer',array(1,5,15),$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
+	<?=itemlist(1,'buysuperfertilizer',[1,5,15],$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
 	<li>(Super fertilizer makes your flower grow 5x as fast until the sun goes down.)</li>
 </ul>
 <span class="title">Time Warp</span>
@@ -87,7 +87,7 @@
 <div class="box" style="background-color:#ccffcc">
 	<b>Bulk items (Tops up ALL of your flowers!) <?=(bulksale() ? '<span style="color:red">(20% off!)</span>' : '') ?></b>
 	<ul>
-		<?=itemlist(12,'bulk',array(500,5000,50000,500000,5000000,50000000),getbulkprice(),'%q hours: *%c stars') ?>
+		<?=itemlist(12,'bulk',[500,5000,50000,500000,5000000,50000000],getbulkprice(),'%q hours: *%c stars') ?>
 		<li>(Bulk items give you X hours of water, sun, warp and giga for all of your flowers!)</li>
 	</ul>
 </div>
