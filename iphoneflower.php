@@ -93,7 +93,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<?=($urgentmessage != "" ? '<span class="urgent">Urgent message - ' . $urgentmessage . '</span><br><br>' : '') ?>
 		<?=(isset($headermsg) ? $headermsg : '') ?>
 		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?=$galaxyspecial ?> **<br><?=$statustext ?></div>
-		<span class="title"><font size="16"><?=get_page_title($show) ?></font></span>
+		<span class="title" style="font-size:36pt"><?=get_page_title($show) ?></span>
 		<div class="box outer">
 			<table class="fsbox" style="width:100%">
 				<tr>
