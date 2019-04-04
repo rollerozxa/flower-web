@@ -110,7 +110,7 @@ foreach ($tbl_flowerinfo as $tableline) {
 echo '</table>';
 
 echo '<hr><h1>Chatterbox posts:</h1><table><tr><th>Message</th><th>Time</th></tr>';
-$query = query("SELECT * FROM chat WHERE userID = " . $userdata['userID']);
+$query = query("SELECT * FROM chat WHERE userID = ?", [$userdata['userID']]);
 while ($record = $query->fetch()) {
 	echo '<tr><td>'.$record['message'].'</td><td>'.date('Y-m-d H:i:s',$record['time']).'</td></tr>';
 }
