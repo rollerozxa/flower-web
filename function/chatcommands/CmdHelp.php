@@ -2,5 +2,5 @@
 <ul class="nobreak">
 	<li>/brag - Show statistics.</li>
 	<li>/funfact - Show a fun fact (Same as those on the index page).</li>
-	<li>/soc - SOC.</li>
+	<li>/rainbow [message] - Make [message] colorful!</li>
 </ul>

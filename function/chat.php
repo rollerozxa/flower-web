@@ -10,10 +10,11 @@ function chat_command() {
 	global $msguserdata, $record, $userdata;
 
 	if (startsWith($record['message'], '/')) {
-		$commandname = str_replace('/', '', $record['message']);
-		if (file_exists('function/chatcommands/Cmd' . lcfirst($commandname) . '.php')) {
+		$commandname = explode(' ', str_replace('/', '', $record['message']), 2);
+		print_r($commandname);
+		if (file_exists('function/chatcommands/Cmd'.ucfirst($commandname[0]).'.php')) {
 			ob_start();
-			include 'function/chatcommands/Cmd' . lcfirst($commandname) . '.php';
+			include 'function/chatcommands/Cmd'.ucfirst($commandname[0]).'.php';
 			$commandmessage = ob_get_contents();
 			ob_end_clean();
 			return '<br>' . $commandmessage;
