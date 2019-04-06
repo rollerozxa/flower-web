@@ -12,7 +12,8 @@ $conf_header = '<img src="/img/gray/RoseIcon.png"><img src="/img/gray/DaisyIcon.
 
 // List of footer links. Separate the URL and the name with an @ symbol.
 $conf_footerlinks = [
-	"/@Index Page"
+	["/","Index Page"],
+	["javascript:window.history.back()","Go back"]
 ];
 
 $conf_style = <<<HTML
