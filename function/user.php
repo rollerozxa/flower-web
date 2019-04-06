@@ -1,18 +1,6 @@
 <?php
 
 /**
- * Turns a given ID into the user's username.
- * Keep in mind this function doesn't check that the ID exists, so please make sure it exists.
- *
- * @param int $id ID to check.
- * @return string the username of the ID.
- */
-function IDtoUsername($id) {
-	$temp = fetch("SELECT * FROM user WHERE userID = ?", [$id]);
-	return $temp['username'];
-}
-
-/**
  * Convert powerlevel integer into the color of the powerlevel.
  * 
  * @param int $powerlevel

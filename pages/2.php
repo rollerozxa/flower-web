@@ -2,59 +2,33 @@
 <hr>
 <table class="fullwidth">
 <?php
-$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID");
+$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID");
 $bg = 0;
 while ($record = $query->fetch()) {
-	$commandtext = chat_command();
-	if ($commandtext != null) {
+	if (chat_command() != null) {
 		$record['message'] = $commandtext;
 	}
 
-	if ($record['powerlevel'] > 1) {
-		$record['message'] = preg_replace("'\[url=(.*?)\](.*?)\[/url\]'si", '<a href="\\1">\\2</a>', $record['message']);
-	}
+	$record['message'] = chat_postcode($record['message'], $record['powerlevel']);
 	
 	if ($record['powerlevel'] == 4)
 		$flower = 'Admin.png';
 	else
 		$flower = $record['gid'] . 'Icon.png';
 	
-	$time = (time() - $record['time']);
-	if ($time < 60) {
-		$time = round($time,2) . ' seconds';
-	} else if ($time < (3600)) {
-		$time = $time / 60;
-		if (round($time,2) == 1)
-			$time = round($time,2) . ' minute';
-		else
-			$time = round($time,2) . ' minutes';
-	} else if ($time < (86400)) {
-		$time = $time / 3600;
-		if (round($time,2) == 1)
-			$time = round($time,2) . ' hour';
-		else
-			$time = round($time,2) . ' hours';
-	} else {
-		$time = $time / 86400;
-		if (round($time,2) == 1)
-			$time = round($time,2) . ' day';
-		else
-			$time = round($time,2) . ' days';
-	}
+	$time = chat_time(time() - $record['time']);
 	?>
-	<tr>
-		<td class="tbl<?=$bg ?>">
-			<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
-			<strong style="color:#<?= powerlevelcolor($record['powerlevel']) ?>"><?=IDtoUsername($record['userID']) ?></strong><!--(<font color=darkgold>* #1 *</font>)-->: <?=$record['message'] ?> <br> 
-			<font color="maroon"><em>(<?=$time ?> ago)</em></font>
-			<?php if ($userdata['powerlevel'] > 1) { ?>
-			<span style="float:right">
-				<a href="<?=pagelink(-1) ?>&messageid=<?=$record['ID'] ?>" style="text-decoration:none;transform: rotateZ(90deg);">&#9998;</a>
-				<a href="<?=alink(2,'chatdelet',$record['ID']) ?>" style="color:red;text-decoration:none">X</a>
-			</span>
-			<?php } ?>
-		</td>
-	</tr>
+	<tr><td class="tbl<?=$bg ?>">
+		<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
+		<strong style="color:#<?= powerlevelcolor($record['powerlevel']) ?>"><?=$record['username'] ?></strong>: <?=$record['message'] ?> <br> 
+		<span style="color:maroon"><em>(<?=$time ?> ago)</em></span>
+		<?php if ($userdata['powerlevel'] > 1) { ?>
+		<span style="float:right">
+			<a href="<?=pagelink(-1) ?>&messageid=<?=$record['ID'] ?>" style="text-decoration:none;transform: rotateZ(90deg);">&#9998;</a>
+			<a href="<?=alink(2,'chatdelet',$record['ID']) ?>" style="color:red;text-decoration:none">X</a>
+		</span>
+		<?php } ?>
+	</td></tr>
 	<?php
 	$bg = ($bg == 0 ? 1 : 0);
 }
