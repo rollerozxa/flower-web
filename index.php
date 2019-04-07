@@ -76,7 +76,7 @@ foreach ($flowers as $flower) {
 $flowers_count = fetch($flowers_count_query);
 
 foreach ($flowers as $gid) {
-	$query = query("SELECT * FROM user_$gid JOIN user ON user_$gid.uid = user.uid ORDER BY height DESC");
+	$query = query("SELECT * FROM user_$gid JOIN user ON user_$gid.uid = user.uid ORDER BY height DESC LIMIT 10");
 	$bg = 0;
 	$count = 1;
 	while ($record = $query->fetch()) {
@@ -93,7 +93,7 @@ foreach ($flowers as $gid) {
 }
 ?>
 		<div class="box outer c_mainbox" style="text-align:left">
-			<span class="title">High Scores</span>
+			<span class="title">High Scores<br><span class="flowertitle" style="font-size:15pt">Top 10 tallest flowers in the world!</span></span>
 			<h4>Total Users: <span style="color:green"><?=result("SELECT COUNT(*) FROM user") ?></span></h4>
 			<?php foreach ($flowers as $gid) { ?>
 				<span class="flowertitle">Tallest <?=$flowers_plural[$flowers_id[$gid]] ?> in the world!</span><br>
