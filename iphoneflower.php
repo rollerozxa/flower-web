@@ -63,6 +63,9 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<?php if ($userdata['yellow_background']) { ?>
 		<style>body{background-color:#F8ECC2}</style>
 		<?php } ?>
+		<?php if ($userdata['nostalgia']) { ?>
+		<link rel="stylesheet" type="text/css" href="assets/nostalgia.css">
+		<?php } ?>
 		<!-- ****** faviconit.com favicons ****** -->
 		<link rel="shortcut icon" href="/assets/icons/favicon.ico?v=2">
 		<link rel="icon" sizes="16x16 32x32 64x64" href="/assets/icons/favicon.ico?v=2">

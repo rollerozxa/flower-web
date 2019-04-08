@@ -23,6 +23,13 @@
 			<input type="radio" name="zoom" id="zoom_yes" value="1"<?=($userdata['zoom'] == 1 ? ' checked' : '')?>> <label for="zoom_yes">Enabled</label>
 		</td>
 		<td class="c">This toggles the zoom menu which allows you to set a zoom level for the page.</td>
+	</tr><tr>
+		<td class="a">Nostalgia mode</td>
+		<td class="b">
+			<input type="radio" name="nostalg" id="nostalg_no" value="0"<?=($userdata['nostalgia'] == 0 ? ' checked' : '')?>> <label for="nostalg_no">Disabled</label>
+			<input type="radio" name="nostalg" id="nostalg_yes" value="1"<?=($userdata['nostalgia'] == 1 ? ' checked' : '')?>> <label for="nostalg_yes">Enabled</label>
+		</td>
+		<td class="c">Enable various tweaks to make the menu look more like the original.</td>
 	</tr>
 	<tr><td colspan=3 class="a"><input type="submit" value="Submit"></td></tr>
 </table></form>

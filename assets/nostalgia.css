@@ -1,0 +1,15 @@
+body {
+	max-width: 300px;
+}
+
+.fsbox td {
+	padding: 3px;
+}
+
+.box {
+	border: 3px solid black;
+}
+
+.menubar {
+	text-align: left !important;
+}
