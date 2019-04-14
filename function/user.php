@@ -8,7 +8,7 @@
  */
 function powerlevelcolor($powerlevel) {
 	switch ($powerlevel) {
-		case '0': return 'dedede';
+		case '0': return '888888';
 		case '1': return '000000';
 		case '2': return 'ab20ab';
 		case '3': return 'cc0000';

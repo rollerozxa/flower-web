@@ -89,6 +89,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<meta name="msapplication-config" content="/browserconfig.txt?v=2">
 		<!-- ****** faviconit.com favicons ****** -->
 		<!--<meta name="viewport" content="width=320" />-->
+		<meta name="format-detection" content="telephone=no">
 	</head>
 	<body>
 		<script src="assets/loaded.js"></script>
@@ -103,7 +104,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 					<td colspan=2>
 						<img src="flags/<?=$userdata['country'] ?>.png">
 						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
-							<img id="flowerimg" src="img/<?=$gid ?>Icon.png" width=24>
+							<img id="flowerimg" src="img/<?=($userdata['powerlevel'] == 0 ? 'gray/' : '')?><?=$gid ?>Icon.png" width=24>
 						</a>
 						<strong style="color:#<?= powerlevelcolor($userdata['powerlevel']) ?>"><?=$userdata['username'] ?></strong>
 						<span style="display:inline-block;margin-top:0.21em;">

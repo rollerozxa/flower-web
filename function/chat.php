@@ -62,6 +62,11 @@ function chat_time($time) {
  * @return string Outputted post message.
  */
 function chat_postcode($message, $powerlevel) {
+	// If banned, show "I was bad". Classic flower games!
+	if ($powerlevel == 0) {
+		return "I was bad";
+	}
+
 	// Haha, I get full access to HTML in my posts. >:)
 	if ($powerlevel != 4) {
 		$message = htmlspecialchars($message);

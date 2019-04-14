@@ -5,14 +5,16 @@
 $query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID");
 $bg = 0;
 while ($record = $query->fetch()) {
-	if (chat_command() != null) {
+	$record['message'] = chat_postcode($record['message'], $record['powerlevel']);
+
+	if ($commandtext = chat_command()) {
 		$record['message'] = $commandtext;
 	}
-
-	$record['message'] = chat_postcode($record['message'], $record['powerlevel']);
 	
 	if ($record['powerlevel'] == 4)
 		$flower = 'Admin.png';
+	else if ($record['powerlevel'] == 0)
+		$flower = 'gray/' . $record['gid'] . 'Icon.png';
 	else
 		$flower = $record['gid'] . 'Icon.png';
 	
