@@ -6,7 +6,7 @@
 
 switch ($_REQUEST['a']) {
 	case 'chat':
-		if (isset($_POST['text'])) {
+		if (isset($_POST['text']) && $userdata['powerlevel'] >= 1) {
 			query("INSERT INTO chat (userID, message, gid, time) VALUES (?,?,?,?)", [$userdata['userID'], $_POST['text'], $gid, time()]);
 		}
 	break;

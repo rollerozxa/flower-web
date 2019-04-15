@@ -36,11 +36,17 @@ while ($record = $query->fetch()) {
 }
 ?>
 </table>
+
+<?php if ($userdata['powerlevel'] >= 1) { ?>
 <form method="post">
-<input type="hidden" name="a" value="chat">
-<input type="text" name="text" maxlength="2000" style="width:calc(100% - 52px)"></input>
-<input type="submit" value="Post"></input>
-</form><br/>
+	<input type="hidden" name="a" value="chat">
+	<input type="text" name="text" maxlength="2000" style="width:calc(100% - 52px)"></input>
+	<input type="submit" value="Post"></input>
+</form>
+<?php } else { ?>
+<p style="font-weight:bold">You've been banned.</p>
+<?php } ?>
+
 <?php if ($userdata['powerlevel'] == 4) { ?>
 <div class="box" style="text-align:center;background-color:#ff5555">
 	<span class="title">Nuke chat table **DANGEROUS!**</span>
