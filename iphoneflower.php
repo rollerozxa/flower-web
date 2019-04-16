@@ -17,10 +17,15 @@ $show = (isset($_GET['show']) ? $_GET['show'] : 1);
 $ver = (isset($_GET['ver']) ? $_GET['ver'] : 999);
 $menupage = (isset($_GET['justshortcuts']) ? true : null);
 
+// Special pages
+if ($show == 18) fs_error("Buying stars aren't supported.<br>Sorry, but I don't want your money!");
 if ($show == 999) header('Location: flowerschool.php');
 
+// Check $gid. This makes it safe to be used in SQL queries.
 if (!in_array($gid, $flowers)) fs_error('Unknown flower.');
-if ($show == 18) fs_error("Buying stars aren't supported.<br>Sorry, but I don't want your money!");
+
+// Blacklisted UIDs
+if ($uid == 0000000000000000) fs_error('Blacklisted UID.<br>Reason: Android SDK Emulator');
 
 update_userdata();
 
