@@ -21,7 +21,7 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 			}
 			?>
 		</div>
-		<div class="box" style="background-color:#000000;color:white;text-align:center;margin:auto;"> 
+		<div class="box zoom"> 
 			Zoom:
 			<button onclick="zoom(1.0)">100%</button>
 			<button onclick="zoom(1.5)">150%</button>

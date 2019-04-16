@@ -163,7 +163,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
 		</div>
 		<?php if ($userdata['zoom']) { ?>
-		<div class="box" style="margin:auto;background-color:black;color:white;">
+		<div class="box zoom">
 			Zoom:
 			<button onclick="zoom(1.0)">100%</button>
 			<button onclick="zoom(1.5)">150%</button>

@@ -179,3 +179,12 @@ table.debugtable {
 	padding: 2px;
 	width: 100%;
 }
+
+/* Zoom menu */
+.zoom {
+	background-color: #000000;
+	color: white;
+	margin: auto;
+	text-align: center;
+}
+
