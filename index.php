@@ -5,7 +5,7 @@ include('function/misc.php');
 include('function/mysql.php');
 include('function/rainbow.php');
 include('config.php');
-?>
+?><!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -45,9 +45,9 @@ include('config.php');
 			<h2>The Origami Flower games are finally back, and it's better than ever!</h2>
 			<p>The Origami Flower games were a series of interconnected games that would all link up into a flower growing MMO. Now it's back in action again, with a custom server! </p>
 			<p>To connect, you need to download the new flower app. Don't worry - there are no viruses and as a bonus, it's a lot smaller as Tapjoy and billing code has been removed.</p>
-			<div class="box center">
+			<div class="box">
 				<span class="downloadtitle">Downloads!</span>
-				<table><?php foreach ($apps as $app) { ?>
+				<table class="downloads"><?php foreach ($apps as $app) { ?>
 					<tr>
 						<td><img src="<?=$app['image'] ?>" class="downloadicon"></td>
 						<td>
@@ -94,11 +94,11 @@ foreach ($flowers as $gid) {
 ?>
 		<div class="box outer c_mainbox" style="text-align:left">
 			<span class="title">High Scores<br><span class="flowertitle" style="font-size:15pt">Top 10 tallest flowers in the world!</span></span>
-			<h4>Total Users: <span style="color:green"><?=result("SELECT COUNT(*) FROM user") ?></span></h4>
+			<h4>Total Users: <span class="flowertitle"><?=result("SELECT COUNT(*) FROM user") ?></span></h4>
 			<?php foreach ($flowers as $gid) { ?>
 				<span class="flowertitle">Tallest <?=$flowers_plural[$flowers_id[$gid]] ?> in the world!</span><br>
 				<?=$flowers_count[$gid] ?> people growing a <?=$gid ?>.
-				<table class="fullwidth"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
+				<table class="fullwidth scores"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
 				<?php foreach ($leaderboard[$gid] as $boardrow) { ?>
 					<tr class="tbl<?=$boardrow['bg'] ?>">
 						<td><img src="flags/<?=$boardrow['country'] ?>.png"> <?=$boardrow['count'] ?></td>

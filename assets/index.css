@@ -15,7 +15,7 @@ body {
 .center {
 	margin: auto;
 }
-.top > img, .flower {
+.top > img {
 	border: 1px solid black;
 	margin: 2px;
 	width: 86px;
@@ -24,13 +24,15 @@ body {
 	text-align: center;
 	display: block;
 }
+.downloads {
+	text-align: left;
+}
 .title {
 	border-bottom: 1px solid black;
 	display: block;
 	font-size: 24pt;
 	font-weight: bold;
-	margin-bottom: 5px;
-	text-align:center;
+	text-align: center;
 }
 .downloadtitle {
 	display: block;
@@ -76,6 +78,9 @@ td {
 }
 .fullwidth {
 	width: 100%;
+}
+.scores th {
+	text-align: center;
 }
 .tbl0 { background-color: #eeeeee; }
 .tbl1 { background-color: #ffffff; }
