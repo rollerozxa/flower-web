@@ -10,13 +10,9 @@
  */
 function alink($show,$a = null,$quantity = null) {
 	global $uid, $gid;
-	$out = "?uid=$uid&gid=$gid&show=$show";
-	if ($a) {
-		$out .= "&a=$a";
-	}
-	if ($quantity != null) {
-		$out .= "&quantity=$quantity";
-	}
+	$out = pagelink($show);
+	if ($a) $out .= "&a=$a";
+	if ($quantity) $out .= "&quantity=$quantity";
 	return $out;
 }
 
@@ -58,11 +54,10 @@ function itemlist($show,$a,$quantities,$costperone,$text,$format = ITEMLIST_NORM
  * Return a link to a menu page.
  *
  * @param $show int Page
- * @return The link.
+ * @return string The link.
  */
 function pagelink($show) {
-	global $uid, $gid;
-	return "?uid=$uid&gid=$gid&show=$show";
+	return pagebase()."&show=$show";
 }
 
 /**
