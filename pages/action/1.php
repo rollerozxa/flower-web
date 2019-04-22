@@ -14,7 +14,7 @@ switch ($_REQUEST['a']) {
 		// Check whether you have enough stars.
 		if ($cost <= $userdata['stars']) {
 			query("UPDATE user SET stars = ?, seedincome = ? WHERE uid = ?", [($userdata['stars'] - $cost), ($userdata['seedincome'] + $quantity / 10), $uid]);
-			header_msg("Bought $quantity for $cost stars!");
+			header_msg("Bought ".number_format($quantity / 10,1)."$/hr for $cost stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
 		}
