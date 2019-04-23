@@ -182,7 +182,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			}
 		}
 		$rendertime = microtime(true) - $start;
-		echo sprintf("<br>Page rendered in %1.3f seconds (%dKB of memory used)", $rendertime, memory_get_usage(false) / 1024);
+		printf("<br>Page rendered in %1.3f seconds (%dKB of memory used)", $rendertime, memory_get_usage(false) / 1024);
 		?>
 		</div>
 	</body>
