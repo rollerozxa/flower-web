@@ -93,7 +93,6 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<meta name="msapplication-TileImage" content="/assets/icons/favicon-144.png?v=2">
 		<meta name="msapplication-config" content="/browserconfig.txt?v=2">
 		<!-- ****** faviconit.com favicons ****** -->
-		<!--<meta name="viewport" content="width=320" />-->
 		<meta name="format-detection" content="telephone=no">
 	</head>
 	<body>
