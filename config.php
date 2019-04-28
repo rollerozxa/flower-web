@@ -43,15 +43,6 @@ $autowater_cost = 100;
 $fertilizer_cost = 200;
 $superfertilizer_cost = 20;
 
-$seedsdraw_rewards = [
-	['odds' => 1000, 'id' => 'water', 'desc' => '+6 hours of water!'],
-	['odds' => 2000, 'id' => 'sun', 'desc' => '+6 hours of sun!'],
-	['odds' => 6000, 'id' => 'warp', 'desc' => '+6 hours of warp!'],
-	['odds' => 50000, 'id' => 'giga', 'desc' => '+6 hours of giga!'],
-	['odds' => 120000, 'id' => 'jump', 'desc' => '+6 hours of time jump!'],
-	['odds' => 100000000, 'id' => 'mseed', 'desc' => 'Magic seed!']
-];
-
 $debug = false;
 
 $funfacts = [
