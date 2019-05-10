@@ -177,7 +177,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 				echo '</pre></td><td>$userdata:<pre>'; print_r($userdata);
 				echo '</pre></td></tr></table>';
 			} else {
-				echo '<a href="' . $_SERVER['REQUEST_URI'] . '&debug">Show debug info</a>';
+				echo '<a href="'.$_SERVER['REQUEST_URI'].'&debug">Show debug info</a>';
 			}
 		}
 		$rendertime = microtime(true) - $start;
