@@ -73,6 +73,12 @@ li {
 	padding: 5px;
 }
 
+/* User link */
+a.user {
+	font-weight: bold;
+	text-decoration: none;
+}
+
 /* Friends */
 .friends td {
 	padding:3px;
@@ -123,6 +129,42 @@ li {
 	text-decoration: none;
 	color: white;
 }
+
+/* User page */
+.user_flowbox {
+	border: 2px solid black;
+	margin: auto;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: block;
+	width: 170px;
+}
+.user_flowbox img {
+	padding: 5px;
+}
+
+/* Nice button */
+.nicebtn {
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	border: 2px outset black;
+	border-radius: 5px;
+	text-decoration: none;
+	color: black;
+}
+.nicebtn:hover {
+	border: 2px inset black;
+}
+.nb_red { background-color: #eebbbb; }
+.nb_red:hover { background-color: #ddaaaa; }
+.nb_green { background-color: #bbeebb; }
+.nb_green:hover { background-color: #aaddaa; }
+
+.nb_blue { background-color: #bbbbee; }
+.nb_blue:hover { background-color: #aaaadd; }
+
+
 
 /* Options */
 .opt_tbl {
@@ -187,4 +229,3 @@ table.debugtable {
 	margin: auto;
 	text-align: center;
 }
-

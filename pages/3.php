@@ -25,7 +25,10 @@ foreach ($friends as $friend_row) {
 	?><tr class="tbl<?=$bg ?>">
 		<td style="width:1px">#<?=$count ?></td>
 		<td><?=$friend_row['friended_name'] ?></td>
-		<td width=12><a href="<?=alink(3,'removefriend',$friend_row['connection_id']) ?>">Remove</a></td>
+		<td style="width:150px">
+			<a href="<?=pagelink(15)?>&id=<?=$friend_row['friended_userid']?>">Message</a> |
+			<a href="<?=alink(3,'removefriend',$friend_row['connection_id']) ?>">Remove</a>
+		</td>
 	</tr><?php
 	$bg = ($bg == 0 ? 1 : 0);
 	$count++;

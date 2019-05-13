@@ -17,6 +17,22 @@ function powerlevelcolor($powerlevel) {
 }
 
 /**
+ * Convert powerlevel integer into the name of the powerlevel.
+ *
+ * @param int $powerlevel
+ * @return string Powerlevel name
+ */
+function powerlevelname($powerlevel) {
+	switch ($powerlevel) {
+		case '0': return 'Banned';
+		case '1': return 'Normal User';
+		case '2': return 'Moderator';
+		case '3': return 'Administrator';
+		case '4': return 'Root Administrator';
+	}
+}
+
+/**
  * Create a new unique friend code for new users.
  *
  * @return int Generated friend code.
