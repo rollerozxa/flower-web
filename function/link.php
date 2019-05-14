@@ -9,7 +9,6 @@
  * @return string The link.
  */
 function alink($show,$a = null,$quantity = null) {
-	global $uid, $gid;
 	$out = pagelink($show);
 	if ($a) $out .= "&a=$a";
 	if ($quantity) $out .= "&quantity=$quantity";
