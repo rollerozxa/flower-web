@@ -34,6 +34,15 @@ switch ($_REQUEST['a']) {
 			header_msg("...Huh?", "ff7777");
 		}
 	break;
+	// This action is actually coming from page 15, but you get redirected to page 3-
+	case 'sendmessage':
+		if (!isset($_POST['recipient']) || !is_numeric($_POST['recipient'])) $error = true;
+		if (!isset($_POST['message'])) $error = true;
+
+		if (!isset($error)) {
+			send_mail($_POST['recipient'], $_POST['message'], 'Private message from '.$userdata['username'], $userdata['userID']);
+		}
+	break;
 }
 
 ?>
