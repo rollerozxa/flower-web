@@ -1,24 +1,24 @@
 <p class="title">Items</p>
 <div style="background-color:#ccffcc" class="box">
 	<b>Seed income: $<span class=seedc><?=number_format($userdata['seedincome'],2) ?></span> per hour</b>
-	<table class="fullwidth">
+	<table class="ttbl fullwidth">
 		<?php /* Due to galaxy bonus, it costs half as much (original: 100* per 1/hr) */ ?>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?=$userdata['seedincome'] * 5 ?> stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?=$userdata['seedincome'] * 50 ?> stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?=$userdata['seedincome'] * 5 ?> stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?=$userdata['seedincome'] * 50 ?> stars</td></tr>
 	</table>
 	<b id="blink" style="display:block;font-size:24pt;text-align:center;letter-spacing:3px;color:red">50% OFF!</b>
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
 </div><br>
 <div style="background-color:#ffffcc" class="box">
 	<b>Basic Growth Rate: <span style="color:purple"><?=number_format($userdata['basicgrowthrate'] * 0.36,2) ?>cm</span> per hour</b>
-	<table class="fullwidth">
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',1) ?>">Upgrade by 0.36cm/hr</a> *720 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',10) ?>">Upgrade by 3.60cm/hr</a> *7,200 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',100) ?>">Upgrade by 36.00cm/hr</a> *72,000 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',1000) ?>">Upgrade by 360.00cm/hr</a> *720,000 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',10000) ?>">Upgrade by 3,600.00cm/hr</a> *7,200,000 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',100000) ?>">Upgrade by 36,000.00cm/hr</a> *72,000,000 stars</td></tr>
-		<tr><td class=ffaaff><a href="<?=alink(1,'upgradebgr',1000000) ?>">Upgrade by 360,000.00cm/hr</a> *720,000,000 stars</td></tr>
+	<table class="ttbl fullwidth">
+		<tr><td><a href="<?=alink(1,'upgradebgr',1) ?>">Upgrade by 0.36cm/hr</a> *720 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',10) ?>">Upgrade by 3.60cm/hr</a> *7,200 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',100) ?>">Upgrade by 36.00cm/hr</a> *72,000 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',1000) ?>">Upgrade by 360.00cm/hr</a> *720,000 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',10000) ?>">Upgrade by 3,600.00cm/hr</a> *7,200,000 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',100000) ?>">Upgrade by 36,000.00cm/hr</a> *72,000,000 stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradebgr',1000000) ?>">Upgrade by 360,000.00cm/hr</a> *720,000,000 stars</td></tr>
 	</table>
 </div>
 <span class="title">Water Overdose</span>

@@ -1,39 +1,26 @@
 body {
 	margin-bottom: 2em;
-	/*max-width: 400px;*/
-	/*background-color:#F8ECC2;*/
 }
 
 .fsbox td {
 	padding: 0.2em;
 }
-.fs_seeds	{ background-color: #ccffcc; }
-.fs_stars	{ background-color: #ccccff; }
-.fs_pgm		{ background-color: #ff5555; }
-.fs_water	{ background-color: #8888ff; }
-.fs_sun		{ background-color: #ffff88; }
-.fs_giga	{ background-color: #ffc0cb; }
-.fs_warp	{ background-color: #808080; }
+.fs_seeds	{ background-color: #ccffcc }
+.fs_stars	{ background-color: #ccccff }
+.fs_pgm		{ background-color: #ff5555 }
+.fs_water	{ background-color: #8888ff }
+.fs_sun		{ background-color: #ffff88 }
+.fs_giga	{ background-color: #ffc0cb }
+.fs_warp	{ background-color: #808080 }
 
 .box {
 	border: 2px solid black;
-	display: table;
 	border-spacing: 2px;
+	display: table;
 	margin-bottom: 0.5em;
-	/*width: 100%;*/
 }
-.outer {
+.outer, .fullwidth {
 	width: 100%;
-}
-
-.fullwidth {
-	width: 100%;
-}
-
-.itemnestbox {
-	display:block;
-	width: 100%;
-	border: 26px none #000000;
 }
 
 li {
@@ -44,33 +31,23 @@ li {
 }
 
 .title {
-	font-weight:bold;
-	text-decoration:underline;
+	font-weight: bold;
+	text-decoration: underline;
 }
 .seedc {
 	color: green;
 }
-.starc {
+.starc, .blue {
 	color: blue;
 }
 
-.blue {
-	color: blue;
-}
-.ffaaff {
-	background-color:#ffaaff;
-}
-
-.tbl0 { background-color: #eeeeee; }
-.tbl1 { background-color: #ffffff; }
-.tbh  { background-color: #ffff00; }
+.tbl0 { background-color: #eeeeee }
+.tbl1 { background-color: #ffffff }
+.tbh  { background-color: #ffff00 }
 
 .inline {
 	display: inline-grid !important;
 	margin-bottom: 0em;
-}
-.Spadding {
-	padding: 5px;
 }
 
 /* User link */
@@ -79,9 +56,21 @@ a.user {
 	text-decoration: none;
 }
 
+/* Store */
+.ttbl td {
+	background-color:#ffaaff;
+}
+
 /* Friends */
 .friends td {
-	padding:3px;
+	padding: 3px;
+}
+
+/* Stars Exchange */
+.sebox {
+	padding: 5px;
+	width: 270px;
+	height: 200px;
 }
 
 /* Seeds & Stars Draw */
@@ -110,24 +99,22 @@ a.user {
 	vertical-align: top;
 }
 .inboxcell2 {
-	vertical-align: bottom;
+	background-color: #cc99ee;
 	text-align: center;
+	vertical-align: bottom;
 }
 
 /* Change Nickname */
-.flagbox {
+.flag {
+	text-decoration: none;
+	color: white;
+}
+.flag div {
 	border: 1px solid gray;
 	background-color: gray;
 	margin: 2px;
 	padding:5px;
 	display: block;
-}
-.f {
-	display: inline-block;
-}
-.flaglink {
-	text-decoration: none;
-	color: white;
 }
 
 /* User page */
@@ -158,13 +145,12 @@ a.user {
 }
 .nb_red { background-color: #eebbbb; }
 .nb_red:hover { background-color: #ddaaaa; }
+
 .nb_green { background-color: #bbeebb; }
 .nb_green:hover { background-color: #aaddaa; }
 
 .nb_blue { background-color: #bbbbee; }
 .nb_blue:hover { background-color: #aaaadd; }
-
-
 
 /* Options */
 .opt_tbl {

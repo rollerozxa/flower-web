@@ -12,6 +12,8 @@ Change flag:<br>
 usort($countries, function($a, $b) { return strcmp($a[1], $b[1]); });
 
 foreach ($countries as $country) {
-	echo '<a class="flaglink" href="' . alink(11,'changeflag',$country[0]) . '"><div class="flagbox"><img class="f" src="flags/' . $country[0] . '.png"> ' . $country[1] . '</div></a>';
+	printf(
+		'<a class="flag" href="%s"><div><img src="flags/%s.png"> %s</div></a>',
+	alink(11,'changeflag',$country[0]), $country[0], $country[1]);
 }
 ?>

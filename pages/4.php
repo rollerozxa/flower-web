@@ -2,7 +2,7 @@
 <b>Seeds: <span class="seedc">$<?=number_format($userdata['seeds'],2) ?></span></b><br>
 <b>Stars: <span class="starc">*<?=number_format($userdata['stars'],2) ?></span></b><br>
 
-<div class="box inline Spadding" style="background-color:#ffcccc;width:270px;height:200px;">
+<div class="box inline sebox" style="background-color:#ffcccc;">
 	<h3>Place BUY <span class="starc">Stars</span> order with <span class="seedc">Seeds</span>.</h3>
 	<form method="POST">
 		<input type="hidden" name="a" value="buystars">
@@ -12,7 +12,7 @@
 	</form>
 </div>
 
-<div class="box inline Spadding" style="background-color:#ccffcc;width:270px;height:200px;">
+<div class="box inline sebox" style="background-color:#ccffcc;">
 	<h3>Place SELL <span class="starc">Stars</span> order to get <span class="seedc">Seeds</span>.</h3>
 	<form method="POST">
 		<input type="hidden" name="a" value="sellstars">
