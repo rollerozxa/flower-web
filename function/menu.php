@@ -31,13 +31,13 @@ function menubar($menustyle = MENUBAR_BUTTONS) {
 	switch ($menustyle) {
 		case MENUBAR_BUTTONS:
 			foreach ($menuitems as $menuitem) {
-				echo '<button onclick="open_win(' . $menuitem['page'] . ')">' . $menuitem['name'] . '</button>';
+				printf('<button onclick="open_win(%s)">%s</button>', $menuitem['page'], $menuitem['name']);
 			}
 		break;
 		case MENUBAR_LINKS:
 			foreach ($menuitems as $menuitem) {
 				if ($counter != 1) echo ' | ';
-				echo '<a href="' . pagelink($menuitem['page']) . '">' . $menuitem['name'] . '</a>';
+				printf('<a href="%s">%s</a>', pagelink($menuitem['page']), $menuitem['name']);
 				$counter++;
 			}
 		break;
@@ -45,7 +45,7 @@ function menubar($menustyle = MENUBAR_BUTTONS) {
 			echo '<form><input type="hidden" name="uid" value="'.$uid.'"><input type="hidden" name="gid" value="'.$gid.'">
 			<select name="show" onchange="this.form.submit()">';
 			foreach ($menuitems as $menuitem) {
-				echo '<option value="'.$menuitem['page'].'"'.($menuitem['page'] == $show ? ' selected' : '').'>'.$menuitem['name'].'</option>';
+				printf('<option value="%s" %s>%s</option>', $menuitem['page'], ($menuitem['page']==$show?'selected':''), $menuitem['name']);
 			}
 			echo '</select></form>';
 		break;
