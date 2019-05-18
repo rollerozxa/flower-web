@@ -2,7 +2,10 @@
 <hr>
 <table class="fullwidth">
 <?php
-$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID");
+// TODO: Create something to change the message limit.
+$limit = 20;
+$offset = max(0, result("SELECT COUNT(*) FROM chat") - $limit);
+$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID LIMIT $offset,$limit");
 $bg = 0;
 while ($record = $query->fetch()) {
 	$record['message'] = chat_postcode($record['message'], $record['powerlevel']);
