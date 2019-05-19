@@ -1,5 +1,5 @@
 <?php
-$id = (isset($_GET['id']) ? $_GET['id'] : null);
+$id = (isset($_GET['id']) ? $_GET['id'] : 1);
 
 $u = fetch("SELECT * FROM user WHERE userID = ?", [$id]);
 
