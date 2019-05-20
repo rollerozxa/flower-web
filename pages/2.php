@@ -1,11 +1,15 @@
+<?php
+$mpp = (isset($_REQUEST['mpp']) ? $_REQUEST['mpp'] : 20);
+?>
 <p class="title">Chatterbox</p>
+<form method="POST">Amount of messages to show:
+<?=fieldselect('mpp', $mpp, [10 => 10, 20 => 20, 30 => 30, 40 => 40, 50 => 50, 75 => 75, 100 => 100, 200 => 200, 500 => 500, 2147483647 => 'All'], true) ?>
+</form>
 <hr>
 <table class="fullwidth">
 <?php
-// TODO: Create something to change the message limit.
-$limit = 20;
-$offset = max(0, result("SELECT COUNT(*) FROM chat") - $limit);
-$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID LIMIT $offset,$limit");
+$offset = max(0, result("SELECT COUNT(*) FROM chat") - $mpp);
+$query = query("SELECT * FROM chat JOIN user ON chat.userID = user.userID ORDER BY chat.ID LIMIT $offset,$mpp");
 $bg = 0;
 while ($record = $query->fetch()) {
 	$record['message'] = chat_postcode($record['message'], $record['powerlevel']);
@@ -44,6 +48,7 @@ while ($record = $query->fetch()) {
 
 <?php if ($userdata['powerlevel'] >= 1) { ?>
 <form method="post">
+	<?=($mpp != 20 ? '<input type="hidden" name"mpp" value="'.$mpp.'">' : '')?>
 	<input type="hidden" name="a" value="chat">
 	<input type="text" name="text" maxlength="2000" style="width:calc(100% - 52px)"></input>
 	<input type="submit" value="Post"></input>
