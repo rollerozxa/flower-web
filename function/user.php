@@ -6,7 +6,7 @@
  * @param int $powerlevel
  * @return string Color in hex
  */
-function powerlevelcolor($powerlevel) {
+function powcolor($powerlevel) {
 	switch ($powerlevel) {
 		case '0': return '888888';
 		case '1': return '000000';
@@ -22,7 +22,7 @@ function powerlevelcolor($powerlevel) {
  * @param int $powerlevel
  * @return string Powerlevel name
  */
-function powerlevelname($powerlevel) {
+function powname($powerlevel) {
 	switch ($powerlevel) {
 		case '0': return 'Banned';
 		case '1': return 'Normal User';

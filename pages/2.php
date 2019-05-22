@@ -27,7 +27,7 @@ while ($record = $query->fetch()) {
 	
 	$time = chat_time(time() - $record['time']);
 
-	$nccolor = 'color:#'.powerlevelcolor($record['powerlevel']);
+	$nccolor = 'color:#'.powcolor($record['powerlevel']);
 	?>
 	<tr><td class="tbl<?=$bg ?>">
 		<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>

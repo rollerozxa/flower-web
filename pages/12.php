@@ -8,7 +8,7 @@ if ($u['powerlevel'] != 1) {
 	$pow = $u['powerlevel'];
 	$powstr = sprintf(
 		'<br><span style="color:#%s">%s</span>',
-	powerlevelcolor($pow), powerlevelname($pow));
+	powcolor($pow), powname($pow));
 }
 
 ?>
