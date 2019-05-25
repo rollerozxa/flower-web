@@ -35,9 +35,9 @@ $style = str_replace('&',' ',$style);
 echo $style;
 
 $tbl_userinfo = [
-    'userID',
-    'uid',
-    'username',
+	'userID',
+	'uid',
+	'username',
 	'friendcode',
 	'country',
 	'seeds',
@@ -57,10 +57,10 @@ $tbl_userinfo = [
 	'has_sunflower'
 ];
 $tbl_flowerinfo = [
-    'flowerID',
-    'uid',
+	'flowerID',
+	'uid',
 	'height',
-    'water',
+	'water',
 	'sun',
 	'giga',
 	'warp',
