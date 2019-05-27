@@ -8,16 +8,16 @@ if (!isset($uid)) {
 	echo '<form><select name="uid">';
 	$query = query("SELECT * FROM user");
 	while ($record = $query->fetch()) {
-		echo '<option value="' . $record['uid'] . '">' . $record['username'] . '</option>';
+		printf('<option value="%s">%s</option>', $record['uid'], $record['username']);
 	}
 	echo '</select><input type="submit" value="Submit"></form>';
 	die();
 }
 
-$style = <<<HTML
+echo <<<HTML
 <style>
 table, tr, td, th {
-	border: 1px&solid&black;
+	border: 1px solid black;
 }
 td,th {
 	padding: 5px;
@@ -28,11 +28,6 @@ h1,h2 {
 }
 </style>
 HTML;
-$style = str_replace(PHP_EOL,'',$style);
-$style = str_replace('	','',$style);
-$style = str_replace(' ','',$style);
-$style = str_replace('&',' ',$style);
-echo $style;
 
 $tbl_userinfo = [
 	'userID',
@@ -74,12 +69,11 @@ $tbl_flowerinfo = [
 $userdata = fetch("SELECT * FROM user WHERE uid = ?", [$uid]);
 if (!isset($userdata['userID'])) die('Invalid user.');
 
+$userdata['uid'] = '<em>REDACTED</em>';
+
 echo '<hr><h1>Main User Info:</h1><table><tr><th>Key</th><th>Value</th></tr>';
 foreach ($tbl_userinfo as $tableline) {
-	if ($tableline == 'uid')
-		echo '<tr><td>uid</td><td><em>REDACTED</em></td></tr>';
-	else
-		echo '<tr><td>' . $tableline . '</td><td>' . $userdata[$tableline] . '</td></tr>';
+	echo '<tr><td>'.$tableline.'</td><td>'.$userdata[$tableline].'</td></tr>';
 }
 echo '</table>';
 
@@ -103,7 +97,7 @@ foreach ($tbl_flowerinfo as $tableline) {
 	} else {
 		foreach ($flowers as $flower) {
 			if ($userflowerdata[$flower]) {
-				echo "<td>" . $userflowerdata[$flower][$tableline] . "</td>";
+				echo "<td>".$userflowerdata[$flower][$tableline]."</td>";
 			} else {
 				echo "<td>-</td>";
 			}
@@ -116,6 +110,6 @@ echo '</table>';
 echo '<hr><h1>Chatterbox posts:</h1><table><tr><th>Message</th><th>Time</th></tr>';
 $query = query("SELECT * FROM chat WHERE userID = ?", [$userdata['userID']]);
 while ($record = $query->fetch()) {
-	echo '<tr><td>'.$record['message'].'</td><td>'.date('Y-m-d H:i:s',$record['time']).'</td></tr>';
+	printf('<tr><td>%s</td><td width="150">%s</td></tr>', $record['message'], date('Y-m-d H:i:s',$record['time']));
 }
 echo '</table>';
