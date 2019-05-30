@@ -11,6 +11,12 @@ if ($u['powerlevel'] != 1) {
 	powcolor($pow), powname($pow));
 }
 
+if ($u['powerlevel'] == 4) {
+	$userexport = sprintf(
+		'<br><a href="./tools/userexport.php?uid=%s" class="nicebtn nb_blue">Export User Information</a>',
+	$u['uid']);
+}
+
 ?>
 <div style="text-align:center">
 	<img src="flags/<?=$u['country']?>.png"> <span class="title"><?=$u['username']?></span>
@@ -23,4 +29,5 @@ if ($u['powerlevel'] != 1) {
 	</div>
 	<em>Last seen <?=chat_time(ceil(time() - $u['lastview'])) ?> ago</em>
 	<br><a href="<?=pagelink(15)?>&id=<?=$id?>" class="nicebtn nb_green">Send Message</a>
+	<?=(isset($userexport) ? $userexport : '') ?>
 </div>
