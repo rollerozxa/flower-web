@@ -110,7 +110,9 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
 							<img id="flowerimg" src="img/<?=($userdata['powerlevel'] == 0 ? 'gray/' : '')?><?=$gid ?>Icon.png" width=24>
 						</a>
-						<strong style="color:#<?= powcolor($userdata['powerlevel']) ?>"><?=$userdata['username'] ?></strong>
+						<a class="user" href="<?=pagelink(12) ?>&id=<?=$userdata['userID'] ?>" style="color:#<?= powcolor($userdata['powerlevel']) ?>">
+							<?=$userdata['username'] ?>
+						</a>
 						<span style="display:inline-block;margin-top:0.21em;">
 						<?=formatheight($userdata['height']) ?> (cm)
 						</span>
