@@ -35,15 +35,11 @@ function query($query,$params = []) {
 }
 
 function fetch($query,$params = []) {
-	global $sql;
-	
 	$res = query($query,$params);
 	return $res->fetch();
 }
 
 function result($query,$params = []) {
-	global $sql;
-	
 	$res = query($query,$params);
 	return $res->fetchColumn();
 }
