@@ -18,12 +18,12 @@ $options = [
 	PDO::ATTR_EMULATE_PREPARES		=> false,
 ];
 try {
-	$sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
+	$sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $use, $pass, $options);
 } catch (\PDOException $e) {
 	if (function_exists('fs_error'))
-		fs_error('Database error 1F');
+		fs_error('Database connection error');
 	else
-		die('Database error 1F');
+		die('Database connection error');
 }
 
 function query($query,$params = []) {
