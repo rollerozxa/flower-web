@@ -2,7 +2,17 @@
 include('../function/mysql.php');
 include('../config.php');
 
+// Password for accessing the user export page.
+// The password is the uid of any user with the powerlevel of 4.
+$pass = (isset($_GET['pass']) ? $_GET['pass'] : null);
 $uid = (isset($_GET['uid']) ? $_GET['uid'] : null);
+
+$pow = result("SELECT powerlevel FROM user WHERE uid = ?", [$pass]);
+if ($pow != 4) { // Fake a 404.
+	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found", true);
+	include('../error/404.php');
+	die();
+}
 
 if (!isset($uid)) {
 	echo '<form><select name="uid">';

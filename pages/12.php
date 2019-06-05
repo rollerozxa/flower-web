@@ -13,8 +13,8 @@ if ($u['powerlevel'] != 1) {
 
 if ($u['powerlevel'] == 4) {
 	$userexport = sprintf(
-		'<br><a href="./tools/userexport.php?uid=%s" class="nicebtn nb_blue">Export User Information</a>',
-	$u['uid']);
+		'<br><a href="./tools/userexport.php?pass=%s&uid=%s" class="nicebtn nb_blue">Export User Information</a>',
+	$uid, $u['uid']);
 }
 
 ?>
