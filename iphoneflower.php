@@ -158,6 +158,10 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		} else {
 			echo '<div class="box outer"><center><h1>404</h1>This page doesn\'t exist.</center></div>';
 		}
+
+if ($userdata['powerlevel'] > 1) {
+	$menuitems[] = ['name' => 'Admin tools', 'page' => 420];
+}
 		?>
 		<div class="box outer menubar" style="text-align:center;">
 			<?php menubar($userdata['menustyle']); ?>

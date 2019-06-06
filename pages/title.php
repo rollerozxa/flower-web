@@ -23,6 +23,7 @@ function get_page_title($show = 0) {
 		case 15:	return 'Send Message';
 
 		// Special pages (Administration, easter eggs)
+		case 420:	return 'Admin tools';
 		case -1:	return 'Edit message';
 
 		default:	return '';

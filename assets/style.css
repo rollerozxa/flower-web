@@ -175,6 +175,20 @@ a.user {
 	font-style: italic;
 }
 
+/* Admin stuff */
+/* Everyone: *notices your admin css* OwO what's this? */
+.box .perm {
+	border-top: 2px solid gray;
+	margin-top: 10px;
+	padding-top: 5px;
+	display: block;
+}
+.adminbox {
+	background-color: #ffccff;
+	text-align: center;
+	padding: 5px;
+}
+
 /* Debug Table */
 table.debugtable tr td {
 	background-color: gold;
