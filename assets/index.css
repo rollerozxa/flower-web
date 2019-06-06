@@ -24,9 +24,6 @@ body {
 	text-align: center;
 	display: block;
 }
-.downloads {
-	text-align: left;
-}
 .title {
 	border-bottom: 1px solid black;
 	display: block;
@@ -34,13 +31,14 @@ body {
 	font-weight: bold;
 	text-align: center;
 }
+
 .downloadtitle {
 	display: block;
 	font-size: 20pt;
 	font-weight: bold;
 	margin-bottom: 5px;
 }
-.downloadicon {
+.downloads img {
 	height: 86px;
 	width: 86px;
 }
@@ -48,15 +46,12 @@ body {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 5px;
-	text-decoration: underline;
 }
-
-table, tr, td {
-	border: 1px solid black;
-	border-collapse: collapse;
+.downloads {
+	text-align: left;
 }
-td {
-	padding: 5px;
+.downloads td {
+	border-bottom: 1px solid black;
 }
 
 .funfact {
@@ -76,8 +71,15 @@ td {
 	color: green;
 	font-weight: bold;
 }
-.fullwidth {
+.scores {
 	width: 100%;
+}
+table, .scores tr, .scores td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+td {
+	padding: 5px;
 }
 .scores th {
 	text-align: center;

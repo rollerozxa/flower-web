@@ -49,7 +49,7 @@ include('config.php');
 				<span class="downloadtitle">Downloads!</span>
 				<table class="downloads"><?php foreach ($apps as $app) { ?>
 					<tr>
-						<td><img src="<?=$app['image'] ?>" class="downloadicon"></td>
+						<td><img src="<?=$app['image'] ?>"></td>
 						<td>
 							<span class="gametitle"><?=$app['name'] ?></span>
 							<a href="download/<?=$app['folder'] ?>/<?=$app['download_file'] ?>">Download Latest (v<?=$app['version_nice'] ?>) (Android <?=$app['minver'] ?>)</a>
@@ -98,7 +98,7 @@ foreach ($flowers as $gid) {
 			<?php foreach ($flowers as $gid) { ?>
 				<span class="flowertitle">Tallest <?=$flowers_plural[$flowers_id[$gid]] ?> in the world!</span><br>
 				<?=$flowers_count[$gid] ?> people growing a <?=$gid ?>.
-				<table class="fullwidth scores"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
+				<table class="scores"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
 				<?php foreach ($leaderboard[$gid] as $boardrow) { ?>
 					<tr class="tbl<?=$boardrow['bg'] ?>">
 						<td><img src="flags/<?=$boardrow['country'] ?>.png"> <?=$boardrow['count'] ?></td>
