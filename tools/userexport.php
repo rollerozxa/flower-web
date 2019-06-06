@@ -15,7 +15,7 @@ if ($pow != 4) { // Fake a 404.
 }
 
 if (!isset($uid)) {
-	echo '<form><select name="uid">';
+	echo '<form><input type="hidden" name="pass" value="'.$pass.'"><select name="uid">';
 	$query = query("SELECT * FROM user");
 	while ($record = $query->fetch()) {
 		printf('<option value="%s">%s</option>', $record['uid'], $record['username']);
