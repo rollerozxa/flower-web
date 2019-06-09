@@ -21,9 +21,9 @@ while ($record = $query->fetch()) {
 	if ($record['powerlevel'] == 4)
 		$flower = 'Admin.png';
 	else if ($record['powerlevel'] == 0)
-		$flower = 'gray/' . $record['gid'] . 'Icon.png';
+		$flower = 'gray/'.$record['gid'].'Icon.png';
 	else
-		$flower = $record['gid'] . 'Icon.png';
+		$flower = $record['gid'].'Icon.png';
 	
 	$time = chat_time(time() - $record['time']);
 
@@ -54,7 +54,7 @@ while ($record = $query->fetch()) {
 	<input type="submit" value="Post"></input>
 </form>
 <?php } else { ?>
-<p style="font-weight:bold">You've been banned.</p>
+<p style="font-weight:bold;font-style:italic">You've been banned.</p>
 <?php } ?>
 
 <?php if ($userdata['powerlevel'] == 4) { ?>
