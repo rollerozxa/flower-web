@@ -9,7 +9,7 @@
 		<hr>
 		<p>Sorry, there was an error. Below is information about the error.</p>
 		<span class="error"><?=$msg ?></span>
-		<p>Please try again later or contact me at <?=$contactemail ?>.</p>
-		<?php print_r($_GET) ?>
+		<p>Please try again later or contact me at <?=$contactemail ?> with the following debug information:</p>
+		<?=sprintf('<span class="debug">%s</span>', print_r(base64_encode($_GET), true)) ?>
 	</body>
 </html>

@@ -4,7 +4,7 @@ body {
 	font-size: 12pt;
 	text-align: center;
 }
-.error {
+.error, .debug {
 	background-color: #dddddd;
 	border-radius: 10px;
 	display: inline-block;
@@ -14,4 +14,9 @@ body {
 	padding-right: 20px;
 	margin: 0em;
 	font-family:monospace;
+}
+.debug {
+	display: block;
+	font-size: 8pt;
+	word-wrap: break-word;
 }
