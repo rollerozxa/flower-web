@@ -34,9 +34,9 @@ if (!isset($userdata['username'])) {
 	fs_error("User doesn't exist.");
 }
 
-if (false) {
+if (isset($_GET['bandebug'])) {
 	include('pages/other/banned.php');
-	die;
+	die();
 }
 
 $timedifference = microtime(true) - $userdata['lastview'];

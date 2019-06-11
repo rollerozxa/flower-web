@@ -4,14 +4,19 @@ body {
 	font-size: 12pt;
 	text-align: center;
 }
+
 table, tr, td {
-	background-color: #dd6666;
+	background-color: #FE2000;
 	border: 1px none;
 	border-collapse: collapse;
 	margin: auto;
 }
+table {
+	border: 1px solid black;
+	margin-top: 50px;
+}
 td {
-	padding: 5px;
+	padding: 10px;
 	text-align: center;
 }
 .error {
