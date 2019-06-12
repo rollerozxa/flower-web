@@ -2,7 +2,7 @@
 
 /**
  * Convert powerlevel integer into the color of the powerlevel.
- * 
+ *
  * @param int $powerlevel
  * @return string Color in hex
  */

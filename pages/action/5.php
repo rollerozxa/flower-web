@@ -33,7 +33,7 @@ switch ($_REQUEST['a']) {
 				[$rewards['water'], $rewards['sun'], $rewards['warp'], $rewards['giga'], $rewards['jump'], $uid]);
 
 			header_msg("Bought $quantity seeds draw tickets for " . ($quantity * 15) . " seeds, giving you the following rewards:<br>" . $rewardlist);
-			
+
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
 		}

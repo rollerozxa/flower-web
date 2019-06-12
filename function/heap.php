@@ -2,7 +2,7 @@
 
 /**
  * Gives you the human-readable name of the heap prize.
- * 
+ *
  * @param int $id Heap prize ID.
  * @return string Heap prize name.
  */
@@ -22,7 +22,7 @@ function heapprize($id) {
 
 /**
  * Converts a heap size ID into the integer heap size.
- * 
+ *
  * @param int $id Heap size ID.
  * @return int Heap size.
  */

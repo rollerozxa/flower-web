@@ -2,7 +2,7 @@
 
 /**
  * Do the chat command system.
- * 
+ *
  * @return string Text of command.<br>
  *				  If the original chat message isn't a command, it returns null.
  */
@@ -81,7 +81,7 @@ function chat_postcode($message, $powerlevel) {
 	$message = preg_replace("'\[b\](.*?)\[/b\]'si", '<strong>\\1</strong>', $message);
 	$message = preg_replace("'\[i\](.*?)\[/i\]'si", '<em>\\1</em>', $message);
 	$message = preg_replace("'\[u\](.*?)\[/u\]'si", '<u>\\1</u>', $message);
-	
+
 	return $message;
 }
 

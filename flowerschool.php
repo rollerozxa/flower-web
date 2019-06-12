@@ -12,16 +12,16 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 	<body>
 		<script src="assets/loaded.js"></script>
 		<div class="box outer" style="background-color:#eeeeee">
-			<?php 
+			<?php
 			if ($page == 'start') {
 				include('helppages/' . $page . '.php');
 			} else {
-				include('helppages/' . $page . '.php'); 
+				include('helppages/' . $page . '.php');
 				echo '<a class="bottomtext" href="flowerschool.php">&lt; Go back</a>';
 			}
 			?>
 		</div>
-		<div class="box zoom"> 
+		<div class="box zoom">
 			Zoom:
 			<button onclick="zoom(1.0)">100%</button>
 			<button onclick="zoom(1.5)">150%</button>

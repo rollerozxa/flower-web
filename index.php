@@ -67,7 +67,7 @@ $flowers_count_query = "SELECT ";
 $count = 1;
 foreach ($flowers as $flower) {
 	$flowers_count_query .= "(SELECT COUNT(*) FROM user_$flower) $flower";
-	
+
 	if ($count != sizeof($flowers)) {
 		$flowers_count_query .= ",";
 	}

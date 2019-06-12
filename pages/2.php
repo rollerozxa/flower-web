@@ -17,14 +17,14 @@ while ($record = $query->fetch()) {
 	if ($commandtext = chat_command()) {
 		$record['message'] = $commandtext;
 	}
-	
+
 	if ($record['powerlevel'] == 4)
 		$flower = 'Admin.png';
 	else if ($record['powerlevel'] == 0)
 		$flower = 'gray/'.$record['gid'].'Icon.png';
 	else
 		$flower = $record['gid'].'Icon.png';
-	
+
 	$time = chat_time(time() - $record['time']);
 
 	$nccolor = 'color:#'.powcolor($record['powerlevel']);

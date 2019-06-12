@@ -2,7 +2,7 @@
 
 /**
  * Print out an action link from the given arguments.
- * 
+ *
  * @param int $show Page
  * @param string $a Action
  * @param int $quantity Quantity

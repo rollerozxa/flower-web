@@ -14,7 +14,7 @@ function retrieve_advice() {
 
 function retrieve_countries() {
 	global $countries;
-	
+
 	echo hex2bin(str_pad(dechex(sizeof($countries)),2,'0',STR_PAD_LEFT));
 
 	foreach ($countries as $c) {
@@ -25,26 +25,26 @@ function retrieve_countries() {
 
 function retrieve_country() {
 	global $userdata;
-	
+
 	echo hex2bin(str_pad(dechex(strlen($userdata['country'])),2,'0',STR_PAD_LEFT));
 	echo $userdata['country'];
 }
 
 function retrieve_name() {
 	global $userdata;
-	
+
 	echo hex2bin(str_pad(dechex(strlen($userdata['username'])),2,"0",STR_PAD_LEFT)) . $userdata['username'];
 }
 
 function retrieve_seeds() {
 	global $userdata;
-	
+
 	echo hex2bin(str_pad(dechex(round($userdata['seeds'],0)),16,"0",STR_PAD_LEFT));
 }
 
 function retrieve_stars() {
 	global $userdata;
-	
+
 	echo hex2bin(str_pad(dechex(round($userdata['stars'],0)),14,"0",STR_PAD_LEFT));
 }
 

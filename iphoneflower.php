@@ -178,8 +178,8 @@ if ($userdata['powerlevel'] > 1) {
 		<div class="box outer" style="text-align:center">
 		<?php
 		if (islocal()) {
-			if (isset($_GET['debug'])) { 
-				echo '<table class="debugtable"><tr><td>GET requests:<pre>'; print_r($_GET); 
+			if (isset($_GET['debug'])) {
+				echo '<table class="debugtable"><tr><td>GET requests:<pre>'; print_r($_GET);
 				echo '</pre></td><td>$userdata:<pre>'; print_r($userdata);
 				echo '</pre></td></tr></table>';
 			} else {

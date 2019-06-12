@@ -2,7 +2,7 @@
 
 /**
  * Update user data in case something has been modified.
- * 
+ *
  * @param bool $chooseflower Is the function run from the choose flower page? (Don't add flower data)
  */
 function update_userdata($chooseflower = false) {
@@ -17,7 +17,7 @@ function update_userdata($chooseflower = false) {
 
 /**
  * Check if user is from within the network.
- * 
+ *
  * @return boolean Whether user is within the network.
  */
 function islocal() {
@@ -31,10 +31,10 @@ function islocal() {
 // https://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
 /**
  * Check if $needle starts with $haystack.
- * 
+ *
  * @param mixed $haystack
  * @param mixed $needle
- * @return boolean 
+ * @return boolean
  */
 function startsWith($haystack, $needle) {
 	$length = strlen($needle);
