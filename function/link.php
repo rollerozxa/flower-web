@@ -52,7 +52,7 @@ function itemlist($show,$a,$quantities,$costperone,$text,$format = ITEMLIST_NORM
 /**
  * Return a link to a menu page.
  *
- * @param $show int Page
+ * @param int $show Page
  * @return string The link.
  */
 function pagelink($show) {
