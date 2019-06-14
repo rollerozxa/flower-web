@@ -15,7 +15,11 @@ while ($record = $query->fetch()) {
 	?><tr class="tb<?=($record['uid'] == $uid ? 'h' : 'l' . $bg) ?>">
 		<td><img src="flags/<?=$record['country'] ?>.png"> <?=$count ?></td>
 		<td><?=formatheight($record['height']) ?> (cm)</td>
-		<td><?=$record['username'] ?></td>
+		<td>
+			<a class="user" href="<?=pagelink(12) ?>&id=<?=$record['userID'] ?>" style="color:#<?= powcolor($record['powerlevel']) ?>;">
+				<?=$record['username'] ?>
+			</a>
+		</td>
 	</tr><?php
 	$bg = ($bg == 0 ? 1 : 0);
 	$count++;
