@@ -16,7 +16,7 @@ $conf_footerlinks = [
 	["javascript:window.history.back()","Go back"]
 ];
 
-$conf_style = <<<HTML
+$conf_style = <<<CSS
 body {
 	background-color: lightgray;
 	font-family: monospace;
@@ -36,6 +36,6 @@ a.footerlink {
 	margin: 50px 10px 0px 10px;
 	font-size: 20pt;
 }
-HTML;
+CSS;
 
 ?>
