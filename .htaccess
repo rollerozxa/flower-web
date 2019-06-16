@@ -6,7 +6,7 @@ RewriteRule ^flowerschool.jsp$ flowerschool.php
 RewriteRule ^iphoneflower.jsp$ iphoneflower.php
 RewriteRule ^retrieveflower.jsp$ retrieveflower.php
 
-RewriteRule ^iphone$ midp.php
+#RewriteRule ^iphone$ midp.php
 
 RewriteRule ^daisyicon.png$ img/daisyicon.png [NC]
 RewriteRule ^irisicon.png$ img/irisicon.png [NC]
