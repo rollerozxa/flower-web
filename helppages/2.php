@@ -61,7 +61,7 @@ table,tr,td,th {
 	</tr>
 </table>
 
-<p style="color:darkorange">Note - If your flower is dry, the multiplier will always be either -3 or 0 depending on whether you have "Do not shrink" enabled.</p>
+<p style="color:darkorange">Note - If your flower is dry, the multiplier will always be either -1.36 or 0 depending on whether you have "Do not shrink" enabled.</p>
 
 <p>Therefore, the maximum multiplier you can have is <span class="math">(((1 * 3) + 1 * 5) * 4) * 2 = 64</span>.</p>
 
