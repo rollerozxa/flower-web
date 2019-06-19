@@ -2,8 +2,6 @@
 
 $start = microtime(true);
 
-//error_reporting(E_ALL & ~E_WARNING);
-
 include('function/function.php');
 include('config.php');
 include('pages/title.php');
