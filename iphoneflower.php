@@ -9,11 +9,11 @@ include('pages/title.php');
 if (!isset($_GET['uid'])) fs_error('Invalid UID.');
 if (!isset($_GET['gid'])) fs_error("Invalid GID.");
 
-$uid = (isset($_GET['uid']) ? $_GET['uid'] : 0);
-$gid = (isset($_GET['gid']) ? $_GET['gid'] : 'Daisy');
-$show = (isset($_GET['show']) ? $_GET['show'] : 1);
-$ver = (isset($_GET['ver']) ? $_GET['ver'] : 999);
-$menupage = (isset($_GET['justshortcuts']) ? true : null);
+$uid	= (isset($_GET['uid']) ? $_GET['uid'] : 0);
+$gid	= (isset($_GET['gid']) ? $_GET['gid'] : 'Daisy');
+$show	= (isset($_GET['show']) ? $_GET['show'] : 1);
+$ver	= (isset($_GET['ver']) ? $_GET['ver'] : 999);
+$menu	= (isset($_GET['justshortcuts']) ? true : null);
 
 // Special pages
 if ($show == 18) fs_error("Buying stars aren't supported.<br>Sorry, but I don't want your money!");
@@ -145,7 +145,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<?php
 		if (file_exists('pages/' . $show . '.php')) {
 			if ($show != 1337 || $userdata['powerlevel'] == 4) {
-				if (!$menupage) {
+				if (!$menu) {
 					echo '<div class="box outer">';
 						include('pages/' . $show . '.php');
 					echo '</div>';

@@ -1,8 +1,8 @@
 <?php
 
 function get_page_title($show = 0) {
-	global $menupage;
-	if ($menupage) return 'Menu';
+	global $menu;
+	if ($menu) return 'Menu';
 	switch ($show) {
 		// This value is hardcoded into the app.
 		case 1:		return 'Items';
