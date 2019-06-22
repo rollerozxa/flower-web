@@ -163,7 +163,6 @@ if ($userdata['powerlevel'] > 1) {
 		?>
 		<div class="box outer menubar" style="text-align:center;">
 			<?php menubar($userdata['menustyle']); ?>
-			<!--<button onclick="open_win(25)">PGM Bookie</button>-->
 		</div>
 		<?php if ($userdata['zoom']) { ?>
 		<div class="box zoom">
