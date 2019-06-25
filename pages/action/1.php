@@ -146,5 +146,3 @@ switch ($_REQUEST['a']) {
 		}
 	break;
 }
-
-?>
