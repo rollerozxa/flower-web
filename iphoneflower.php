@@ -24,6 +24,7 @@ if (!in_array($gid, $flowers)) fs_error('Unknown flower.');
 
 // Blacklisted UIDs
 if ($uid == '0000000000000000') fs_error('Blacklisted UID.<br>Reason: Android SDK Emulator');
+if ($uid == '')					fs_error('Blacklisted UID.<br>Reason: Blank UID.');
 
 update_userdata();
 
