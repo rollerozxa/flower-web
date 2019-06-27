@@ -7,10 +7,9 @@ if ($chatmessage) {
 	?><form action="<?=pagelink(2)?>" method="POST">
 	<input type="hidden" name="a" value="editmessage">
 	<input type="hidden" name="message_id" value="<?=$messageid ?>">
-	<input type="text" name="edited_message" value="<?=$chatmessage['message'] ?>">
+	<input type="text" name="edited_message" value="<?=htmlspecialchars($chatmessage['message']) ?>">
 	<input type="submit" value="Submit">
 	</form><?php
 } else {
 	echo "Message doesn't exist.";
 }
-?>
