@@ -31,7 +31,7 @@ function menubar($menustyle = MENUBAR_BUTTONS) {
 	switch ($menustyle) {
 		case MENUBAR_BUTTONS:
 			foreach ($menuitems as $menuitem) {
-				printf('<button onclick="open_win(%s)">%s</button>', $menuitem['page'], $menuitem['name']);
+				printf('<button onclick="open_page(%s)">%s</button>', $menuitem['page'], $menuitem['name']);
 			}
 		break;
 		case MENUBAR_LINKS:

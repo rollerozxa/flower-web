@@ -61,7 +61,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 <html>
 	<head>
 		<title>Flower menu</title>
-		<script>function open_win(show) { window.open('<?=pagebase() ?>&show=' + show, '_top'); }</script>
+		<script>function open_page(show) { window.open('<?=pagebase() ?>&show=' + show, '_top'); }</script>
 		<script src="assets/core.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
 		<?php if ($userdata['yellow_background']) { ?>
