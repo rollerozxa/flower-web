@@ -1,7 +1,7 @@
 <p class="title">Scores</p>
 <span style="color:green;font-weight:bold;">Tallest Daisies in the world!</span><br>
-<?=result("SELECT COUNT(*) FROM user_$gid") ?> people growing a <?=$gid ?><br><br>
-<table class="fullwidth">
+<?=result("SELECT COUNT(*) FROM user_$gid") ?> people growing a <?=$gid ?>
+<table class="fullwidth" style="padding-top:20px">
 	<tr>
 		<th width=60px>Rank</th>
 		<th width=40%>Height</th>
