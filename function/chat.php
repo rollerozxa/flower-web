@@ -75,6 +75,7 @@ function chat_postcode($message, $powerlevel) {
 	// Other staff don't get full HTML, but they get some more tags!
 	if ($powerlevel > 2) {
 		$message = preg_replace("'\[url=(.*?)\](.*?)\[/url\]'si", '<a href="\\1">\\2</a>', $message);
+		$message = preg_replace("'\[mod\](.*?)\[/mod\]'si", '<strong style="color:purple">\\1</strong>', $message);
 	}
 
 	// Tags for everyone.
