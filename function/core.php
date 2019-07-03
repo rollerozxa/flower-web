@@ -28,7 +28,6 @@ function islocal() {
 	}
 }
 
-// https://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
 /**
  * Check if $needle starts with $haystack.
  *
