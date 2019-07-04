@@ -4,9 +4,6 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
-		<style>
-.bottomtext { margin-top: 1em; }
-		</style>
 		<script src="assets/core.js"></script>
 	</head>
 	<body>

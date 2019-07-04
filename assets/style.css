@@ -221,6 +221,7 @@ table.debugtable {
 	padding: 2px;
 	width: 100%;
 }
+.bottomtext { margin-top: 1em; }
 
 /* Zoom menu */
 .zoom {
