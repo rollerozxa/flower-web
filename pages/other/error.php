@@ -1,4 +1,5 @@
 <?php include('config.php') ?>
+
 <html>
 	<head>
 		<title>Server Problems</title>
@@ -10,6 +11,6 @@
 		<p>Sorry, there was an error. Below is information about the error.</p>
 		<span class="error"><?=$msg ?></span>
 		<p>Please try again later or contact me at <?=$contactemail ?> with the following debug information:</p>
-		<?=sprintf('<span class="debug">%s</span>', print_r(base64_encode($_GET), true)) ?>
+		<?=sprintf('<span class="debug">%s</span>', base64_encode(print_r($_GET, true))) ?>
 	</body>
 </html>
