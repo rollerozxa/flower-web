@@ -17,12 +17,8 @@ if (!isset($userdata['username'])) {
 ?><!doctype html>
 <html>
 	<head>
-		<style>
-body { background-color:#ccddff; text-align:center; }
-form { display:inline-block; }
-input[type=image] { display:inline-block; border:4px outset white; width: 86px; }
-.box { border:2px solid black; display:table; margin:auto; padding:2px; margin-bottom:0.5em; }
-		</style>
+		<title>Choose Flower</title>
+		<link rel="stylesheet" type="text/css" href="assets/choseflower.css">
 	</head>
 	<body>
 		<h2>Flower Selection</h2>
