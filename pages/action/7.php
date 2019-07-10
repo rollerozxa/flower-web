@@ -11,6 +11,6 @@ switch ($_REQUEST['a']) {
 	break;
 	case 'custompgm':
 		// TODO: do this
-		header_msg('TODO');
+		header_msg('Bought a custom PGM package giving you '.PakIDtoName($_POST['custompgm']).' for 15 PGM!');
 	break;
 }
