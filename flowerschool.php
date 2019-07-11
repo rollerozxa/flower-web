@@ -1,8 +1,9 @@
 <?php
 $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
-?>
+?><!doctype html>
 <html>
 	<head>
+		<title>Flower School</title>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
 		<script src="assets/core.js"></script>
 	</head>
