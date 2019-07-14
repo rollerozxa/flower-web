@@ -23,7 +23,5 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 			<button onclick="zoom(1.5)">150%</button>
 			<button onclick="zoom(2.0)">200%</button>
 		</div>
-		<!--<pre><?php print_r($_GET); ?></pre>
-		<a href="">Reload</a>-->
 	</body>
 </html>
