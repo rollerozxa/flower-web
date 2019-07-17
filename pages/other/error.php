@@ -1,5 +1,5 @@
 <?php include('config.php') ?>
-
+<!doctype html>
 <html>
 	<head>
 		<title>Server Problems</title>
