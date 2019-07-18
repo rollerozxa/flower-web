@@ -12,7 +12,7 @@ if (!isset($_GET['gid'])) fs_error("Invalid GID.");
 $uid	= (isset($_GET['uid']) ? $_GET['uid'] : 0);
 $gid	= (isset($_GET['gid']) ? $_GET['gid'] : 'Daisy');
 $show	= (isset($_GET['show']) ? $_GET['show'] : 1);
-$ver	= (isset($_GET['ver']) ? $_GET['ver'] : 999);
+$ver	= (isset($_GET['ver']) ? $_GET['ver'] : 0);
 $menu	= (isset($_GET['justshortcuts']) ? true : null);
 
 // Special pages
