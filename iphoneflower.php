@@ -165,14 +165,7 @@ if ($userdata['powerlevel'] > 1) {
 		<div class="box outer menubar" style="text-align:center;">
 			<?php menubar($userdata['menustyle']); ?>
 		</div>
-		<?php if ($userdata['zoom']) { ?>
-		<div class="box zoom">
-			Zoom:
-			<button onclick="zoom(1.0)">100%</button>
-			<button onclick="zoom(1.5)">150%</button>
-			<button onclick="zoom(2.0)">200%</button>
-		</div>
-		<?php } ?>
+		<?=($userdata['zoom'] ? zoom_menu() : '') ?>
 		<div class="box outer" style="text-align:center">
 		<?php
 		if (islocal()) {

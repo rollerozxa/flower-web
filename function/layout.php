@@ -18,4 +18,32 @@ function fieldselect($field, $checked, $choices, $submitonchange) {
 	return $out;
 }
 
+/**
+ * Return the HTML code for the zoom menu.
+ *
+ * Keep in mind this function doesn't check for whether the user has disabled the zoom menu.
+ * (Mainly due to flowerschool not having any user identifier atm)
+ *
+ * @return string The Code.
+ */
+function zoom_menu() {
+	// TODO: Possibly move $zoom_levels to config.php?
+	// "Internal zoom value to be sent to zoom()" => "Nice name for the zoom level"
+	$zoom_levels = [
+		'1.0' => '100%',
+		'1.5' => '150%',
+		'2.0' => '200%'
+	];
+
+	$out = '<div class="box zoom">Zoom: ';
+	foreach ($zoom_levels as $k => $v) {
+		$out .= sprintf(
+			'<button onlick="%s">%s</button> ',
+		$k, $v);
+	}
+	$out .= '</div>';
+
+	return $out;
+}
+
 ?>

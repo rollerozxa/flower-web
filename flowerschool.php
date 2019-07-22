@@ -17,6 +17,7 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 			}
 			?>
 		</div>
+		<?php /* TODO: Use zoom_menu() here as well */?>
 		<div class="box zoom">
 			Zoom:
 			<button onclick="zoom(1.0)">100%</button>
