@@ -27,13 +27,7 @@ function fieldselect($field, $checked, $choices, $submitonchange) {
  * @return string The Code.
  */
 function zoom_menu() {
-	// TODO: Possibly move $zoom_levels to config.php?
-	// "Internal zoom value to be sent to zoom()" => "Nice name for the zoom level"
-	$zoom_levels = [
-		'1.0' => '100%',
-		'1.5' => '150%',
-		'2.0' => '200%'
-	];
+	global $zoom_levels;
 
 	$out = '<div class="box zoom">Zoom: ';
 	foreach ($zoom_levels as $k => $v) {

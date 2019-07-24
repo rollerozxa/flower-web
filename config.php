@@ -45,6 +45,13 @@ $superfertilizer_cost = 20;
 
 $debug = false;
 
+// "Internal zoom value to be sent to zoom()" => "Nice name for the zoom level"
+$zoom_levels = [
+	'1.0' => '100%',
+	'1.5' => '150%',
+	'2.0' => '200%'
+];
+
 $funfacts = [
 	"The warp music was made by Evershine.",
 	"The original server was written in Java.",
@@ -295,5 +302,3 @@ $countries = [
 	["zm","Zambia"],
 	["zw","Zimbabwe"]
 ];
-
-?>

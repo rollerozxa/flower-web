@@ -1,4 +1,7 @@
 <?php
+require('function/layout.php');
+require('config.php');
+
 $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 ?><!doctype html>
 <html>
@@ -17,12 +20,6 @@ $page = (isset($_GET['page']) ? $_GET['page'] : 'start');
 			}
 			?>
 		</div>
-		<?php /* TODO: Use zoom_menu() here as well */?>
-		<div class="box zoom">
-			Zoom:
-			<button onclick="zoom(1.0)">100%</button>
-			<button onclick="zoom(1.5)">150%</button>
-			<button onclick="zoom(2.0)">200%</button>
-		</div>
+		<?=zoom_menu() ?>
 	</body>
 </html>
