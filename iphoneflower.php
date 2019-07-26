@@ -170,8 +170,8 @@ if ($userdata['powerlevel'] > 1) {
 		<?php
 		if (islocal()) {
 			if (isset($_GET['debug'])) {
-				echo '<table class="debugtable"><tr><td>GET requests:<pre>'; print_r($_GET);
-				echo '</pre></td><td>$userdata:<pre>'; print_r($userdata);
+				echo '<table class="debugtable"><tr><td>GET requests:<pre>'. print_r($_GET, true);
+				echo '</pre></td><td>$userdata:<pre>' . print_r($userdata, true);
 				echo '</pre></td></tr></table>';
 			} else {
 				echo '<a href="'.$_SERVER['REQUEST_URI'].'&debug">Show debug info</a>';
