@@ -102,7 +102,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<div class="box" style="background-color:#ffff00">** Galaxy Special: <?=$galaxyspecial ?> **<br><?=$statustext ?></div>
 		<span class="title" style="font-size:36pt"><?=get_page_title($show) ?></span>
 		<div class="box outer">
-			<table class="fsbox" style="width:100%">
+			<table class="fsbox">
 				<tr>
 					<td colspan=2>
 						<img src="flags/<?=$userdata['country'] ?>.png">

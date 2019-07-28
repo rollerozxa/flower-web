@@ -16,7 +16,7 @@ usort($friends, function($a, $b) { return strcmp(strtolower($a["friended_name"])
 ?>
 <p class="title">Friends</p>
 
-You have <span style="color:green"><?=count($friends) ?></span> friends.<br/>
+You have <span style="color:green"><?=count($friends) ?></span> friends.<br>
 <table style="width:90%;border:2px solid black" class="friends">
 <?php
 $bg = 0;
@@ -41,7 +41,7 @@ foreach ($friends as $friend_row) {
 	Add a friend by entering their friend code.<br>
 	<form method="post">
 		<input type="hidden" name="a" value="addfriend">
-		<input type="number" name="friendcode" width=320/><input type="submit" value="Add my friend!" />
+		<input type="number" name="friendcode" width=320><input type="submit" value="Add my friend!">
 	</form>
 </div>
 

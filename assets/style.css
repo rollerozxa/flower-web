@@ -2,6 +2,9 @@ body {
 	margin-bottom: 2em;
 }
 
+.fsbox {
+	width: 100%;
+}
 .fsbox td {
 	padding: 0.2em;
 }
