@@ -23,7 +23,7 @@ $admintools = [
 	], 'impersonate' => [
 		'content' => sprintf(
 			 '<span class="title">Impersonate someone! &Ograve;w&Oacute;</span>'
-			.'<br><br><form method="GET">%s</form>'
+			.'<br><br><form method="GET">%s</form>',
 		$form),
 		'powerlevel' => 4
 	], 'ban_debug' => [
