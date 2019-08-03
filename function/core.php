@@ -40,4 +40,14 @@ function startsWith($haystack, $needle) {
 	return (substr($haystack, 0, $length) === $needle);
 }
 
-?>
+/**
+ * Undocumented function
+ *
+ * @param int $number
+ * @param int $min
+ * @param int $max
+ * @return bool
+ */
+function number_between($number, $min, $max) {
+	return ($number >= $min && $number <= $max);
+}
