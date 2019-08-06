@@ -21,6 +21,9 @@ Max tickets per day: 10,000. If you try to buy more, it will simply stop at the 
 	</tr><tr style="color:red">
 		<td>1 / 20,000</td>
 		<td>+1 PGM</td>
+	</tr><tr style="color:green">
+		<td>1 / 200,000</td>
+		<td>1000 seeds!</td>
 	</tr><tr>
 		<td>1 / 100,000,000</td>
 		<td><?=rainbow_text('Magic seed!') ?></td>
