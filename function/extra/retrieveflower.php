@@ -18,10 +18,9 @@ function retrieve_countries() {
 	$out = hex2bin(str_pad(dechex(sizeof($countries)),2,'0',STR_PAD_LEFT));
 
 	foreach ($countries as $c) {
-		$pieces = explode("@", $c);
-		$out .= hex2bin("00") . hex2bin(str_pad(dechex(strlen($pieces[0])),2,"0",STR_PAD_LEFT)) . $pieces[0] . hex2bin(str_pad(dechex(strlen($pieces[1])),4,"0",STR_PAD_LEFT)) . $pieces[1];
+		$out .= hex2bin("00") . hex2bin(str_pad(dechex(strlen($c[0])),2,"0",STR_PAD_LEFT)) . $c[0] . hex2bin(str_pad(dechex(strlen($c[1])),4,"0",STR_PAD_LEFT)) . $c[1];
 	}
-
+	
 	return $out;
 }
 
@@ -46,7 +45,7 @@ function retrieve_seeds() {
 function retrieve_stars() {
 	global $userdata;
 
-	return hex2bin(str_pad(dechex(round($userdata['stars'],0)),14,"0",STR_PAD_LEFT));
+	return hex2bin(str_pad(dechex(round($userdata['stars'],0)),16,"0",STR_PAD_LEFT));
 }
 
 
