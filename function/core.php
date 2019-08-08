@@ -41,7 +41,7 @@ function startsWith($haystack, $needle) {
 }
 
 /**
- * Undocumented function
+ * Is $number more or equal to $min and less or equel to $max?
  *
  * @param int $number
  * @param int $min
