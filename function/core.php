@@ -43,11 +43,14 @@ function startsWith($haystack, $needle) {
 /**
  * Is $number more or equal to $min and less or equel to $max?
  *
+ * If any of the parameters aren't a integer, it returns null.
+ *
  * @param int $number
  * @param int $min
  * @param int $max
  * @return bool
  */
 function number_between($number, $min, $max) {
+	if (!is_numeric($number) || !is_numeric($min) || !is_numeric($max)) return null;
 	return ($number >= $min && $number <= $max);
 }
