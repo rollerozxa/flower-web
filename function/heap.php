@@ -36,5 +36,3 @@ function heapsize($id) {
 		case 6:		return 3000000000;
 	}
 }
-
-?>

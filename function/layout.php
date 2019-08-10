@@ -39,5 +39,3 @@ function zoom_menu() {
 
 	return $out;
 }
-
-?>

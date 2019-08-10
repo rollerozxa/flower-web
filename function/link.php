@@ -68,5 +68,3 @@ function pagebase() {
 	global $uid, $gid;
 	return "?uid=$uid&gid=$gid";
 }
-
-?>
