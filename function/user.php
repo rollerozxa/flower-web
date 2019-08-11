@@ -48,5 +48,3 @@ function make_friendcode() {
 	}
 	return $friendcode;
 }
-
-?>

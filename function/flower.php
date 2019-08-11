@@ -60,5 +60,3 @@ function getflowergrowthrate($formatted = true) {
 function formatheight($height) {
 	return number_format($height,8,'.',' ');
 }
-
-?>

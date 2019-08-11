@@ -85,5 +85,3 @@ function chat_postcode($message, $powerlevel) {
 
 	return $message;
 }
-
-?>

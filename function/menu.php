@@ -51,5 +51,3 @@ function menubar($menustyle = MENUBAR_BUTTONS) {
 		break;
 	}
 }
-
-?>

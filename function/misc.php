@@ -35,5 +35,3 @@ function header_msg($msg,$bg = "00ff00") {
 		'<div class="box" style="background-color:#%s">%s</div>',
 	$bg, $msg);
 }
-
-?>

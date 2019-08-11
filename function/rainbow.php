@@ -21,5 +21,3 @@ function rainbow_text($text) {
 
 	return $ret;
 }
-
-?>
