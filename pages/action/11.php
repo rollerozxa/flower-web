@@ -16,7 +16,7 @@ switch ($_REQUEST['a']) {
 		if (file_exists('flags/' . $quantity . '.png')) {
 			query("UPDATE user SET country = ? WHERE uid = ?", [$quantity, $userdata['uid']]);
 		} else {
-			header_msg("Invalid flag. Wait, how?", "ff7777");
+			header_msg("Invalid country flag.", "ff7777");
 		}
 	break;
 }
