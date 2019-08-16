@@ -168,7 +168,7 @@ if ($userdata['powerlevel'] > 1) {
 		<?=($userdata['zoom'] ? zoom_menu() : '') ?>
 		<div class="box outer" style="text-align:center">
 		<?php
-		if (islocal()) {
+		if ($userdata['powerlevel'] == 4) {
 			if (isset($_GET['debug'])) {
 				echo '<table class="debugtable"><tr><td>GET requests:<pre>'. print_r($_GET, true);
 				echo '</pre></td><td>$userdata:<pre>' . print_r($userdata, true);
