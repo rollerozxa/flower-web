@@ -105,7 +105,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			<table class="fsbox">
 				<tr>
 					<td colspan=2>
-						<img src="flags/<?=$userdata['country'] ?>.png">
+						<?=flag($userdata['country']) ?>
 						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
 							<img id="flowerimg" src="img/<?=($userdata['powerlevel'] == 0 ? 'gray/' : '')?><?=$gid ?>Icon.png" width=24>
 						</a>

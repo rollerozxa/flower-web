@@ -30,7 +30,7 @@ while ($record = $query->fetch()) {
 	$nccolor = 'color:#'.powcolor($record['powerlevel']);
 	?>
 	<tr><td class="tbl<?=$bg ?>">
-		<img src="flags/<?=$record['country'] ?>.png"> <img src="img/<?=$flower ?>" width=24>
+		<?=flag($record['country']) ?> <img src="img/<?=$flower ?>" width=24>
 		<a class="user" style="<?=$nccolor ?>" href="<?=pagelink(12)?>&id=<?=$record['userID']?>"><?=$record['username'] ?></a>: <?=$record['message'] ?> <br>
 		<span style="color:maroon"><em>(<?=$time ?> ago)</em></span>
 		<?php if ($userdata['powerlevel'] > 1) { ?>

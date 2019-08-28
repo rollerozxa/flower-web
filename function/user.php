@@ -48,3 +48,15 @@ function make_friendcode() {
 	}
 	return $friendcode;
 }
+
+/**
+ * Return HTML code for a flag image.
+ *
+ * @param string $countrycode Country code of the flag.
+ * @return string
+ */
+function flag($countrycode) {
+	return sprintf(
+		'<img src="flags/%s.png">',
+	$countrycode);
+}

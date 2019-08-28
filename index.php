@@ -4,6 +4,7 @@ include('function/flower.php');
 include('function/misc.php');
 include('function/mysql.php');
 include('function/rainbow.php');
+include('function/user.php');
 include('config.php');
 ?><!doctype html>
 <html>
@@ -101,7 +102,7 @@ foreach ($flowers as $gid) {
 				<table class="scores"><tr class="tbl1"><th width=60px>Rank</th><th width=40%>Height</th><th>Player</th></tr>
 				<?php foreach ($leaderboard[$gid] as $boardrow) { ?>
 					<tr class="tbl<?=$boardrow['bg'] ?>">
-						<td><img src="flags/<?=$boardrow['country'] ?>.png"> <?=$boardrow['count'] ?></td>
+						<td><?=flag($boardrow['country']) ?> <?=$boardrow['count'] ?></td>
 						<td><?=$boardrow['height'] ?> (cm)</td>
 						<td><?=$boardrow['username'] ?></td>
 					</tr>

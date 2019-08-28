@@ -19,7 +19,7 @@ if ($u['powerlevel'] == 4) {
 
 ?>
 <div style="text-align:center">
-	<img src="flags/<?=$u['country']?>.png"> <span class="title"><?=$u['username']?></span>
+	<?=flag($u['country']) ?> <span class="title"><?=$u['username']?></span>
 	<em><?=(isset($powstr) ? $powstr : '')?></em>
 	<br><div class="user_flowbox">
 		<span class="title">Flowers started</span><br>

@@ -5,7 +5,7 @@ Change nickname to:<br>
 	<input type="submit" value="Change">
 </form>
 <hr>
-(Current flag: <img src="flags/<?=$userdata['country'] ?>.png">)
+(Current flag: <?=flag($userdata['country']) ?>)
 Change flag:<br>
 <?php
 // Order countries in alphabetical order (a la the in-game change flag system)
@@ -13,7 +13,7 @@ usort($countries, function($a, $b) { return strcmp($a[1], $b[1]); });
 
 foreach ($countries as $country) {
 	printf(
-		'<a class="flag" href="%s"><div><img src="flags/%s.png"> %s</div></a>',
-	alink(11,'changeflag',$country[0]), $country[0], $country[1]);
+		'<a class="flag" href="%s"><div>%s %s</div></a>',
+	alink(11,'changeflag',$country[0]), flag($country[0]), $country[1]);
 }
 ?>

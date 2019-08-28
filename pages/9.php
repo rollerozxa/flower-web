@@ -13,7 +13,7 @@ $bg = 0;
 $count = 1;
 while ($record = $query->fetch()) {
 	?><tr class="tb<?=($record['uid'] == $uid ? 'h' : 'l' . $bg) ?>">
-		<td><img src="flags/<?=$record['country'] ?>.png"> <?=$count ?></td>
+		<td><?=flag($record['country']) ?> <?=$count ?></td>
 		<td><?=formatheight($record['height']) ?> (cm)</td>
 		<td>
 			<a class="user" href="<?=pagelink(12) ?>&id=<?=$record['userID'] ?>" style="color:#<?= powcolor($record['powerlevel']) ?>;">
