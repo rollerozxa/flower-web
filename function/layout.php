@@ -32,7 +32,7 @@ function zoom_menu() {
 	$out = '<div class="box zoom">Zoom: ';
 	foreach ($zoom_levels as $k => $v) {
 		$out .= sprintf(
-			'<button onclick="%s">%s</button> ',
+			'<button onclick="zoom(%s)">%s</button> ',
 		$k, $v);
 	}
 	$out .= '</div>';
