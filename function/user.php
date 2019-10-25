@@ -57,6 +57,6 @@ function make_friendcode() {
  */
 function flag($countrycode) {
 	return sprintf(
-		'<img src="flags/%s.png">',
+		'<img class="fl" src="flags/%s.png">',
 	$countrycode);
 }
