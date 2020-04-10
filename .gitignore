@@ -10,3 +10,7 @@ postdebug.log
 
 # Adminer script
 adminer.php
+
+# Composer
+vendor/
+composer.lock
