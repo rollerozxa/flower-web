@@ -1,5 +1,5 @@
 <?php
-$query = query("SELECT * FROM inbox WHERE recipient_id = ? ORDER BY mailID DESC" , [$userdata['userID']]);
+$query = query("SELECT * FROM inbox WHERE recipient_id = ? ORDER BY mailID DESC", [$cuser->getData('userID')]);
 
 while ($record = $query->fetch()) {
 	if ($record['sender_id'] != 'dead410734') {

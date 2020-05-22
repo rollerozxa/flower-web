@@ -6,7 +6,7 @@
 
 switch ($_REQUEST['a']) {
 	case 'buyseedtickets':
-		if ($quantity * 15 <= $userdata['seeds']) {
+		if ($quantity * 15 <= $cuser->getData('seeds')) {
 			$seedsdraw_rewards = [
 				['odds' => 1000, 'id' => 'water', 'desc' => '+6 hours of water!'],
 				['odds' => 2000, 'id' => 'sun', 'desc' => '+6 hours of sun!'],
@@ -29,8 +29,9 @@ switch ($_REQUEST['a']) {
 			$rewardlist .= '</ul>';
 
 			// TODO: Implement putting the magic seeds somewhere.
-			query("UPDATE user_$gid SET water = water + ?, sun = sun + ?, warp = warp + ?, giga = giga + ?, jump = jump + ? WHERE uid = ?",
-				[$rewards['water'], $rewards['sun'], $rewards['warp'], $rewards['giga'], $rewards['jump'], $uid]);
+			$resources = ['water', 'sun', 'warp', 'giga', 'jump'];
+			foreach ($resources as $resource)
+				$cuser->flower[$gid]->abveData($resource, $rewards[$resource]);
 
 			header_msg("Bought $quantity seeds draw tickets for " . ($quantity * 15) . " seeds, giving you the following rewards:<br>" . $rewardlist);
 

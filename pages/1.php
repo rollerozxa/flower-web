@@ -1,16 +1,16 @@
 <p class="title">Items</p>
 <div style="background-color:#ccffcc" class="box">
-	<b>Seed income: $<span class=seedc><?=number_format($userdata['seedincome'],2) ?></span> per hour</b>
+	<b>Seed income: $<span class=seedc><?=number_format($cuser->getData('seedincome'),2) ?></span> per hour</b>
 	<table class="ttbl fullwidth">
 		<?php /* Due to galaxy bonus, it costs half as much (original: 100* per 1/hr) */ ?>
-		<tr><td><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?=$userdata['seedincome'] * 5 ?> stars</td></tr>
-		<tr><td><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?=$userdata['seedincome'] * 50 ?> stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradeincome',1) ?>">Upgrade by 0.1/hr</a> : *<?=$cuser->getData('seedincome') * 5 ?> stars</td></tr>
+		<tr><td><a href="<?=alink(1,'upgradeincome',10) ?>">Upgrade by 1.0/hr</a> : *<?=$cuser->getData('seedincome') * 50 ?> stars</td></tr>
 	</table>
 	<b id="blink" style="display:block;font-size:24pt;text-align:center;letter-spacing:3px;color:red">50% OFF!</b>
 	<?php /*<b style="color:maroon;">(Seed income is global and no <br> longer on a per-flower basis.)</b>*/ ?>
 </div><br>
 <div style="background-color:#ffffcc" class="box">
-	<b>Basic Growth Rate: <span style="color:purple"><?=number_format($userdata['basicgrowthrate'] * 0.36,2) ?>cm</span> per hour</b>
+	<b>Basic Growth Rate: <span style="color:purple"><?=number_format($cuser->flower[$gid]->getData('basicgrowthrate') * 0.36,2) ?>cm</span> per hour</b>
 	<table class="ttbl fullwidth">
 		<tr><td><a href="<?=alink(1,'upgradebgr',1) ?>">Upgrade by 0.36cm/hr</a> *720 stars</td></tr>
 		<tr><td><a href="<?=alink(1,'upgradebgr',10) ?>">Upgrade by 3.60cm/hr</a> *7,200 stars</td></tr>
@@ -45,17 +45,17 @@
 	<li><a href="<?=alink(1,'buysun',1000000) ?>">Buy 1,000,000 hours more sun *2000000 stars</a></li>
 	<li>(Sun overdose stretches the current day longer, so that your items don't get used up until the sun goes down.)</li>
 </ul>
-<span class="title">Auto Water</span> (<?=$userdata['autowater'] ?>)
+<span class="title">Auto Water</span> (<?=$cuser->flower[$gid]->getData('autowater') ?>)
 <ul>
 	<?=itemlist(1,'buyautowater',[1,5,15],$autowater_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Auto water will keep your plant moist until the sun goes down.)</li>
 </ul>
-<span class="title">Fertilizer</span> (<?=$userdata['fertilizer'] ?>)
+<span class="title">Fertilizer</span> (<?=$cuser->flower[$gid]->getData('fertilizer') ?>)
 <ul>
 	<?=itemlist(1,'buyfertilizer',[1,5,15],$fertilizer_cost,'Buy %q $%c seeds',ITEMLIST_NOFORMAT) ?>
 	<li>(Fertilizer makes your flower grow 3x as fast until the sun goes down.)</li>
 </ul>
-<span class="title">Super Fertilizer</span> (<?=$userdata['superfertilizer'] ?>)
+<span class="title">Super Fertilizer</span> (<?=$cuser->flower[$gid]->getData('superfertilizer') ?>)
 <ul>
 	<?=itemlist(1,'buysuperfertilizer',[1,5,15],$superfertilizer_cost,'Buy %q *%c stars',ITEMLIST_NOFORMAT) ?>
 	<li>(Super fertilizer makes your flower grow 5x as fast until the sun goes down.)</li>
@@ -91,7 +91,7 @@
 		<li>(Bulk items give you X hours of water, sun, warp and giga for all of your flowers!)</li>
 	</ul>
 </div>
-<?php if ($userdata['nevershrink'] == 1) { ?>
+<?php if ($cuser->flower[$gid]->getData('nevershrink') == 1) { ?>
 	Never shrink from drying out: <span style="color:green">Active!</span><br>
 <?php } else { ?>
 	Never shrink from drying out: Inactive<br>

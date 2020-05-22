@@ -6,12 +6,12 @@
 
 switch ($_REQUEST['a']) {
 	case 'chat':
-		if (isset($_POST['text']) && $userdata['powerlevel'] >= 1) {
-			query("INSERT INTO chat (userID, message, gid, time) VALUES (?,?,?,?)", [$userdata['userID'], $_POST['text'], $gid, time()]);
+		if (isset($_POST['text']) && $cuser->getData('powerlevel') >= 1) {
+			query("INSERT INTO chat (userID, message, gid, time) VALUES (?,?,?,?)", [$cuser->getData('userID'), $_POST['text'], $gid, time()]);
 		}
 	break;
 	case 'chatdelet':
-		if ($userdata['powerlevel'] > 1) {
+		if ($cuser->getData('powerlevel') > 1) {
 			if (is_numeric($quantity)) {
 				if (result("SELECT COUNT(*) FROM chat WHERE ID = ?", [$quantity]) == 1) {
 					query("DELETE FROM chat WHERE ID = ?", [$quantity]);
@@ -27,7 +27,7 @@ switch ($_REQUEST['a']) {
 		}
 	break;
 	case 'chatnuke':
-		if ($userdata['powerlevel'] == 4) {
+		if ($cuser->getData('powerlevel') == 4) {
 			if (isset($_POST['shouldnuke'])) {
 				query("TRUNCATE TABLE chat;");
 				header_msg("*Explosion sound*");
@@ -40,7 +40,7 @@ switch ($_REQUEST['a']) {
 	break;
 	// It's actually from page ID -1 (Edit message), but it redirects you to page ID 2 (Chat). Eh.
 	case 'editmessage':
-		if ($userdata['powerlevel'] > 1) {
+		if ($cuser->getData('powerlevel') > 1) {
 			if (isset($_POST['edited_message']) && isset($_POST['message_id'])) {
 				query("UPDATE chat SET message = ? WHERE ID = ?", [$_POST['edited_message'], $_POST['message_id']]);
 			}

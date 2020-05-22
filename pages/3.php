@@ -1,12 +1,12 @@
 <?php
 $friends = [];
 
-$db_query = query("SELECT * FROM friend_connections WHERE friender_userid = ?", [$userdata['userID']]);
+$db_query = query("SELECT * FROM friend_connections WHERE friender_userid = ?", [$cuser->getData('userID')]);
 while ($record = $db_query->fetch()) {
 	$friendeduserdata = fetch("SELECT * FROM user WHERE userID = ?", [$record['friended_userid']]);
 	$friends[] = ['connection_id' => $record['connection_id'],'friended_userid' => $record['friended_userid'],'friended_name' => $friendeduserdata['username']];
 }
-$db_query = query("SELECT * FROM friend_connections WHERE friended_userid = ?", [$userdata['userID']]);
+$db_query = query("SELECT * FROM friend_connections WHERE friended_userid = ?", [$cuser->getData('userID')]);
 while ($record = $db_query->fetch()) {
 	$friendeduserdata = fetch("SELECT * FROM user WHERE userID = ?", [$record['friender_userid']]);
 	$friends[] = ['connection_id' => $record['connection_id'],'friended_userid' => $record['friender_userid'],'friended_name' => $friendeduserdata['username']];
@@ -37,7 +37,7 @@ foreach ($friends as $friend_row) {
 </table>
 <br>
 <div class="box" style="background-color:#88ff88">
-	Your Friend Code: <span style="color:purple"><?=$userdata['friendcode'] ?></span><br>
+	Your Friend Code: <span style="color:purple"><?=$cuser->getData('friendcode') ?></span><br>
 	Add a friend by entering their friend code.<br>
 	<form method="post">
 		<input type="hidden" name="a" value="addfriend">

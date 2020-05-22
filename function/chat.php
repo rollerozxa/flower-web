@@ -7,7 +7,7 @@
  *				  If the original chat message isn't a command, it returns null.
  */
 function chat_command() {
-	global $msguserdata, $record, $userdata;
+	global $record;
 
 	if (startsWith($record['message'], '/')) {
 		$commandname = explode(' ', str_replace('/', '', $record['message']), 2);

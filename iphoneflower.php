@@ -1,5 +1,4 @@
 <?php
-
 $start = microtime(true);
 
 include('function/function.php');
@@ -26,9 +25,11 @@ if (!in_array($gid, $flowers)) fs_error('Unknown flower.');
 if ($uid == '0000000000000000') fs_error('Blacklisted UID.<br>Reason: Android SDK Emulator');
 if ($uid == '')					fs_error('Blacklisted UID.<br>Reason: Blank UID.');
 
-update_userdata();
+$cuser = new user(false, $uid);
+$cuser->updateUserInfo();
+$cuser->updateUserFlower($gid);
 
-if (!isset($userdata['username'])) {
+if (!$cuser->getData('username')) {
 	// User doesn't exist.
 	fs_error("User doesn't exist.");
 }
@@ -38,21 +39,21 @@ if (isset($_GET['bandebug'])) {
 	die();
 }
 
-$timedifference = microtime(true) - $userdata['lastview'];
+$timedifference = microtime(true) - $cuser->getData('lastview');
 
 // Give seed income.
-$seedearnamount = $timedifference * ($userdata['seedincome'] / 216000);
-query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] + $seedearnamount), $uid]);
+$seedearnamount = $timedifference * ($cuser->getData('seedincome') / 216000);
+$cuser->abveData('seeds', $seedearnamount);
 
 // Grow the flower!
-$heightgrowthamount = $timedifference * (getflowergrowthrate(false) / 216000);
-query("UPDATE user_$gid SET height = ? WHERE uid = ?", [$userdata['height'] + $heightgrowthamount, $uid]);
+$heightgrowthamount = $timedifference * ($cuser->flower[$gid]->getflowergrowthrate(false) / 216000);
+$cuser->flower[$gid]->abveData('height', $heightgrowthamount);
 
 // Deplete resources.
-query("UPDATE user_$gid SET water = water - ?, sun = sun - ? WHERE uid = ?", [($timedifference / 216000), ($timedifference / 216000), $uid]);
+$cuser->flower[$gid]->abveData('water', 0-($timedifference / 216000));
+$cuser->flower[$gid]->abveData('sun', 0-($timedifference / 216000));
 
-query("UPDATE user SET lastview = ? WHERE uid = ?", [microtime(true), $uid]);
-update_userdata();
+$cuser->setData('lastview', microtime(true));
 
 if (isset($_REQUEST['a'])) include('pages/a.php');
 
@@ -64,10 +65,10 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<script>function open_page(show) { window.open('<?=pagebase() ?>&show=' + show, '_top'); }</script>
 		<script src="assets/core.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/style.css">
-		<?php if ($userdata['yellow_background']) { ?>
+		<?php if ($cuser->getData('yellow_background')) { ?>
 		<style>body{background-color:#F8ECC2}</style>
 		<?php } ?>
-		<?php if ($userdata['nostalgia']) { ?>
+		<?php if ($cuser->getData('nostalgia')) { ?>
 		<link rel="stylesheet" type="text/css" href="assets/nostalgia.css">
 		<?php } ?>
 		<!-- ****** faviconit.com favicons ****** -->
@@ -105,35 +106,35 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			<table class="fsbox">
 				<tr>
 					<td colspan=2>
-						<?=flag($userdata['country']) ?>
+						<?=flag($cuser->getData('country')) ?>
 						<a onclick='document.getElementById("flowerimg").src="img/SocIcon.png";'>
-							<img id="flowerimg" src="img/<?=($userdata['powerlevel'] == 0 ? 'gray/' : '')?><?=$gid ?>Icon.png" width=24>
+							<img id="flowerimg" src="img/<?=($cuser->getData('powerlevel') == 0 ? 'gray/' : '')?><?=$gid ?>Icon.png" width=24>
 						</a>
-						<a class="user" href="<?=pagelink(12) ?>&id=<?=$userdata['userID'] ?>" style="color:#<?= powcolor($userdata['powerlevel']) ?>">
-							<?=$userdata['username'] ?>
+						<a class="user" href="<?=pagelink(12) ?>&id=<?=$cuser->getData('userID') ?>" style="color:#<?= powcolor($cuser->getData('powerlevel')) ?>">
+							<?=$cuser->getData('username') ?>
 						</a>
 						<span style="display:inline-block;margin-top:0.21em;">
-						<?=formatheight($userdata['height']) ?> (cm)
+						<?=formatheight($cuser->flower[$gid]->getData('height')) ?> (cm)
 						</span>
 					</td>
 				</tr>
 				<tr>
-					<td class="fs_seeds">Seeds: <?=($debug ? '&infin;' : '$' . number_format($userdata['seeds'],2)) ?></td>
-					<td class="fs_stars">Stars: <?=($debug ? '&infin;' : '*' . number_format($userdata['stars'],2)) ?></td>
+					<td class="fs_seeds">Seeds: <?=($debug ? '&infin;' : '$' . number_format($cuser->getData('seeds'),2)) ?></td>
+					<td class="fs_stars">Stars: <?=($debug ? '&infin;' : '*' . number_format($cuser->getData('stars'),2)) ?></td>
 				</tr>
-				<?php if ($userdata['PGM']) { ?>
-				<tr><td class="fs_pgm" colspan=2>PGM: <?=$userdata['PGM'] ?></td></tr>
+				<?php if ($cuser->getData('PGM')) { ?>
+				<tr><td class="fs_pgm" colspan=2>PGM: <?=$cuser->getData('PGM') ?></td></tr>
 				<?php } ?>
 				<tr>
-					<td class="fs_water">Water: <?=number_format($userdata['water'],2) ?> hours</td>
-					<td class="fs_sun">Sun: <?=number_format($userdata['sun'],2) ?> hours</td>
+					<td class="fs_water">Water: <?=number_format($cuser->flower[$gid]->getData('water'),2) ?> hours</td>
+					<td class="fs_sun">Sun: <?=number_format($cuser->flower[$gid]->getData('sun'),2) ?> hours</td>
 				</tr>
 				<tr>
-					<td class="fs_giga">Giga: <?=number_format($userdata['giga'],2) ?> hours</td>
-					<td class="fs_warp">Warp: <?=number_format($userdata['warp'],2) ?> hours</td>
+					<td class="fs_giga">Giga: <?=number_format($cuser->flower[$gid]->getData('giga'),2) ?> hours</td>
+					<td class="fs_warp">Warp: <?=number_format($cuser->flower[$gid]->getData('warp'),2) ?> hours</td>
 				</tr>
 				<tr>
-					<td colspan=2>Growth rate: <?=getflowergrowthrate() ?> cm/hour </td>
+					<td colspan=2>Growth rate: <?=$cuser->flower[$gid]->getflowergrowthrate() ?> cm/hour </td>
 				</tr>
 			</table>
 		</div>
@@ -145,7 +146,7 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 		<?php } ?>
 		<?php
 		if (file_exists('pages/' . $show . '.php')) {
-			if ($show != 1337 || $userdata['powerlevel'] == 4) {
+			if ($show != 1337 || $cuser->getData('powerlevel') == 4) {
 				if (!$menu) {
 					echo '<div class="box outer">';
 						include('pages/' . $show . '.php');
@@ -158,20 +159,19 @@ if (isset($_REQUEST['a'])) include('pages/a.php');
 			echo '<div class="box outer"><center><h1>404</h1>This page doesn\'t exist.</center></div>';
 		}
 
-if ($userdata['powerlevel'] > 1) {
+if ($cuser->getData('powerlevel') > 1) {
 	$menuitems[] = ['name' => 'Admin tools', 'page' => 420];
 }
 		?>
 		<div class="box outer menubar" style="text-align:center;">
-			<?php menubar($userdata['menustyle']); ?>
+			<?php menubar($cuser->getData('menustyle')); ?>
 		</div>
-		<?=($userdata['zoom'] ? zoom_menu() : '') ?>
+		<?=($cuser->getData('zoom') ? zoom_menu() : '') ?>
 		<div class="box outer" style="text-align:center">
 		<?php
-		if ($userdata['powerlevel'] == 4) {
+		if ($cuser->getData('powerlevel') == 4) {
 			if (isset($_GET['debug'])) {
 				echo '<table class="debugtable"><tr><td>GET requests:<pre>'. print_r($_GET, true);
-				echo '</pre></td><td>$userdata:<pre>' . print_r($userdata, true);
 				echo '</pre></td></tr></table>';
 			} else {
 				echo '<a href="'.$_SERVER['REQUEST_URI'].'&debug">Show debug info</a>';

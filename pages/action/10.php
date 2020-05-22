@@ -6,8 +6,8 @@
 
 switch ($_REQUEST['a']) {
 	case 'heap':
-		if ($quantity < $userdata['seeds']) {
-			query("UPDATE user SET seeds = ? WHERE user.uid = ?", [($userdata['seeds'] - $quantity), $userdata['uid']]);
+		if ($quantity < $cuser->getData('seeds')) {
+			$cuser->abveData('seeds', 0-$quantity);
 			query("UPDATE globalcompost SET compostsize = compostsize + ? ORDER BY compostID DESC LIMIT 1", [$quantity]);
 			$compost = fetch("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1");
 			if ($compost['compostsize'] >= $compost['compostmaxsize']) {

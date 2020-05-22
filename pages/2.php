@@ -33,7 +33,7 @@ while ($record = $query->fetch()) {
 		<?=flag($record['country']) ?> <img src="img/<?=$flower ?>" width=24>
 		<a class="user" style="<?=$nccolor ?>" href="<?=pagelink(12)?>&id=<?=$record['userID']?>"><?=$record['username'] ?></a>: <?=$record['message'] ?> <br>
 		<span style="color:maroon"><em>(<?=$time ?> ago)</em></span>
-		<?php if ($userdata['powerlevel'] > 1) { ?>
+		<?php if ($cuser->getData('powerlevel') > 1) { ?>
 		<span style="float:right">
 			<a href="<?=pagelink(-1) ?>&messageid=<?=$record['ID'] ?>" style="text-decoration:none;transform: rotateZ(90deg);">&#9998;</a>
 			<a href="<?=alink(2,'chatdelet',$record['ID']) ?>" style="color:red;text-decoration:none">X</a>
@@ -46,7 +46,7 @@ while ($record = $query->fetch()) {
 ?>
 </table>
 
-<?php if ($userdata['powerlevel'] >= 1) { ?>
+<?php if ($cuser->getData('powerlevel') >= 1) { ?>
 <form method="post">
 	<?=($mpp != 20 ? '<input type="hidden" name"mpp" value="'.$mpp.'">' : '')?>
 	<input type="hidden" name="a" value="chat">
@@ -57,7 +57,7 @@ while ($record = $query->fetch()) {
 <p style="font-weight:bold;font-style:italic">You've been banned.</p>
 <?php } ?>
 
-<?php if ($userdata['powerlevel'] == 4) { ?>
+<?php if ($cuser->getData('powerlevel') == 4) { ?>
 <div class="box" style="text-align:center;background-color:#ff5555">
 	<span class="title">Nuke chat table **DANGEROUS!**</span>
 	<form method="POST">

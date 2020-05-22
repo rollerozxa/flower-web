@@ -9,6 +9,4 @@ if (!isset($_REQUEST['quantity'])) {
 
 if (file_exists('pages/action/'.$show.'.php')) {
 	include('pages/action/'.$show.'.php');
-
-	update_userdata();
 }

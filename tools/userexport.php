@@ -1,5 +1,6 @@
 <?php
 include('../function/mysql.php');
+include('../function/userlib.php');
 include('../config.php');
 
 // Password for accessing the user export page.
@@ -76,22 +77,24 @@ $tbl_flowerinfo = [
 	'nevershrink'
 ];
 
-$userdata = fetch("SELECT * FROM user WHERE uid = ?", [$uid]);
-if (!isset($userdata['userID'])) die('Invalid user.');
+$cuser = new user(false, $uid);
+$cuser->updateUserInfo();
 
-$userdata['uid'] = '<em>REDACTED</em>';
+if (!$cuser->getData('userID')) die('Invalid user.');
 
 echo '<hr><h1>Main User Info:</h1><table><tr><th>Key</th><th>Value</th></tr>';
 foreach ($tbl_userinfo as $tableline) {
-	echo '<tr><td>'.$tableline.'</td><td>'.$userdata[$tableline].'</td></tr>';
+	if ($tableline == 'uid') {
+		echo '<tr><td>uid</td><td><em>REDACTED</em></td></tr>';
+	} else {
+		echo '<tr><td>'.$tableline.'</td><td>'.$cuser->getData($tableline).'</td></tr>';
+	}
 }
 echo '</table>';
 
 foreach ($flowers as $flower) {
-	if ($userdata['has_' . strtolower($flower)]) {
-		$userflowerdata[$flower] = fetch("SELECT * FROM user_$flower WHERE uid = ?", [$uid]);
-	} else {
-		$userflowerdata[$flower] = null;
+	if ($cuser->getData('has_'.strtolower($flower))) {
+		$cuser->updateUserFlower($flower);
 	}
 }
 
@@ -99,27 +102,27 @@ echo '<hr><h1>Flower Info:</h1><table><tr><th>Key</th>';
 foreach ($flowers as $flower) {
 	echo "<th>$flower</th>";
 }
-echo "</tr>";
+echo '</tr>';
 foreach ($tbl_flowerinfo as $tableline) {
 	echo "<tr><td>$tableline</td>";
 	if ($tableline == 'uid') {
 		echo '<td colspan=5 style="text-align:center"><em>REDACTED</em></td>';
 	} else {
 		foreach ($flowers as $flower) {
-			if ($userflowerdata[$flower]) {
-				echo "<td>".$userflowerdata[$flower][$tableline]."</td>";
+			if (isset($cuser->flower[$flower])) {
+				echo "<td>".$cuser->flower[$flower]->getData($tableline)."</td>";
 			} else {
-				echo "<td>-</td>";
+				echo '<td>-</td>';
 			}
 		}
 	}
-	echo "</tr>";
+	echo '</tr>';
 }
 echo '</table>';
 
 echo '<hr><h1>Chatterbox posts:</h1><table><tr><th>Message</th><th>Time</th></tr>';
-$query = query("SELECT * FROM chat WHERE userID = ?", [$userdata['userID']]);
+$query = query("SELECT * FROM chat WHERE userID = ?", [$cuser->getData('userID')]);
 while ($record = $query->fetch()) {
-	printf('<tr><td>%s</td><td width="150">%s</td></tr>', $record['message'], date('Y-m-d H:i:s',$record['time']));
+	printf('<tr><td>%s</td><td>%s</td></tr>', $record['message'], date('Y-m-d H:i:s',$record['time']));
 }
 echo '</table>';

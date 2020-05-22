@@ -49,7 +49,7 @@ $ettings = [
 		<td class="b">
 			<?php foreach ($etting['options'] as $option) { ?>
 			<input type="radio" name="<?=$etting['id'] ?>" id="<?=$etting['id'] ?>_<?=$option['id']?>" value="<?=$option['value']?>"
-				<?=($userdata[$etting['tblcol']] == $option['value'] ? ' checked' : '')?>>
+				<?=($cuser->getData($etting['tblcol']) == $option['value'] ? ' checked' : '')?>>
 			<label for="<?=$etting['id'] ?>_<?=$option['id']?>"><?=$option['name'] ?></label>
 			<?php } ?>
 		</td>

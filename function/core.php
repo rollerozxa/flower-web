@@ -1,21 +1,6 @@
 <?php
 
 /**
- * Update user data in case something has been modified.
- *
- * @param bool $chooseflower Is the function run from the choose flower page? (Don't add flower data)
- */
-function update_userdata($chooseflower = false) {
-	if ($chooseflower) {
-		global $uid, $userdata;
-		$userdata = fetch("SELECT * FROM user WHERE uid = ? LIMIT 1", [$uid]);
-	} else {
-		global $uid, $gid, $userdata;
-		$userdata = fetch("SELECT * FROM user JOIN user_$gid ON user.uid = user_$gid.uid WHERE user.uid = ? LIMIT 1", [$uid]);
-	}
-}
-
-/**
  * Check if user is from within the network.
  *
  * @return boolean Whether user is within the network.

@@ -25,27 +25,27 @@ function retrieve_countries() {
 }
 
 function retrieve_country() {
-	global $userdata;
+	global $cuser;
 
-	return hex2bin(str_pad(dechex(strlen($userdata['country'])),2,'0',STR_PAD_LEFT)) . $userdata['country'];
+	return hex2bin(str_pad(dechex(strlen($cuser->getData('country'))),2,'0',STR_PAD_LEFT)) . $cuser->getData('country');
 }
 
 function retrieve_name() {
-	global $userdata;
+	global $cuser;
 
-	return hex2bin(str_pad(dechex(strlen($userdata['username'])),2,"0",STR_PAD_LEFT)) . $userdata['username'];
+	return hex2bin(str_pad(dechex(strlen($cuser->getData('username'))),2,"0",STR_PAD_LEFT)) . $cuser->getData('username');
 }
 
 function retrieve_seeds() {
-	global $userdata;
+	global $cuser;
 
-	return hex2bin(str_pad(dechex(round($userdata['seeds'],0)),16,"0",STR_PAD_LEFT));
+	return hex2bin(str_pad(dechex(0),16,"0",STR_PAD_LEFT));
 }
 
 function retrieve_stars() {
-	global $userdata;
+	global $cuser;
 
-	return hex2bin(str_pad(dechex(round($userdata['stars'],0)),16,"0",STR_PAD_LEFT));
+	return hex2bin(str_pad(dechex(0),16,"0",STR_PAD_LEFT));
 }
 
 

@@ -7,11 +7,11 @@
 switch ($_REQUEST['a']) {
 	case 'addfriend':
 		if (($_POST['friendcode'] >= 100000000) && ($_POST['friendcode'] <= 999999999)) {
-			if ($_POST['friendcode'] != $userdata['friendcode']) {
+			if ($_POST['friendcode'] != $cuser->getData('friendcode')) {
 				if (result("SELECT COUNT(*) FROM user WHERE friendcode = ?", [$_POST['friendcode']]) == 1) {
 					$friendeddata = fetch("SELECT * FROM user WHERE friendcode = ?", [$_POST['friendcode']]);
-					if (result("SELECT COUNT(*) FROM friend_connections WHERE (friender_userid = ? OR friended_userid = ?) AND friended_userid = ?", [$userdata['userID'], $userdata['userID'], $friendeddata['userID']]) == 0) {
-						query("INSERT INTO friend_connections (friender_userid, friended_userid) VALUES (?,?)", [$userdata['userID'], $friendeddata['userID']]);
+					if (result("SELECT COUNT(*) FROM friend_connections WHERE (friender_userid = ? OR friended_userid = ?) AND friended_userid = ?", [$cuser->getData('userID'), $cuser->getData('userID'), $friendeddata['userID']]) == 0) {
+						query("INSERT INTO friend_connections (friender_userid, friended_userid) VALUES (?,?)", [$cuser->getData('userID'), $friendeddata['userID']]);
 						header_msg("You've added {$friendeddata['username']} as your friend!");
 					} else {
 						header_msg("You're already friends with {$friendeddata['username']}!", "ff7777");
@@ -27,7 +27,9 @@ switch ($_REQUEST['a']) {
 		}
 	break;
 	case 'removefriend':
-		if (result("SELECT COUNT(*) FROM friend_connections WHERE connection_id = ? AND (friender_userid = ? OR friended_userid = ?)", [$quantity, $userdata['userID'], $userdata['userID']]) == 1) {
+		$frnd = result("SELECT COUNT(*) FROM friend_connections WHERE connection_id = ? AND (friender_userid = ? OR friended_userid = ?)",
+						[$quantity, $cuser->getData('userID'), $cuser->getData('userID')]);
+		if ($frnd == 1) {
 			query("DELETE FROM friend_connections WHERE connection_id = ?", [$quantity]);
 			header_msg("You've removed a friend.");
 		} else {
@@ -40,7 +42,7 @@ switch ($_REQUEST['a']) {
 		if (!isset($_POST['message'])) $error = true;
 
 		if (!isset($error)) {
-			send_mail($_POST['recipient'], $_POST['message'], 'Private message from '.$userdata['username'], $userdata['userID']);
+			send_mail($_POST['recipient'], $_POST['message'], 'Private message from '.$cuser->getData('username'), $cuser->getData('userID'));
 		}
 	break;
 }

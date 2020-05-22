@@ -10,10 +10,11 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Seed income cost is more advanced, let's just calculate it once.
-		$cost = $userdata['seedincome'] * ($quantity * 5);
+		$cost = $cuser->getData('seedincome') * ($quantity * 5);
 		// Check whether you have enough stars.
-		if ($cost <= $userdata['stars']) {
-			query("UPDATE user SET stars = ?, seedincome = ? WHERE uid = ?", [($userdata['stars'] - $cost), ($userdata['seedincome'] + $quantity / 10), $uid]);
+		if ($cost <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-$cost);
+			$cuser->abveData('seedincome', $quantity / 10);
 			header_msg("Bought ".number_format($quantity / 10,1)."$/hr for $cost stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
@@ -23,9 +24,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 720 <= $userdata['stars']) {
-			query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - $quantity * 720), $uid]);
-			query("UPDATE user_$gid SET basicgrowthrate = ? WHERE uid = ?", [($userdata['basicgrowthrate'] + $quantity), $uid]);
+		if ($quantity * 720 <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-($quantity * 720));
+			$cuser->flower[$gid]->abveData('basicgrowthrate', $quantity);
 			header_msg("Bought " . ($quantity * 0.36) . "cm/hr for " . ($quantity * 720) . " stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
@@ -35,9 +36,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * 20 <= $userdata['seeds']) {
-			query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] - $quantity * 20), $uid]);
-			query("UPDATE user_$gid SET water = ? WHERE uid = ?", [($userdata['water'] + $quantity), $uid]);
+		if ($quantity * 20 <= $cuser->getData('seeds')) {
+			$cuser->abveData('seeds', 0-($quantity * 20));
+			$cuser->flower[$gid]->abveData('water', $quantity);
 			header_msg("Bought $quantity hours of water for " . ($quantity * 20) . " seeds!");
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
@@ -47,9 +48,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 2 <= $userdata['stars']) {
-			query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - $quantity * 2), $uid]);
-			query("UPDATE user_$gid SET sun = ? WHERE uid = ?", [($userdata['sun'] + $quantity), $uid]);
+		if ($quantity * 2 <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-($quantity * 2));
+			$cuser->flower[$gid]->abveData('sun', $quantity);
 			header_msg("Bought $quantity hours of sun for " . ($quantity * 2) . " stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
@@ -59,9 +60,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * $autowater_cost <= $userdata['seeds']) {
-			query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] - $quantity * $autowater_cost), $uid]);
-			query("UPDATE user_$gid SET autowater = ? WHERE uid = ?", [($userdata['autowater'] + $quantity), $uid]);
+		if ($quantity * $autowater_cost <= $cuser->getData('seeds')) {
+			$cuser->abveData('seeds', 0-($quantity * $autowater_cost));
+			$cuser->flower[$gid]->abveData('autowater', $quantity);
 			header_msg("Bought Auto Water (x" . $quantity . ") for " . ($quantity * $autowater_cost) . " seeds!");
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
@@ -71,9 +72,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * $fertilizer_cost <= $userdata['seeds']) {
-			query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] - $quantity * $fertilizer_cost), $uid]);
-			query("UPDATE user_$gid SET fertilizer = ? WHERE uid = ?", [($userdata['fertilizer'] + $quantity), $uid]);
+		if ($quantity * $fertilizer_cost <= $cuser->getData('seeds')) {
+			$cuser->abveData('seeds', 0-($quantity * $fertilizer_cost));
+			$cuser->flower[$gid]->abveData('fertilizer', $quantity);
 			header_msg("Bought Fertilizer (x" . $quantity . ") for " . ($quantity * $fertilizer_cost) . " seeds!");
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
@@ -83,9 +84,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * $superfertilizer_cost <= $userdata['stars']) {
-			query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - $quantity * $superfertilizer_cost), $uid]);
-			query("UPDATE user_$gid SET superfertilizer = ? WHERE uid = ?", [($userdata['superfertilizer'] + $quantity), $uid]);
+		if ($quantity * $superfertilizer_cost <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-($quantity * $superfertilizer_cost));
+			$cuser->flower[$gid]->abveData('superfertilizer', $quantity);
 			header_msg("Bought Super Fertilizer (x" . $quantity . ") for " . ($quantity * $superfertilizer_cost) . " stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
@@ -95,9 +96,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * 50 <= $userdata['seeds']) {
-			query("UPDATE user SET seeds = ? WHERE uid = ?", [($userdata['seeds'] - $quantity * 50), $uid]);
-			query("UPDATE user_$gid SET warp = ? WHERE uid = ?", [($userdata['warp'] + $quantity), $uid]);
+		if ($quantity * 50 <= $cuser->getData('seeds')) {
+			$cuser->abveData('seeds', 0-($quantity * 50));
+			$cuser->flower[$gid]->abveData('warp', $quantity);
 			header_msg("Bought $quantity hours of warp for " . ($quantity * 50) . " seeds!");
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
@@ -107,9 +108,9 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 4 <= $userdata['stars']) {
-			query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - $quantity * 4), $uid]);
-			query("UPDATE user_$gid SET giga = ? WHERE uid = ?", [($userdata['giga'] + $quantity), $uid]);
+		if ($quantity * 4 <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-($quantity * 4));
+			$cuser->flower[$gid]->abveData('giga', $quantity);
 			header_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
 		} else {
 			header_msg("You don't have enough stars!", "ff7777");
@@ -119,12 +120,15 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * getbulkprice() <= $userdata['stars']) {
-			query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - $quantity * getbulkprice()), $uid]);
+		if ($quantity * getbulkprice() <= $cuser->getData('stars')) {
+			$cuser->abveData('stars', 0-($quantity * getbulkprice()));
 			foreach ($flowers as $flower) {
 				$flower = strtolower($flower);
-				if ($userdata['has_' . $flower]) {
-					query("UPDATE user_$flower SET water = water + $quantity, sun = sun + $quantity, warp = warp + $quantity, giga = giga + $quantity WHERE uid = ?", [$uid]);
+				if ($cuser->getData('has_'.$flower)) {
+					$cuser->updateUserFlower($flower);
+					$resources = ['water', 'sun', 'warp', 'giga'];
+					foreach ($resources as $resource)
+						$cuser->flower[$flower]->abveData($resource, $quantity);
 				}
 			}
 			header_msg("Bought $quantity hours of bulk items for " . ($quantity * getbulkprice()) . " stars!");
@@ -134,11 +138,11 @@ switch ($_REQUEST['a']) {
 	break;
 	case 'nevershrink':
 		// Check if you haven't already bought it!
-		if ($userdata['nevershrink'] == 0) {
+		if ($cuser->flower[$gid]->getData('nevershrink') == 0) {
 			// Check whether you have enough stars.
-			if (4000 <= $userdata['stars']) {
-				query("UPDATE user SET stars = ? WHERE uid = ?", [($userdata['stars'] - 4000), $uid]);
-				query("UPDATE user_$gid SET nevershrink = '1' WHERE uid = ?", [$uid]);
+			if (4000 <= $cuser->getData('stars')) {
+				$cuser->abveData('stars', 0-4000);
+				$cuser->flower[$gid]->setData('nevershrink', 1);
 				header_msg("Your flower won't shrink anymore! ^.^");
 			} else {
 				header_msg("You don't have enough stars!", "ff7777");

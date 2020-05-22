@@ -1,6 +1,6 @@
 <?php
 
-if ($userdata['powerlevel'] == 4) {
+if ($cuser->getData('powerlevel') == 4) {
 	$query = query("SELECT uid, username FROM user");
 	$form = '<select name="uid">';
 	while ($record = $query->fetch()) {
@@ -39,7 +39,7 @@ $i = 0;
 <p class="title">Admin tools</p>
 
 <?php foreach ($admintools as $toolid => $admintool) { ?>
-	<?php if ($admintool['powerlevel'] <= $userdata['powerlevel']) { ?>
+	<?php if ($admintool['powerlevel'] <= $cuser->getData('powerlevel')) { ?>
 		<div class="box adminbox" style="">
 			<?=$admintool['content'] ?>
 			<?=sprintf($permissionmsg, powcolor($admintool['powerlevel']), powname($admintool['powerlevel'])) ?>
