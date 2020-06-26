@@ -6,7 +6,7 @@
 
 switch ($_REQUEST['a']) {
 	case 'heap':
-		if ($quantity < $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity)) {
 			$cuser->abveData('seeds', 0-$quantity);
 			query("UPDATE globalcompost SET compostsize = compostsize + ? ORDER BY compostID DESC LIMIT 1", [$quantity]);
 			$compost = fetch("SELECT * FROM globalcompost ORDER BY compostID DESC LIMIT 1");

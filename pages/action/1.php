@@ -12,7 +12,7 @@ switch ($_REQUEST['a']) {
 		// Seed income cost is more advanced, let's just calculate it once.
 		$cost = $cuser->getData('seedincome') * ($quantity * 5);
 		// Check whether you have enough stars.
-		if ($cost <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $cost)) {
 			$cuser->abveData('stars', 0-$cost);
 			$cuser->abveData('seedincome', $quantity / 10);
 			header_msg("Bought ".number_format($quantity / 10,1)."$/hr for $cost stars!");
@@ -24,7 +24,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 720 <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $quantity * 720)) {
 			$cuser->abveData('stars', 0-($quantity * 720));
 			$cuser->flower[$gid]->abveData('basicgrowthrate', $quantity);
 			header_msg("Bought " . ($quantity * 0.36) . "cm/hr for " . ($quantity * 720) . " stars!");
@@ -36,7 +36,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * 20 <= $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity * 20)) {
 			$cuser->abveData('seeds', 0-($quantity * 20));
 			$cuser->flower[$gid]->abveData('water', $quantity);
 			header_msg("Bought $quantity hours of water for " . ($quantity * 20) . " seeds!");
@@ -48,7 +48,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 2 <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $quantity * 2)) {
 			$cuser->abveData('stars', 0-($quantity * 2));
 			$cuser->flower[$gid]->abveData('sun', $quantity);
 			header_msg("Bought $quantity hours of sun for " . ($quantity * 2) . " stars!");
@@ -60,7 +60,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * $autowater_cost <= $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity * $autowater_cost)) {
 			$cuser->abveData('seeds', 0-($quantity * $autowater_cost));
 			$cuser->flower[$gid]->abveData('autowater', $quantity);
 			header_msg("Bought Auto Water (x" . $quantity . ") for " . ($quantity * $autowater_cost) . " seeds!");
@@ -72,7 +72,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * $fertilizer_cost <= $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity * $fertilizer_cost)) {
 			$cuser->abveData('seeds', 0-($quantity * $fertilizer_cost));
 			$cuser->flower[$gid]->abveData('fertilizer', $quantity);
 			header_msg("Bought Fertilizer (x" . $quantity . ") for " . ($quantity * $fertilizer_cost) . " seeds!");
@@ -84,7 +84,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * $superfertilizer_cost <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $quantity * $superfertilizer_cost)) {
 			$cuser->abveData('stars', 0-($quantity * $superfertilizer_cost));
 			$cuser->flower[$gid]->abveData('superfertilizer', $quantity);
 			header_msg("Bought Super Fertilizer (x" . $quantity . ") for " . ($quantity * $superfertilizer_cost) . " stars!");
@@ -96,7 +96,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough seeds.
-		if ($quantity * 50 <= $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity * 50)) {
 			$cuser->abveData('seeds', 0-($quantity * 50));
 			$cuser->flower[$gid]->abveData('warp', $quantity);
 			header_msg("Bought $quantity hours of warp for " . ($quantity * 50) . " seeds!");
@@ -108,7 +108,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * 4 <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $quantity * 4)) {
 			$cuser->abveData('stars', 0-($quantity * 4));
 			$cuser->flower[$gid]->abveData('giga', $quantity);
 			header_msg("Bought $quantity hours of giga for " . ($quantity * 4) . " stars!");
@@ -120,7 +120,7 @@ switch ($_REQUEST['a']) {
 		// We need a quantity parameter!
 		if ($noquantity) break;
 		// Check whether you have enough stars.
-		if ($quantity * getbulkprice() <= $cuser->getData('stars')) {
+		if ($cuser->enough('stars', $quantity * getbulkprice())) {
 			$cuser->abveData('stars', 0-($quantity * getbulkprice()));
 			foreach ($flowers as $flower) {
 				$flower = strtolower($flower);
@@ -140,7 +140,7 @@ switch ($_REQUEST['a']) {
 		// Check if you haven't already bought it!
 		if ($cuser->flower[$gid]->getData('nevershrink') == 0) {
 			// Check whether you have enough stars.
-			if (4000 <= $cuser->getData('stars')) {
+			if ($cuser->enough('stars', 4000)) {
 				$cuser->abveData('stars', 0-4000);
 				$cuser->flower[$gid]->setData('nevershrink', 1);
 				header_msg("Your flower won't shrink anymore! ^.^");

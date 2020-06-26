@@ -99,6 +99,17 @@ trait asdfTrait {
 			return $this->data[$key];
 		}
 	}
+
+	/**
+	 * Check if user has enough of $key, relative to $cmp.
+	 *
+	 * @param string $key Data key to compare with.
+	 * @param int $cmp Amount to compare to.
+	 * @return void
+	 */
+	function enough($key, $cmp) {
+		return $this->getData($key) >= $cmp;
+	}
 }
 
 

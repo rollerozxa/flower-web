@@ -6,7 +6,7 @@
 
 switch ($_REQUEST['a']) {
 	case 'buyseedtickets':
-		if ($quantity * 15 <= $cuser->getData('seeds')) {
+		if ($cuser->enough('seeds', $quantity * 15)) {
 			$seedsdraw_rewards = [
 				['odds' => 1000, 'id' => 'water', 'desc' => '+6 hours of water!'],
 				['odds' => 2000, 'id' => 'sun', 'desc' => '+6 hours of sun!'],
