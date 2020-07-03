@@ -16,25 +16,15 @@ switch ($_REQUEST['a']) {
 				['odds' => 100000000, 'id' => 'mseed', 'desc' => 'Magic seed!']
 			];
 
-			$rewards = [];
-			$rewardlist = '<ul class="nobreak">';
-
-			foreach ($seedsdraw_rewards as $reward) {
-				$rewards[$reward['id']] = floor($quantity / $reward['odds']);
-				if ($quantity >= $reward['odds']) {
-					$rewardlist .= '<li>'.$reward['desc'].' (x'.floor($quantity / $reward['odds']).')</li>';
-				}
-			}
-
-			$rewardlist .= '</ul>';
+			$draw = new DrawMaster($seedsdraw_rewards, $quantity);
+			$rewards = $draw->getRewards();
 
 			// TODO: Implement putting the magic seeds somewhere.
 			$resources = ['water', 'sun', 'warp', 'giga', 'jump'];
 			foreach ($resources as $resource)
 				$cuser->flower[$gid]->abveData($resource, $rewards[$resource]);
 
-			header_msg("Bought $quantity seeds draw tickets for " . ($quantity * 15) . " seeds, giving you the following rewards:<br>" . $rewardlist);
-
+			header_msg("Bought $quantity seeds draw tickets for ".($quantity * 15)." seeds, giving you the following rewards:<br>".$draw->getRewardList());
 		} else {
 			header_msg("You don't have enough seeds!", "ff7777");
 		}
