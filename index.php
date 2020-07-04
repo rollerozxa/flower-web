@@ -67,7 +67,7 @@ include('config.php');
 $flowers_count_query = "SELECT ";
 $count = 1;
 foreach ($flowers as $flower) {
-	$flowers_count_query .= "(SELECT COUNT(*) FROM user_$flower) $flower";
+	$flowers_count_query .= "(SELECT COUNT(*) FROM user_flower WHERE flower = '$flower') $flower";
 
 	if ($count != sizeof($flowers)) {
 		$flowers_count_query .= ",";
@@ -77,9 +77,10 @@ foreach ($flowers as $flower) {
 $flowers_count = fetch($flowers_count_query);
 
 foreach ($flowers as $gid) {
-	$query = query("SELECT * FROM user_$gid JOIN user ON user_$gid.uid = user.uid ORDER BY height DESC LIMIT 10");
+	$query = query("SELECT * FROM user_flower JOIN user ON user_flower.uid = user.uid WHERE user_flower.flower = ? ORDER BY height DESC LIMIT 10", [$gid]);
 	$bg = 0;
 	$count = 1;
+	$leaderboard[$gid] = [];
 	while ($record = $query->fetch()) {
 		$leaderboard[$gid][] = [
 			'count' => $count,

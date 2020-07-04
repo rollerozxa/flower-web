@@ -33,7 +33,7 @@ $cuser = new user(false, $uid);
 $cuser->updateUserInfo();
 
 if (!$cuser->getData('has_'.strtolower($gid)) && $act != 'r'){
-	query("INSERT INTO user_$gid (uid) VALUES (?)", [$uid]);
+	query("INSERT INTO user_flower (flower,uid) VALUES (?,?)", [$gid, $uid]);
 	query("UPDATE user SET has_$gid = 1 WHERE uid = ?", [$uid]);
 }
 

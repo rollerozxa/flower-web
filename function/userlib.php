@@ -48,7 +48,7 @@ trait asdfTrait {
 				$values[] = $v;
 			}
 			$values[] = $this->identifier;
-			query("UPDATE $this->tbl SET $sets WHERE $this->idType = ?", $values);
+			$this->saveToDB($sets, $values);
 		}
 	}
 
@@ -71,6 +71,13 @@ trait asdfTrait {
 	 */
 	private function cacheDelta() {
 		self::$cache[$this->identifier]['delta'] = $this->dataDelta;
+	}
+
+	/**
+	 * Save the current data delta to database. Extracted into a function to ease class-basis overrides.
+	 */
+	private function saveToDB($sets, $values) {
+		// null
 	}
 
 	/**
@@ -118,6 +125,10 @@ class user {
 
 	public $flower;
 
+	private function saveToDB($sets, $values) {
+		query("UPDATE user SET $sets WHERE $this->idType = ?", $values);
+	}
+
 	/**
 	 * Update user data, either from database or from cache if it exists.
 	 */
@@ -158,7 +169,6 @@ class userFlower {
 	function __construct($readonly, $flower, $identifier, $idType = IDENTIFIER_UID) {
 		$this->traitConstruct($readonly, $identifier, $idType);
 		$this->flower = $flower;
-		$this->tbl = "user_$this->flower";
 		$this->updateFlowerInfo();
 	}
 
@@ -169,6 +179,11 @@ class userFlower {
 		self::$cache[$this->identifier][$this->flower.'_delta'] = $this->dataDelta;
 	}
 
+	private function saveToDB($sets, $values) {
+		$values[] = $this->flower;
+		query("UPDATE user_flower SET $sets WHERE $this->idType = ? AND flower = ?", $values);
+	}
+
 	/**
 	 * Update flower data, either from database or from cache if it exists.
 	 */
@@ -177,7 +192,7 @@ class userFlower {
 			$this->data = self::$cache[$this->identifier][$this->flower];
 			$this->dataDelta = self::$cache[$this->identifier][$this->flower.'_delta'];
 		} else {
-			$this->data = fetch("SELECT * FROM user_$this->flower WHERE $this->idType = ? LIMIT 1", [$this->identifier]);
+			$this->data = fetch("SELECT * FROM user_flower WHERE flower = ? AND $this->idType = ? LIMIT 1", [$this->flower, $this->identifier]);
 			self::$cache[$this->identifier][$this->flower] = $this->data;
 		}
 	}

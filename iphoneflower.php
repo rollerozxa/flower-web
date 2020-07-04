@@ -18,7 +18,7 @@ $menu	= (isset($_GET['justshortcuts']) ? true : null);
 if ($show == 18) fs_error("Buying stars aren't supported.<br>Sorry, but I don't want your money!");
 if ($show == 999) header('Location: flowerschool.php');
 
-// Check $gid. This makes it safe to be used in SQL queries.
+// Check $gid.
 if (!in_array($gid, $flowers)) fs_error('Unknown flower.');
 
 // Blacklisted UIDs
