@@ -43,6 +43,9 @@ $autowater_cost = 100;
 $fertilizer_cost = 200;
 $superfertilizer_cost = 20;
 
+$buyvalue	= 999999999;
+$sellvalue	= 0;
+
 $debug = false;
 
 // "Internal zoom value to be sent to zoom()" => "Nice name for the zoom level"

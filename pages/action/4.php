@@ -4,9 +4,6 @@
 /// 4  - Star Exchange
 ///
 
-$buyvalue	= 50;
-$sellvalue	= 50;
-
 switch ($_REQUEST['a']) {
 	case 'buystars':
 		if ($quantity < ($cuser->getData('seeds') / $buyvalue)) {

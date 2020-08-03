@@ -7,7 +7,7 @@
 	<form method="POST">
 		<input type="hidden" name="a" value="buystars">
 		Buy quantity: <input name="quantity" type="text" value="10">
-		<br> @ 50 seeds each<br><br>
+		<br> @ <?=$buyvalue ?> seeds each<br><br>
 		<input type="submit" value="Place Buy Order">
 	</form>
 </div>
@@ -17,7 +17,7 @@
 	<form method="POST">
 		<input type="hidden" name="a" value="sellstars">
 		Sell quantity: <input name="quantity" type="text" value="10">
-		<br> @ 50 seeds each<br><br>
+		<br> @ <?=$sellvalue ?> seeds each<br><br>
 		<input type="submit" value="Place Sell Order">
 	</form>
 </div>
