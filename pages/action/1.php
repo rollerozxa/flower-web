@@ -123,8 +123,7 @@ switch ($_REQUEST['a']) {
 		if ($cuser->enough('stars', $quantity * getbulkprice())) {
 			$cuser->abveData('stars', 0-($quantity * getbulkprice()));
 			foreach ($flowers as $flower) {
-				$flower = strtolower($flower);
-				if ($cuser->getData('has_'.$flower)) {
+				if ($cuser->hasFlower($flower)) {
 					$cuser->updateUserFlower($flower);
 					$resources = ['water', 'sun', 'warp', 'giga'];
 					foreach ($resources as $resource)

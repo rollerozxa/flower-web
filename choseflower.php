@@ -25,11 +25,11 @@ if (!$cuser->getData('username')) {
 		<h2>Flower Selection</h2>
 		<?php
 		foreach ($flowers as $flower) {
-			if (!$cuser->getData('has_' . strtolower($flower))) $hasunstartedflowers = true;
+			if (!$cuser->hasFlower($flower)) $hasunstartedflowers = true;
 
 			printf(
 				'<form><input type="hidden" name="a" value="chose%s"><input type="image" src="img/%s%sIcon.png"></form>',
-			strtolower($flower), (!$cuser->getData('has_'.strtolower($flower)) ? 'gray/' : ''), $flower);
+			strtolower($flower), (!$cuser->hasFlower($flower) ? 'gray/' : ''), $flower);
 		}
 
 		if (isset($hasunstartedflowers)) {

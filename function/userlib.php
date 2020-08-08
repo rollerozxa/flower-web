@@ -150,6 +150,24 @@ class user {
 	function updateUserFlower($flower) {
 		$this->flower[$flower] = new userFlower($this->readonly, $flower, $this->identifier, $this->idType);
 	}
+
+	/**
+	 * Toggle the bit for a given flower.
+	 */
+	function toggleHasFlower($flower) {
+		global $flowers_id;
+
+		$this->getData('hasflower', $this->getData('hasflower') ^ (2 ** $flowers_id[$flower]));
+	}
+
+	/**
+	 * Get whether user has a given flower.
+	 */
+	function hasFlower($flower) {
+		global $flowers_id;
+
+		return $this->getData('hasflower') & (2 ** $flowers_id[$flower]);
+	}
 }
 
 class userFlower {

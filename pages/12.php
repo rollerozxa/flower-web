@@ -24,7 +24,7 @@ if ($cuser->getData('powerlevel') == 4) {
 	<br><div class="user_flowbox">
 		<span class="title">Flowers started</span><br>
 		<?php foreach ($flowers as $flower) {
-			?><img src="img/<?=(!$u->getData('has_'.strtolower($flower)) ? 'gray/' : '').$flower?>Icon.png" width=24><?php
+			?><img src="img/<?=(!$u->hasFlower($flower) ? 'gray/' : '').$flower?>Icon.png" width=24><?php
 		} ?>
 	</div>
 	<em>Last seen <?=chat_time(ceil(time() - $u->getData('lastview'))) ?> ago</em>

@@ -93,7 +93,7 @@ foreach ($tbl_userinfo as $tableline) {
 echo '</table>';
 
 foreach ($flowers as $flower) {
-	if ($cuser->getData('has_'.strtolower($flower))) {
+	if ($cuser->hasFlower($flower)) {
 		$cuser->updateUserFlower($flower);
 	}
 }
