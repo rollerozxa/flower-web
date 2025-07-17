@@ -1,12 +1,18 @@
 {
     "minimum-stability": "dev",
     "require": {
-        "kaitai-io/kaitai_struct_php_runtime": "dev-master"
+        "kaitai-io/kaitai_struct_php_runtime": "dev-master",
+        "pocketmine/binaryutils": "dev-master"
     },
     "repositories": [
         {
             "type": "vcs",
             "url":  "git@github.com:kaitai-io/kaitai_struct_php_runtime.git"
         }
-    ]
+    ],
+	"config": {
+		"platform": {
+			"php": "7.4"
+		}
+	}
 }
