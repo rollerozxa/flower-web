@@ -1,0 +1,2 @@
+# there are supposed to be raw dumps to go along with each kaitai file to serve as an example for the format, but they contain too much personal info from me when I dumped the requests back in the day, soz
+*.raw
