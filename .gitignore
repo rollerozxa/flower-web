@@ -14,3 +14,4 @@ adminer.php
 # Composer
 vendor/
 composer.lock
+conf/config.php

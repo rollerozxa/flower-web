@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="1">
+	<title>Raspberry Pi Temperature Monitor</title>
+	<style>
+html, body {
+	height: 100%;
+	background-color: #111111;
+	overflow: hidden;
+}
+.number {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: -110px 0 0 0;
+	height: 220px;
+	text-align: center;
+	color: #dadada;
+	font-family: Arial, serif;
+	font-size: 260px;
+	line-height: 227px;
+	font-weight: bold;
+}
+	</style>
+</head>
+<body>
+	<span class="number"><?php echo substr(shell_exec("/opt/vc/bin/vcgencmd measure_temp"), 5); ?></span>
+</body>
+</html>

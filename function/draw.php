@@ -20,6 +20,9 @@ class DrawMaster {
 	 * @param int $quantity
 	 */
 	function __construct($possibleRewards, $quantity) {
+		if (!is_array($possibleRewards)) throw new TypeError('$possibleRewards is not array');
+		if (!is_numeric($quantity)) throw new TypeError('$quantity is not numeric');
+
 		$this->rewards = [];
 		$this->rewardList = '<ul class="nobreak">';
 

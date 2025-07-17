@@ -36,3 +36,10 @@ function heapsize($id) {
 		case 6:		return 3000000000;
 	}
 }
+
+
+class heapTop {
+	function __construct() {
+
+	}
+}
