@@ -1,0 +1,1 @@
+Really rudimentary unit tests for some parts of flower-web, probably not very useful ones. Were made for some old version of PHPUnit, whatever was the latest in 2019.
