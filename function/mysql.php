@@ -1,16 +1,4 @@
 <?php
-// Hacky code to make MySQL work on both of my machines.
-if (__DIR__ == "/home/administrator/www_flowers/function") {
-	$host = '127.0.0.1';
-	$db   = 'origami';
-	$user = 'admin';
-	$pass = 'cuddles';
-} else {
-	$host = '127.0.0.1';
-	$db   = 'origami';
-	$user = 'root';
-	$pass = 'cuddles';
-}
 
 $options = [
 	PDO::ATTR_ERRMODE				=> PDO::ERRMODE_EXCEPTION,

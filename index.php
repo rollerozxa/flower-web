@@ -1,11 +1,11 @@
 <?php
+include('config.php');
 include('function/extra/funfacts.php');
 include('function/flower.php');
 include('function/misc.php');
 include('function/mysql.php');
 include('function/rainbow.php');
 include('function/user.php');
-include('config.php');
 ?><!doctype html>
 <html>
 	<head>

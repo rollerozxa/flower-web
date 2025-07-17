@@ -1,8 +1,8 @@
 <?php
 $start = microtime(true);
 
-include('function/function.php');
 include('config.php');
+include('function/function.php');
 include('pages/title.php');
 
 if (!isset($_GET['uid'])) fs_error('Invalid UID.');

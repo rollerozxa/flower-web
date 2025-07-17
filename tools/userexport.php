@@ -1,7 +1,8 @@
 <?php
-include('../function/mysql.php');
-include('../function/userlib.php');
-include('../config.php');
+chdir('../');
+include('config.php');
+include('function/mysql.php');
+include('function/userlib.php');
 
 // Password for accessing the user export page.
 // The password is the uid of any user with the powerlevel of 4.

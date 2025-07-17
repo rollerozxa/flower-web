@@ -2,12 +2,13 @@
 header('Content-Type: application/octet-stream');
 error_reporting(~E_WARNING);
 
+include('config.php');
 include('function/core.php');
 include('function/mysql.php');
 include('function/user.php');
 require('function/userlib.php');
 include('function/extra/retrieveflower.php');
-include('config.php');
+
 
 // Kaitai runtime & data
 require('vendor/kaitai-io/kaitai_struct_php_runtime/lib/Kaitai/Struct/Stream.php');
