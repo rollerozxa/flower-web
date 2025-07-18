@@ -157,7 +157,7 @@ class user {
 	function toggleHasFlower($flower) {
 		global $flowers_id;
 
-		$this->getData('hasflower', $this->getData('hasflower') ^ (2 ** $flowers_id[$flower]));
+		$this->setData('hasflower', $this->getData('hasflower') ^ (2 ** $flowers_id[$flower]));
 	}
 
 	/**
